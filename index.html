@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 5th Anniversary!</title>
+  <style>
+    :root {
+      --bg: #fff5f5;
+      --card-bg: #ffffff;
+      --accent: #e56b6f;
+      --accent-hover: #b55255;
+      --text: #2b2d42;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+      background: linear-gradient(135deg, #ffccd5, #fff5f5);
+    }
+    h1 { color: var(--accent); margin-bottom: 5px; }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    .section { background: var(--card-bg); padding: 30px; margin-bottom: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    h2 { color: var(--accent); border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
+    
+    /* Timeline */
+    .timeline-item { border-left: 3px solid var(--accent); padding-left: 20px; margin: 20px 0; position: relative; }
+    .timeline-item::before { content: ''; width: 12px; height: 12px; background: var(--accent); position: absolute; left: -7.5px; top: 5px; border-radius: 50%; }
+
+    /* Gallery */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+    .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+
+    /* Open When Letters */
+    .letter-btn { background: var(--bg); border: 1px solid var(--accent); color: var(--accent); width: 100%; text-align: left; padding: 12px; margin: 8px 0; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+    .letter-content { display: none; padding: 15px; background: #fffafb; border-left: 3px solid var(--accent); margin-bottom: 10px; }
+
+    /* Quiz */
+    .quiz-option { display: block; margin: 8px 0; padding: 10px; background: var(--bg); border-radius: 6px; cursor: pointer; }
+    .quiz-option:hover { background: #ffe3e5; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Happy 5th Anniversary!</h1>
+    <p>5 years of incredible memories, adventures, and love.</p>
+    <nav>
+      <a href="#timeline">Timeline</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#letters">Open When</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#playlist">Our Playlist</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    
+    <!-- TIMELINE SECTION -->
+    <div id="timeline" class="section">
+      <h2>Our 5-Year Journey</h2>
+      <div class="timeline-item">
+        <strong>Year 1 (2021)</strong>
+        <p>Our first date, discovering our favorite coffee spot, and late-night talks.</p>
+      </div>
+      <div class="timeline-item">
+        <strong>Year 2 (2022)</strong>
+        <p>Our first big trip together to the mountains and moving into our place.</p>
+      </div>
+      <div class="timeline-item">
+        <strong>Year 3 (2023)</strong>
+        <p>Adopting our pet and building our little routines.</p>
+      </div>
+      <div class="timeline-item">
+        <strong>Year 4 (2024)</strong>
+        <p>Road trips, cooking disasters, and endless laughs.</p>
+      </div>
+      <div class="timeline-item">
+        <strong>Year 5 (2025-2026)</strong>
+        <p>Celebrating half a decade together—and so many more years to come!</p>
+      </div>
+    </div>
+
+    <!-- GALLERY SECTION -->
+    <div id="gallery" class="section">
+      <h2>Memory Gallery</h2>
+      <p>A look back at some of my favorite moments with you.</p>
+      <div class="gallery-grid">
+        <img src="https://via.placeholder.com/300x200" alt="Memory 1">
+        <img src="https://via.placeholder.com/300x200" alt="Memory 2">
+        <img src="https://via.placeholder.com/300x200" alt="Memory 3">
+        <img src="https://via.placeholder.com/300x200" alt="Memory 4">
+      </div>
+    </div>
+
+    <!-- OPEN WHEN LETTERS -->
+    <div id="letters" class="section">
+      <h2>"Open When..." Letters</h2>
+      
+      <button class="letter-btn" onclick="toggleLetter('letter1')">✉️ Open when you need a smile...</button>
+      <div id="letter1" class="letter-content">
+        <p>Remember that time we got completely lost in the rain? I wouldn't have wanted to be stranded with anyone else.</p>
+      </div>
+
+      <button class="letter-btn" onclick="toggleLetter('letter2')">✉️ Open when you miss me...</button>
+      <div id="letter2" class="letter-content">
+        <p>I'm always just a call away. I love you more than words can say!</p>
+      </div>
+    </div>
+
+    <!-- QUIZ SECTION -->
+    <div id="quiz" class="section">
+      <h2>How Well Do You Remember?</h2>
+      <p>Q1: Where was our very first date?</p>
+      <div class="quiz-option" onclick="answerQuiz(true)">A) The Italian place downtown</div>
+      <div class="quiz-option" onclick="answerQuiz(false)">B) The movie theater</div>
+      <div class="quiz-option" onclick="answerQuiz(false)">C) The park</div>
+      <p id="quiz-result" style="font-weight:bold; color: var(--accent); margin-top: 15px;"></p>
+    </div>
+
+    <!-- PLAYLIST SECTION -->
+    <div id="playlist" class="section">
+      <h2>Our Soundtrack</h2>
+      <p>Songs that remind me of us.</p>
+      <!-- Replace the src URL below with your Spotify Embed Link -->
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleLetter(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function answerQuiz(isCorrect) {
+      const res = document.getElementById('quiz-result');
+      if (isCorrect) {
+        res.innerText = "Correct! You remembered! ❤️";
+      } else {
+        res.innerText = "Nice try, but nope! Guess again! 😉";
+      }
+    }
+  </script>
+</body>
+</html>
