@@ -3,239 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zozo & Raychickn | ReMind</title>
-  <!-- KH Style Geometric/Futuristic Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <title>Zozo & Raychickn | 5-Year Wrapped</title>
+  <!-- Montserrat Font for Spotify Aesthetic -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   
   <style>
-    /* --- KH3 REMIND EXACT COLOR PALETTE --- */
+    /* --- SPOTIFY WRAPPED COLOR PALETTE --- */
     :root {
-      --kh-bg: #f4f8fc;
-      --kh-text-dark: #122236;
-      --kh-text-blue: #2a52be;
-      --kh-accent-cyan: #00d2ff;
-      --kh-active-glow: #61c5ff;
-      --kh-line: #cde0f2;
+      --sp-black: #121212;
+      --sp-card-bg: #181818;
+      --sp-green: #1db954;
+      --sp-pink: #f037a5;
+      --sp-purple: #8d00ff;
+      --sp-yellow: #ffc862;
+      --sp-white: #ffffff;
+      --sp-gray: #b3b3b3;
     }
 
     * { box-sizing: border-box; }
 
     body {
-      font-family: 'Rajdhani', sans-serif;
-      background: #f4f8fc;
-      /* Soft bright sky gradient matching KH3 ReMind */
-      background: linear-gradient(180deg, #ffffff 0%, #e6f2ff 60%, #b3dbff 100%);
-      color: var(--kh-text-dark);
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--sp-black);
+      color: var(--sp-white);
       margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      user-select: none;
-    }
-
-    /* --- LAYOUT GRID --- */
-    .title-screen {
-      width: 92vw;
-      height: 88vh;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-
-    /* --- TOP LOGO AREA --- */
-    .logo-container {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
-
-    .sub-brand {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      color: #668099;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-    }
-
-    .main-logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--kh-text-dark);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
-    }
-
-    .main-logo span {
-      color: var(--kh-text-blue);
-      font-style: italic;
-    }
-
-    /* --- LEFT MENU PANEL --- */
-    .menu-panel {
-      flex: 0 0 280px;
+      padding: 20px 10px;
       display: flex;
       flex-direction: column;
-      z-index: 10;
-      margin-top: 60px;
-    }
-
-    .menu-item {
-      background: none;
-      border: none;
-      border-bottom: 1px solid var(--kh-line);
-      color: var(--kh-text-dark);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      text-align: left;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      padding: 12px 18px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      position: relative;
-      width: 100%;
-    }
-
-    .menu-item:hover {
-      color: var(--kh-text-blue);
-      padding-left: 26px;
-    }
-
-    /* KH3 Active Selection Glow Bar */
-    .menu-item.active {
-      color: #ffffff !important;
-      background: linear-gradient(90deg, #3aa8f7 0%, #72d6ff 100%);
-      box-shadow: 0 4px 15px rgba(58, 168, 247, 0.4);
-      border-radius: 4px;
-      border-bottom: none;
-      padding-left: 22px;
-    }
-
-    /* Glowing Crown Bullet on Selection */
-    .menu-item.active::before {
-      content: '✦';
-      position: absolute;
-      left: 8px;
-      color: #ffffff;
-      font-size: 0.9rem;
-    }
-
-    /* --- CENTRAL CONTENT PANEL --- */
-    .content-panel {
-      flex: 1;
-      max-width: 52%;
-      height: 75vh;
-      margin-left: 20px;
-      display: flex;
-      justify-content: center;
       align-items: center;
-      z-index: 10;
     }
 
-    .active-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      border: 2px solid #ffffff;
-      padding: 25px;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(18, 34, 54, 0.08);
-      overflow-y: auto;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .card-header {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.3rem;
-      color: var(--kh-text-blue);
-      letter-spacing: 2px;
-      margin-top: 0;
-      border-bottom: 2px solid var(--kh-line);
-      padding-bottom: 8px;
-    }
-
-    .kh-body {
-      font-size: 1.1rem;
-      color: var(--kh-text-dark);
-      font-weight: 600;
-      line-height: 1.5;
-    }
-
-    /* --- GALLERY GRID --- */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 15px;
-    }
-
-    .gallery-card {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 6px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      border: 1px solid var(--kh-line);
+    /* --- HERO HEADER CARD --- */
+    .wrapped-card {
+      width: 95%;
+      max-width: 500px;
+      background: linear-gradient(135deg, var(--sp-pink) 0%, var(--sp-purple) 100%);
+      border-radius: 20px;
+      padding: 30px 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(240, 55, 165, 0.3);
       text-align: center;
     }
 
-    .gallery-card img {
-      width: 100%;
-      height: 110px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .gallery-card p {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--kh-text-dark);
-      margin: 4px 0 0 0;
-    }
-
-    /* --- BOTTOM HELP BANNER (Like the screenshot) --- */
-    .bottom-bar {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background: linear-gradient(90deg, rgba(58,168,247,0.85) 0%, rgba(114,214,255,0.85) 100%);
-      color: #ffffff;
-      font-family: 'Orbitron', sans-serif;
+    .badge {
+      background: var(--sp-black);
+      color: var(--sp-green);
       font-size: 0.75rem;
-      letter-spacing: 1px;
-      padding: 6px 15px;
-      display: flex;
-      justify-content: space-between;
-      border-radius: 4px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 15px;
     }
 
-    /* --- AUDIO BUTTON --- */
-    .music-btn {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: #ffffff;
-      border: 2px solid var(--kh-text-blue);
-      color: var(--kh-text-blue);
-      font-family: 'Orbitron', sans-serif;
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
       font-weight: 700;
-      font-size: 0.8rem;
-      padding: 6px 14px;
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+    }
+
+    /* --- STATS CARD --- */
+    .stats-card {
+      width: 95%;
+      max-width: 500px;
+      background: var(--sp-yellow);
+      color: var(--sp-black);
       border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      box-shadow: 0 10px 30px rgba(255, 200, 98, 0.2);
+    }
+
+    .stat-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-top: 5px;
+      opacity: 0.8;
+    }
+
+    /* --- TIMELINE TRACKLIST CARD --- */
+    .section-card {
+      width: 95%;
+      max-width: 500px;
+      background: var(--sp-card-bg);
+      border-radius: 20px;
+      padding: 25px 20px;
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--sp-green);
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .track-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #282828;
+    }
+
+    .track-item:last-child { border-bottom: none; }
+
+    .track-num {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--sp-gray);
+      width: 30px;
+    }
+
+    .track-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .track-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--sp-white);
+    }
+
+    .track-sub {
+      font-size: 0.85rem;
+      color: var(--sp-gray);
+      margin-top: 2px;
+    }
+
+    /* --- GALLERY ALBUM GRID --- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .album-card {
+      background: #242424;
+      padding: 10px;
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .album-card:hover {
+      transform: scale(1.03);
+      background: #2a2a2a;
+    }
+
+    .album-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .album-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--sp-white);
+      margin-top: 8px;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .album-artist {
+      font-size: 0.75rem;
+      color: var(--sp-gray);
+      margin: 0;
+    }
+
+    /* --- FLOATING PLAYER BUTTON --- */
+    .music-bar {
+      position: fixed;
+      bottom: 20px;
+      background: var(--sp-green);
+      color: var(--sp-black);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 20px rgba(29, 185, 84, 0.4);
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       z-index: 100;
     }
   </style>
@@ -243,130 +226,145 @@
 <body>
 
   <!-- BGM SOUNDTRACK -->
-  <audio id="khBgm" loop src="kh_bgm.mp3"></audio>
+  <audio id="wrappedBgm" loop src="music.mp3"></audio>
 
-  <button class="music-btn" onclick="toggleMusic()" id="musicBtn">▶ MUSIC</button>
+  <!-- FLOATING AUDIO PLAYER -->
+  <div class="music-bar" onclick="toggleMusic()" id="musicBtn">
+    <span>▶</span> PLAY OUR TRACK
+  </div>
 
-  <div class="title-screen">
+  <!-- HERO CARD -->
+  <div class="wrapped-card">
+    <span class="badge">5-Year Anniversary</span>
+    <h1>Zozo & Raychickn</h1>
+    <p class="subtitle">Your Top Duo of 2021 – 2026</p>
+  </div>
 
-    <!-- TOP LOGO -->
-    <div class="logo-container">
-      <div class="sub-brand">DISNEY x SQUARE ENIX</div>
-      <div class="main-logo">KINGDOM HEARTS <span>ReMind</span></div>
+  <!-- STATS CARD -->
+  <div class="stats-card">
+    <div class="stat-box">
+      <span class="stat-number">1,826</span>
+      <span class="stat-label">Days Together</span>
     </div>
-
-    <!-- LEFT MENU PANEL -->
-    <div class="menu-panel">
-      <button class="menu-item active" onclick="switchSection('welcome')">START</button>
-      <button class="menu-item" onclick="switchSection('journey')">JOURNEY</button>
-      <button class="menu-item" onclick="switchSection('gallery')">MEMORIES</button>
-      <button class="menu-item" onclick="switchSection('letters')">LETTERS</button>
-      <button class="menu-item" onclick="switchSection('quiz')">CHALLENGE</button>
-      <button class="menu-item" onclick="switchSection('credits')">CREDITS</button>
+    <div class="stat-box">
+      <span class="stat-number">#1</span>
+      <span class="stat-label">Favorite Person</span>
     </div>
+    <div class="stat-box">
+      <span class="stat-number">5.0</span>
+      <span class="stat-label">Years Listened</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Compatibility</span>
+    </div>
+  </div>
 
-    <!-- CENTRAL CONTENT CARD -->
-    <div class="content-panel" id="contentDiv">
-      <div class="active-card">
-        <h2 class="card-header">ZOZO & RAYCHICKN II</h2>
-        <p class="kh-body">Happy 5th Anniversary, Zozo! ❤️</p>
-        <p class="kh-body">Welcome to our custom ReMind menu. Select any section on the left to explore our memories, timeline, and letters!</p>
+  <!-- TIMELINE CARD -->
+  <div class="section-card">
+    <h2 class="section-title">Top Years Played</h2>
+    
+    <div class="track-item">
+      <span class="track-num">01</span>
+      <div class="track-info">
+        <span class="track-title">Year 1 (2021-2022)</span>
+        <span class="track-sub">Where it all started • Our First Chapter</span>
       </div>
     </div>
 
-    <!-- BOTTOM HELP BAR -->
-    <div class="bottom-bar">
-      <span>Select data to load...</span>
-      <span>Ver. 5.0 (2021 - 2026)</span>
+    <div class="track-item">
+      <span class="track-num">02</span>
+      <div class="track-info">
+        <span class="track-title">Year 2 (2022-2023)</span>
+        <span class="track-sub">Making memories & growing closer</span>
+      </div>
     </div>
 
+    <div class="track-item">
+      <span class="track-num">03</span>
+      <div class="track-info">
+        <span class="track-title">Year 3 (2023-2024)</span>
+        <span class="track-sub">Building our little routines</span>
+      </div>
+    </div>
+
+    <div class="track-item">
+      <span class="track-num">04</span>
+      <div class="track-info">
+        <span class="track-title">Year 4 (2024-2025)</span>
+        <span class="track-sub">Road trips, laughs & new adventures</span>
+      </div>
+    </div>
+
+    <div class="track-item">
+      <span class="track-num">05</span>
+      <div class="track-info">
+        <span class="track-title">Year 5 (2025-2026)</span>
+        <span class="track-sub">Half a decade together • Ongoing favorite</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY CARD -->
+  <div class="section-card">
+    <h2 class="section-title">Top Heavy Rotation</h2>
+    
+    <div class="gallery-grid">
+      <div class="album-card">
+        <img src="IMG_9733.jpeg" alt="Our first drink">
+        <div class="album-title">Our First Drink 🍹</div>
+        <div class="album-artist">Zozo & Raychickn</div>
+      </div>
+
+      <div class="album-card">
+        <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
+        <div class="album-title">Goth x Dreadhead 🖤</div>
+        <div class="album-artist">Zozo & Raychickn</div>
+      </div>
+
+      <div class="album-card">
+        <img src="IMG_5218.jpeg" alt="Our first holiday">
+        <div class="album-title">Our First Holiday ✈️</div>
+        <div class="album-artist">Zozo & Raychickn</div>
+      </div>
+
+      <div class="album-card">
+        <img src="IMG_2467.jpeg" alt="First time coming over">
+        <div class="album-title">First Time Over 🏠</div>
+        <div class="album-artist">Zozo & Raychickn</div>
+      </div>
+
+      <div class="album-card">
+        <img src="DSC_0071 2.jpeg" alt="Prom King and Queen">
+        <div class="album-title">Prom King & Queen 👑</div>
+        <div class="album-artist">Zozo & Raychickn</div>
+      </div>
+
+      <div class="album-card">
+        <img src="IMG_1850 2.jpeg" alt="Halloween">
+        <div class="album-title">Halloween 🎃</div>
+        <div class="album-artist">Zozo & Raychickn</div>
+      </div>
+    </div>
   </div>
 
   <script>
-    function switchSection(sectionId) {
-      const contentDiv = document.getElementById('contentDiv');
-      const menuItems = document.querySelectorAll('.menu-item');
-
-      // Update Active Button
-      menuItems.forEach(item => item.classList.remove('active'));
-      const clickedBtn = document.querySelector(`.menu-item[onclick*='${sectionId}']`);
-      if (clickedBtn) clickedBtn.classList.add('active');
-
-      // Update Card Content
-      let newHtml = '';
-
-      if (sectionId === 'welcome') {
-        newHtml = `
-          <div class="active-card">
-            <h2 class="card-header">ZOZO & RAYCHICKN II</h2>
-            <p class="kh-body">Happy 5th Anniversary, Zozo! ❤️</p>
-            <p class="kh-body">Welcome to our custom ReMind menu. Select any section on the left to explore our memories, timeline, and letters!</p>
-          </div>`;
-      } else if (sectionId === 'journey') {
-        newHtml = `
-          <div class="active-card">
-            <h2 class="card-header">OUR JOURNEY</h2>
-            <p class="kh-body"><b>Year 1 (2021-2022):</b> Where it all started!</p>
-            <p class="kh-body"><b>Year 2 (2022-2023):</b> Making memories and growing closer.</p>
-            <p class="kh-body"><b>Year 3 (2023-2024):</b> Building our little routines.</p>
-            <p class="kh-body"><b>Year 4 (2024-2025):</b> Road trips & endless laughs.</p>
-            <p class="kh-body"><b>Year 5 (2025-2026):</b> Celebrating half a decade together!</p>
-          </div>`;
-      } else if (sectionId === 'gallery') {
-        newHtml = `
-          <div class="active-card">
-            <h2 class="card-header">MEMORY CACHE</h2>
-            <div class="gallery-grid">
-              <div class="gallery-card"><img src="IMG_9733.jpeg"><p>Our First Drink 🍹</p></div>
-              <div class="gallery-card"><img src="IMG_5759.jpeg"><p>Goth x Dreadhead 🖤</p></div>
-              <div class="gallery-card"><img src="IMG_5218.jpeg"><p>Our First Holiday ✈️</p></div>
-              <div class="gallery-card"><img src="IMG_2467.jpeg"><p>First Time Over 🏠</p></div>
-              <div class="gallery-card"><img src="DSC_0071 2.jpeg"><p>Prom King & Queen 👑</p></div>
-              <div class="gallery-card"><img src="IMG_1850 2.jpeg"><p>Halloween 🎃</p></div>
-            </div>
-          </div>`;
-      } else if (sectionId === 'letters') {
-        newHtml = `
-          <div class="active-card">
-            <h2 class="card-header">OPEN WHEN LETTERS</h2>
-            <p class="kh-body"><b>✉️ Open When You Miss Me:</b> [Add your letter text here]</p>
-            <p class="kh-body"><b>✉️ Open On Our Anniversary:</b> [Add your letter text here]</p>
-          </div>`;
-      } else if (sectionId === 'quiz') {
-        newHtml = `
-          <div class="active-card">
-            <h2 class="card-header">THE CHALLENGE</h2>
-            <p class="kh-body">How well do you know our 5 years together?</p>
-            <p class="kh-body"><b>Q1: Where was our first official date?</b></p>
-          </div>`;
-      } else if (sectionId === 'credits') {
-        newHtml = `
-          <div class="active-card">
-            <h2 class="card-header">SPECIAL THANKS</h2>
-            <p class="kh-body"><b>Created By:</b> Raychickn</p>
-            <p class="kh-body"><b>For:</b> Zozo</p>
-            <p class="kh-body">Thank you for 5 amazing years. Here is to many more chapters together!</p>
-          </div>`;
-      }
-
-      contentDiv.innerHTML = newHtml;
-    }
-
     function toggleMusic() {
-      const music = document.getElementById("khBgm");
+      const music = document.getElementById("wrappedBgm");
       const btn = document.getElementById("musicBtn");
       if (music.paused) {
         music.play();
-        btn.innerText = "⏸ PAUSE";
-        btn.style.background = "#2a52be";
-        btn.style.color = "#ffffff";
+        btn.innerHTML = "<span>⏸</span> PAUSE TRACK";
+        btn.style.background = "#ffffff";
+        btn.style.color = "#121212";
       } else {
         music.pause();
-        btn.innerText = "▶ MUSIC";
-        btn.style.background = "#ffffff";
-        btn.style.color = "#2a52be";
+        btn.innerHTML = "<span>▶</span> PLAY OUR TRACK";
+        btn.style.background = "#1db954";
+        btn.style.color = "#121212";
       }
     }
   </script>
+
 </body>
 </html>
