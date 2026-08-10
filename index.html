@@ -3,322 +3,358 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zozo & Raychickn | 5-Year Wrapped</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <title>Zozo & Raychickn | Our Scrapbook</title>
+  <!-- Google Fonts: Handwritten & Serif fonts for aesthetic feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
   
   <style>
+    /* --- SCRAPBOOK AESTHETIC STYLES --- */
     :root {
-      --sp-black: #121212;
-      --sp-card-bg: #181818;
-      --sp-card-hover: #242424;
-      --sp-green: #1db954;
-      --sp-pink: #f037a5;
-      --sp-purple: #8d00ff;
-      --sp-yellow: #ffc862;
-      --sp-white: #ffffff;
-      --sp-gray: #b3b3b3;
+      --bg-cream: #fbf7ee;
+      --paper-white: #fffdf9;
+      --accent-pink: #e8a598;
+      --accent-rose: #c86b58;
+      --text-dark: #4a3e3d;
+      --tape-color: rgba(243, 229, 203, 0.7);
     }
 
     * { box-sizing: border-box; }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--sp-black);
-      color: var(--sp-white);
+      font-family: 'Playfair Display', serif;
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
       margin: 0;
-      padding: 20px 10px 80px 10px;
+      padding: 25px 12px 60px 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      /* Subtle paper texture simulation */
+      background-image: radial-gradient(#e2d9cc 1px, transparent 1px);
+      background-size: 20px 20px;
     }
 
-    /* --- HERO & STATS --- */
-    .wrapped-card {
-      width: 95%; max-width: 500px;
-      background: linear-gradient(135deg, var(--sp-pink) 0%, var(--sp-purple) 100%);
-      border-radius: 20px; padding: 25px 20px; margin-bottom: 20px;
-      text-align: center; box-shadow: 0 10px 30px rgba(240, 55, 165, 0.3);
-    }
-    .badge {
-      background: var(--sp-black); color: var(--sp-green);
-      font-size: 0.75rem; font-weight: 900; letter-spacing: 2px;
-      padding: 6px 12px; border-radius: 20px; text-transform: uppercase;
-      display: inline-block; margin-bottom: 12px;
-    }
-    h1 { font-size: 2rem; font-weight: 900; margin: 0 0 8px 0; text-transform: uppercase; }
-    
-    .stats-card {
-      width: 95%; max-width: 500px; background: var(--sp-yellow); color: var(--sp-black);
-      border-radius: 20px; padding: 20px; margin-bottom: 25px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
-    }
-    .stat-number { font-size: 1.8rem; font-weight: 900; line-height: 1; }
-    .stat-label { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-top: 4px; opacity: 0.8; }
-
-    /* --- EXPANDABLE TIMELINE TRACKS --- */
-    .section-card {
-      width: 95%; max-width: 500px; background: var(--sp-card-bg);
-      border-radius: 20px; padding: 20px; margin-bottom: 25px;
-    }
-    .section-title {
-      font-size: 1.3rem; font-weight: 900; margin-top: 0; margin-bottom: 15px;
-      color: var(--sp-green); text-transform: uppercase;
+    /* --- COVER TITLE CARD --- */
+    .scrapbook-cover {
+      width: 95%; max-width: 520px;
+      background: var(--paper-white);
+      border: 2px dashed var(--accent-pink);
+      border-radius: 12px;
+      padding: 30px 20px;
+      margin-bottom: 30px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      position: relative;
     }
 
-    .track-container {
-      border-bottom: 1px solid #282828; margin-bottom: 10px; padding-bottom: 10px;
+    /* Washi tape detail on top */
+    .scrapbook-cover::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 120px; height: 26px;
+      background: var(--tape-color);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    .track-container:last-child { border-bottom: none; }
 
-    .track-header {
-      display: flex; align-items: center; justify-content: space-between;
-      cursor: pointer; padding: 8px 5px; border-radius: 8px; transition: background 0.2s;
+    h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 3rem;
+      color: var(--accent-rose);
+      margin: 5px 0 0 0;
+      line-height: 1;
     }
-    .track-header:hover { background: var(--sp-card-hover); }
 
-    .track-left { display: flex; align-items: center; gap: 12px; }
-    .track-num { font-size: 1.1rem; font-weight: 900; color: var(--sp-gray); }
-    .track-title { font-size: 1rem; font-weight: 800; color: var(--sp-white); }
-    .track-sub { font-size: 0.8rem; color: var(--sp-gray); margin-top: 2px; }
-    .expand-arrow { font-size: 1rem; color: var(--sp-gray); transition: transform 0.3s; }
-
-    /* EXPANDED PANEL (Hidden by default) */
-    .track-content {
-      display: none; padding: 15px 5px 5px 5px; animation: fadeIn 0.3s ease;
+    .sub-tag {
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8c7a78;
     }
+
+    /* --- YEAR PAGES (FOLDERS) --- */
+    .page-card {
+      width: 95%; max-width: 520px;
+      background: var(--paper-white);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      border: 1px solid #efe8dc;
+      position: relative;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 2px wavy var(--accent-pink);
+      padding-bottom: 10px;
+    }
+
+    .page-title {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-rose);
+    }
+
+    .page-subtitle {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #7a6b69;
+    }
+
+    .fold-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+      color: var(--accent-rose);
+    }
+
+    /* EXPANDABLE PAGE CONTENT */
+    .page-content {
+      display: none;
+      padding-top: 20px;
+      animation: fadeIn 0.4s ease;
+    }
+
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    /* MUSIC CONTROLLER FOR SPECIFIC YEAR */
-    .year-audio-btn {
-      background: var(--sp-green); color: var(--sp-black);
-      border: none; border-radius: 20px; padding: 8px 16px;
-      font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 900;
-      cursor: pointer; margin-bottom: 15px; display: inline-flex; align-items: center; gap: 6px;
+    /* MUSIC BUTTON */
+    .play-music-btn {
+      background: var(--accent-pink);
+      color: var(--paper-white);
+      border: none;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 8px rgba(232, 165, 152, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    /* YEAR PHOTO GRID */
-    .year-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+    /* --- POLAROID PHOTO GRID --- */
+    .polaroid-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
     }
-    .year-photo {
-      background: #242424; padding: 6px; border-radius: 8px; text-align: center;
+
+    .polaroid {
+      background: #ffffff;
+      padding: 10px 10px 25px 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transform: rotate(-2deg);
+      border: 1px solid #f0ebe1;
+      position: relative;
+      text-align: center;
     }
-    .year-photo img {
-      width: 100%; height: 120px; object-fit: cover; border-radius: 6px;
+
+    .polaroid:nth-child(even) {
+      transform: rotate(2deg);
     }
-    .year-photo p {
-      font-size: 0.75rem; font-weight: 700; color: var(--sp-white); margin: 6px 0 2px 0;
+
+    .polaroid img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border: 1px solid #e2ddd3;
+    }
+
+    .polaroid-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    /* Washi tape over polaroids */
+    .polaroid::before {
+      content: '';
+      position: absolute;
+      top: -8px; left: 30%;
+      width: 40%; height: 16px;
+      background: var(--tape-color);
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO CARD -->
-  <div class="wrapped-card">
-    <span class="badge">5-Year Anniversary</span>
+  <!-- SCRAPBOOK COVER -->
+  <div class="scrapbook-cover">
+    <div class="sub-tag">5 Years of Us</div>
     <h1>Zozo & Raychickn</h1>
-    <p style="margin:0; font-weight:700;">Your Top Duo of 2021 – 2026</p>
+    <p style="font-style: italic; margin-top: 8px; color: #6e5e5c;">Our Memory Scrapbook • 2021 to 2026</p>
   </div>
 
-  <!-- STATS -->
-  <div class="stats-card">
-    <div><div class="stat-number">1,826</div><div class="stat-label">Days Together</div></div>
-    <div><div class="stat-number">#1</div><div class="stat-label">Favorite Person</div></div>
-    <div><div class="stat-number">5.0</div><div class="stat-label">Years Listened</div></div>
-    <div><div class="stat-number">100%</div><div class="stat-label">Compatibility</div></div>
+  <!-- YEAR 1 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year1', this)">
+      <div>
+        <div class="page-title">Chapter 1: 2021 – 2022</div>
+        <div class="page-subtitle">Where our story began...</div>
+      </div>
+      <span class="fold-icon">🌸</span>
+    </div>
+
+    <div class="page-content" id="year1">
+      <button class="play-music-btn" onclick="playYearSong('song1')">
+        🎵 Play Chapter 1 Soundtrack
+      </button>
+      <audio id="song1" src="song_year1.mp3"></audio>
+
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_9733.jpeg" alt="First Drink">
+          <p class="polaroid-caption">Our First Drink 🍹</p>
+        </div>
+        <div class="polaroid">
+          <img src="IMG_2467.jpeg" alt="First Time Over">
+          <p class="polaroid-caption">First Time Over 🏠</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- EXPANDABLE TIMELINE TRACKS -->
-  <div class="section-card">
-    <h2 class="section-title">Top Chapters (Tap to Open)</h2>
-
-    <!-- YEAR 1 -->
-    <div class="track-container">
-      <div class="track-header" onclick="toggleYear('year1', this)">
-        <div class="track-left">
-          <span class="track-num">01</span>
-          <div>
-            <div class="track-title">Year 1 (2021-2022)</div>
-            <div class="track-sub">Where it all started • 2 Photos</div>
-          </div>
-        </div>
-        <span class="expand-arrow">▼</span>
+  <!-- YEAR 2 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year2', this)">
+      <div>
+        <div class="page-title">Chapter 2: 2022 – 2023</div>
+        <div class="page-subtitle">Growing closer every day</div>
       </div>
+      <span class="fold-icon">🌸</span>
+    </div>
 
-      <div class="track-content" id="year1">
-        <!-- SONG FOR YEAR 1 -->
-        <button class="year-audio-btn" onclick="playYearSong('year1-song')">
-          ▶ PLAY YEAR 1 ANTHEM
-        </button>
-        <audio id="year1-song" src="song_year1.mp3"></audio>
+    <div class="page-content" id="year2">
+      <button class="play-music-btn" onclick="playYearSong('song2')">
+        🎵 Play Chapter 2 Soundtrack
+      </button>
+      <audio id="song2" src="song_year2.mp3"></audio>
 
-        <!-- PHOTOS FOR YEAR 1 -->
-        <div class="year-grid">
-          <div class="year-photo">
-            <img src="IMG_9733.jpeg" alt="First Drink">
-            <p>Our First Drink 🍹</p>
-          </div>
-          <div class="year-photo">
-            <img src="IMG_2467.jpeg" alt="First Time Over">
-            <p>First Time Over 🏠</p>
-          </div>
-          <!-- ADD MORE YEAR 1 PHOTOS HERE -->
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
+          <p class="polaroid-caption">Goth x Dreadhead 🖤</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- YEAR 2 -->
-    <div class="track-container">
-      <div class="track-header" onclick="toggleYear('year2', this)">
-        <div class="track-left">
-          <span class="track-num">02</span>
-          <div>
-            <div class="track-title">Year 2 (2022-2023)</div>
-            <div class="track-sub">Growing Closer • 1 Photo</div>
-          </div>
-        </div>
-        <span class="expand-arrow">▼</span>
+  <!-- YEAR 3 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year3', this)">
+      <div>
+        <div class="page-title">Chapter 3: 2023 – 2024</div>
+        <div class="page-subtitle">Our favorite routines & holidays</div>
       </div>
+      <span class="fold-icon">🌸</span>
+    </div>
 
-      <div class="track-content" id="year2">
-        <button class="year-audio-btn" onclick="playYearSong('year2-song')">
-          ▶ PLAY YEAR 2 ANTHEM
-        </button>
-        <audio id="year2-song" src="song_year2.mp3"></audio>
+    <div class="page-content" id="year3">
+      <button class="play-music-btn" onclick="playYearSong('song3')">
+        🎵 Play Chapter 3 Soundtrack
+      </button>
+      <audio id="song3" src="song_year3.mp3"></audio>
 
-        <div class="year-grid">
-          <div class="year-photo">
-            <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
-            <p>Goth x Dreadhead 🖤</p>
-          </div>
-          <!-- ADD MORE YEAR 2 PHOTOS HERE -->
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_5218.jpeg" alt="First Holiday">
+          <p class="polaroid-caption">Our First Holiday ✈️</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- YEAR 3 -->
-    <div class="track-container">
-      <div class="track-header" onclick="toggleYear('year3', this)">
-        <div class="track-left">
-          <span class="track-num">03</span>
-          <div>
-            <div class="track-title">Year 3 (2023-2024)</div>
-            <div class="track-sub">Our Routines & Trips • 1 Photo</div>
-          </div>
-        </div>
-        <span class="expand-arrow">▼</span>
+  <!-- YEAR 4 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year4', this)">
+      <div>
+        <div class="page-title">Chapter 4: 2024 – 2025</div>
+        <div class="page-subtitle">Unforgettable memories</div>
       </div>
+      <span class="fold-icon">🌸</span>
+    </div>
 
-      <div class="track-content" id="year3">
-        <button class="year-audio-btn" onclick="playYearSong('year3-song')">
-          ▶ PLAY YEAR 3 ANTHEM
-        </button>
-        <audio id="year3-song" src="song_year3.mp3"></audio>
+    <div class="page-content" id="year4">
+      <button class="play-music-btn" onclick="playYearSong('song4')">
+        🎵 Play Chapter 4 Soundtrack
+      </button>
+      <audio id="song4" src="song_year4.mp3"></audio>
 
-        <div class="year-grid">
-          <div class="year-photo">
-            <img src="IMG_5218.jpeg" alt="First Holiday">
-            <p>Our First Holiday ✈️</p>
-          </div>
-          <!-- ADD MORE YEAR 3 PHOTOS HERE -->
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="DSC_0071 2.jpeg" alt="Prom King & Queen">
+          <p class="polaroid-caption">Prom King & Queen 👑</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- YEAR 4 -->
-    <div class="track-container">
-      <div class="track-header" onclick="toggleYear('year4', this)">
-        <div class="track-left">
-          <span class="track-num">04</span>
-          <div>
-            <div class="track-title">Year 4 (2024-2025)</div>
-            <div class="track-sub">Big Milestones • 1 Photo</div>
-          </div>
-        </div>
-        <span class="expand-arrow">▼</span>
+  <!-- YEAR 5 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year5', this)">
+      <div>
+        <div class="page-title">Chapter 5: 2025 – 2026</div>
+        <div class="page-subtitle">Celebrating 5 whole years!</div>
       </div>
+      <span class="fold-icon">🌸</span>
+    </div>
 
-      <div class="track-content" id="year4">
-        <button class="year-audio-btn" onclick="playYearSong('year4-song')">
-          ▶ PLAY YEAR 4 ANTHEM
-        </button>
-        <audio id="year4-song" src="song_year4.mp3"></audio>
+    <div class="page-content" id="year5">
+      <button class="play-music-btn" onclick="playYearSong('song5')">
+        🎵 Play Chapter 5 Soundtrack
+      </button>
+      <audio id="song5" src="song_year5.mp3"></audio>
 
-        <div class="year-grid">
-          <div class="year-photo">
-            <img src="DSC_0071 2.jpeg" alt="Prom King & Queen">
-            <p>Prom King & Queen 👑</p>
-          </div>
-          <!-- ADD MORE YEAR 4 PHOTOS HERE -->
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_1850 2.jpeg" alt="Halloween">
+          <p class="polaroid-caption">Halloween 🎃</p>
         </div>
       </div>
     </div>
-
-    <!-- YEAR 5 -->
-    <div class="track-container">
-      <div class="track-header" onclick="toggleYear('year5', this)">
-        <div class="track-left">
-          <span class="track-num">05</span>
-          <div>
-            <div class="track-title">Year 5 (2025-2026)</div>
-            <div class="track-sub">Half a Decade! • 1 Photo</div>
-          </div>
-        </div>
-        <span class="expand-arrow">▼</span>
-      </div>
-
-      <div class="track-content" id="year5">
-        <button class="year-audio-btn" onclick="playYearSong('year5-song')">
-          ▶ PLAY YEAR 5 ANTHEM
-        </button>
-        <audio id="year5-song" src="song_year5.mp3"></audio>
-
-        <div class="year-grid">
-          <div class="year-photo">
-            <img src="IMG_1850 2.jpeg" alt="Halloween">
-            <p>Halloween 🎃</p>
-          </div>
-          <!-- ADD MORE YEAR 5 PHOTOS HERE -->
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <script>
-    // EXPAND / COLLAPSE TRACKS
-    function toggleYear(id, headerEl) {
+    // Expand / Collapse Scrapbook Chapter Pages
+    function togglePage(id, headerEl) {
       const content = document.getElementById(id);
-      const arrow = headerEl.querySelector('.expand-arrow');
       
       if (content.style.display === "block") {
         content.style.display = "none";
-        arrow.style.transform = "rotate(0deg)";
       } else {
         content.style.display = "block";
-        arrow.style.transform = "rotate(180deg)";
       }
     }
 
-    // PLAY SPECIFIC YEAR AUDIO (Pauses other songs)
-    let currentPlaying = null;
+    // Audio Playback
+    let currentSong = null;
 
     function playYearSong(songId) {
       const targetSong = document.getElementById(songId);
 
-      // Pause currently playing song if clicking a new one
-      if (currentPlaying && currentPlaying !== targetSong) {
-        currentPlaying.pause();
-        currentPlaying.currentTime = 0;
+      if (currentSong && currentSong !== targetSong) {
+        currentSong.pause();
+        currentSong.currentTime = 0;
       }
 
       if (targetSong.paused) {
         targetSong.play();
-        currentPlaying = targetSong;
+        currentSong = targetSong;
       } else {
         targetSong.pause();
       }
     }
   </script>
+
 </body>
 </html>
