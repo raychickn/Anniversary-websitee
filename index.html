@@ -1,386 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kingdom Hearts II | Zozo & Raychickn</title>
-    <!-- Standard Clean KH Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- CORE KINGDOM HEARTS II AESTHETIC --- */
-        :root {
-            --kh-blue-dark: #001f3f; /* Deep oceanic blue */
-            --kh-blue-main: #004080; 
-            --kh-blue-light: #66b2ff;
-            --kh-white: #fefefe;
-            --kh-glow: rgba(255, 255, 255, 0.4);
-            --kh-border: rgba(255, 255, 255, 0.6);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zozo & Raychickn | ReMind</title>
+  <!-- KH Style Geometric/Futuristic Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- KH3 REMIND EXACT COLOR PALETTE --- */
+    :root {
+      --kh-bg: #f4f8fc;
+      --kh-text-dark: #122236;
+      --kh-text-blue: #2a52be;
+      --kh-accent-cyan: #00d2ff;
+      --kh-active-glow: #61c5ff;
+      --kh-line: #cde0f2;
+    }
 
-        * { box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: radial-gradient(circle at center, var(--kh-blue-main) 0%, var(--kh-blue-dark) 100%);
-            color: var(--kh-white);
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            /* Subtle classic KH geometric halftone overlay */
-            background-image: radial-gradient(white, rgba(255,255,255,.05) 2px, transparent 3px);
-            background-size: 50px 50px;
-        }
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: #f4f8fc;
+      /* Soft bright sky gradient matching KH3 ReMind */
+      background: linear-gradient(180deg, #ffffff 0%, #e6f2ff 60%, #b3dbff 100%);
+      color: var(--kh-text-dark);
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      user-select: none;
+    }
 
-        /* --- MAIN TITLE CONTAINER --- */
-        .title-screen {
-            display: flex;
-            width: 90vw;
-            height: 90vh;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
+    /* --- LAYOUT GRID --- */
+    .title-screen {
+      width: 92vw;
+      height: 88vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
 
-        /* --- LEFT MENU PANEL --- */
-        .menu-panel {
-            flex: 0 0 250px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-left: 5vw;
-        }
+    /* --- TOP LOGO AREA --- */
+    .logo-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
 
-        /* KH2 Signature Decorative Slanted Border Line */
-        .menu-panel::after {
-            content: '';
-            position: absolute;
-            left: 220px;
-            top: 20vh;
-            height: 60vh;
-            width: 2px;
-            background: linear-gradient(transparent, var(--kh-border), transparent);
-            box-shadow: 0 0 10px var(--kh-glow);
-            transform: rotate(-3deg);
-        }
+    .sub-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: #668099;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
 
-        /* --- KH2 MENU BUTTONS --- */
-        .menu-item {
-            background: none;
-            border: none;
-            color: var(--kh-white);
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1.5rem;
-            text-align: left;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            padding: 10px 15px;
-            transition: all 0.2s ease;
-            position: relative;
-            opacity: 0.8;
-        }
+    .main-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--kh-text-dark);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+    }
 
-        /* Signature KH Cursor Crown/Icon (Appears on Hover) */
-        .menu-item::before {
-            content: '👑'; /* Or replace with an actual .png crown icon */
-            font-size: 1rem;
-            position: absolute;
-            left: -25px;
-            opacity: 0;
-            transition: all 0.2s ease;
-            top: 15px;
-        }
+    .main-logo span {
+      color: var(--kh-text-blue);
+      font-style: italic;
+    }
 
-        .menu-item:hover {
-            opacity: 1;
-            text-shadow: 0 0 15px var(--kh-white);
-            transform: scale(1.05);
-        }
+    /* --- LEFT MENU PANEL --- */
+    .menu-panel {
+      flex: 0 0 280px;
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      margin-top: 60px;
+    }
 
-        .menu-item:hover::before {
-            opacity: 1;
-            left: -15px;
-        }
+    .menu-item {
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--kh-line);
+      color: var(--kh-text-dark);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 12px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      width: 100%;
+    }
 
-        /* Active/Selected Menu Item State */
-        .menu-item.active {
-            font-weight: 600;
-            color: var(--kh-blue-light);
-            text-shadow: 0 0 15px var(--kh-blue-light);
-            border-left: 3px solid var(--kh-blue-light);
-            background: linear-gradient(to right, rgba(102, 178, 255, 0.1), transparent);
-            opacity: 1;
-        }
+    .menu-item:hover {
+      color: var(--kh-text-blue);
+      padding-left: 26px;
+    }
 
-        /* --- CENTRAL CONTENT PANEL --- */
-        .content-panel {
-            flex: 1;
-            max-width: 60%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 5vw;
-            position: relative;
-        }
+    /* KH3 Active Selection Glow Bar */
+    .menu-item.active {
+      color: #ffffff !important;
+      background: linear-gradient(90deg, #3aa8f7 0%, #72d6ff 100%);
+      box-shadow: 0 4px 15px rgba(58, 168, 247, 0.4);
+      border-radius: 4px;
+      border-bottom: none;
+      padding-left: 22px;
+    }
 
-        /* Dynamic KH Decorative Outer Geometric Frames */
-        .content-panel::before, .content-panel::after {
-            content: '';
-            position: absolute;
-            border: 1px solid var(--kh-border);
-            opacity: 0.3;
-        }
-        .content-panel::before { width: 110%; height: 80%; transform: rotate(1deg); }
-        .content-panel::after { width: 80%; height: 110%; transform: rotate(-2deg); }
+    /* Glowing Crown Bullet on Selection */
+    .menu-item.active::before {
+      content: '✦';
+      position: absolute;
+      left: 8px;
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
 
-        /* The actual active section card */
-        .active-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            padding: 30px;
-            width: 100%;
-            max-height: 85vh;
-            border-radius: 20px;
-            border: 2px solid var(--kh-white);
-            box-shadow: 0 0 20px rgba(0,0,0,0.2), 0 0 40px var(--kh-glow);
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: cardFadeIn 0.5s ease-out;
-        }
+    /* --- CENTRAL CONTENT PANEL --- */
+    .content-panel {
+      flex: 1;
+      max-width: 52%;
+      height: 75vh;
+      margin-left: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
 
-        @keyframes cardFadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .active-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border: 2px solid #ffffff;
+      padding: 25px;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(18, 34, 54, 0.08);
+      overflow-y: auto;
+      animation: fadeIn 0.3s ease-in-out;
+    }
 
-        h1.kh-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--kh-white);
-            text-shadow: 0 0 20px var(--kh-glow);
-            margin: 0;
-            position: absolute;
-            top: -60px;
-            width: 100%;
-            text-align: center;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        h2.card-header {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            color: var(--kh-white);
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            text-align: center;
-            text-decoration: underline;
-        }
+    .card-header {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--kh-text-blue);
+      letter-spacing: 2px;
+      margin-top: 0;
+      border-bottom: 2px solid var(--kh-line);
+      padding-bottom: 8px;
+    }
 
-        p.kh-body {
-            line-height: 1.6;
-            color: rgba(255,255,255,0.9);
-            text-align: center;
-        }
+    .kh-body {
+      font-size: 1.1rem;
+      color: var(--kh-text-dark);
+      font-weight: 600;
+      line-height: 1.5;
+    }
 
-        /* --- GALLERY SECTION --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            width: 100%;
-        }
+    /* --- GALLERY GRID --- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
 
-        .gallery-card {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
+    .gallery-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid var(--kh-line);
+      text-align: center;
+    }
 
-        .gallery-card:hover { transform: scale(1.05); }
+    .gallery-card img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
 
-        .gallery-card img {
-            width: 100%;
-            height: 120px; 
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid var(--kh-white);
-            box-shadow: 0 0 10px rgba(255,255,255,0.2);
-        }
+    .gallery-card p {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--kh-text-dark);
+      margin: 4px 0 0 0;
+    }
 
-        .caption { display: none; } /* Standard KH Title screen usually just shows images */
+    /* --- BOTTOM HELP BANNER (Like the screenshot) --- */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(90deg, rgba(58,168,247,0.85) 0%, rgba(114,214,255,0.85) 100%);
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      padding: 6px 15px;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 4px;
+    }
 
-        /* --- AUDIO CONTROLS (Floating subtly) --- */
-        #audio-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.5);
-            padding: 10px 15px;
-            border-radius: 30px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            border: 1px solid var(--kh-border);
-        }
-        .music-btn {
-            background: none; border: none;
-            color: var(--kh-white); font-size: 1.2rem; cursor: pointer; opacity: 0.8;
-        }
-        .music-btn:hover { opacity: 1; text-shadow: 0 0 10px white; }
-
-    </style>
+    /* --- AUDIO BUTTON --- */
+    .music-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #ffffff;
+      border: 2px solid var(--kh-text-blue);
+      color: var(--kh-text-blue);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      z-index: 100;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- KINGDOM HEARTS II AUDIO ASSETS -->
-    <audio id="khBgm" loop src="kh_bgm.mp3"></audio> <!-- Dearly Beloved -->
-    <audio id="khCursor" src="kh_cursor.mp3"></audio> <!-- Cursor Sound -->
+  <!-- BGM SOUNDTRACK -->
+  <audio id="khBgm" loop src="kh_bgm.mp3"></audio>
 
-    <!-- AUDIO CONTROLS -->
-    <div id="audio-controls">
-        <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵 ▶️</button>
-        <span style="font-size: 0.8rem; opacity: 0.7;">Zozo & Raychickn II</span>
+  <button class="music-btn" onclick="toggleMusic()" id="musicBtn">▶ MUSIC</button>
+
+  <div class="title-screen">
+
+    <!-- TOP LOGO -->
+    <div class="logo-container">
+      <div class="sub-brand">DISNEY x SQUARE ENIX</div>
+      <div class="main-logo">KINGDOM HEARTS <span>ReMind</span></div>
     </div>
 
-    <!-- MAIN KH2 TITLE SCREEN CONTAINER -->
-    <div class="title-screen">
+    <!-- LEFT MENU PANEL -->
+    <div class="menu-panel">
+      <button class="menu-item active" onclick="switchSection('welcome')">START</button>
+      <button class="menu-item" onclick="switchSection('journey')">JOURNEY</button>
+      <button class="menu-item" onclick="switchSection('gallery')">MEMORIES</button>
+      <button class="menu-item" onclick="switchSection('letters')">LETTERS</button>
+      <button class="menu-item" onclick="switchSection('quiz')">CHALLENGE</button>
+      <button class="menu-item" onclick="switchSection('credits')">CREDITS</button>
+    </div>
 
-        <!-- LEFT MENU PANEL -->
-        <div class="menu-panel">
-            <h1 class="kh-title" style="display:none;">KINGDOM HEARTS II</h1> <!-- Classic KH Text styling needs image asset usually -->
-            <button class="menu-item active" onclick="switchSection('welcome')">Start</button>
-            <button class="menu-item" onclick="switchSection('journey')">Journey</button>
-            <button class="menu-item" onclick="switchSection('gallery')">Memories</button>
-            <button class="menu-item" onclick="switchSection('letters')">Letters</button>
-            <button class="menu-item" onclick="switchSection('quiz')">Challenge</button>
-            <button class="menu-item" onclick="switchSection('credits')">Credits</button>
-        </div>
+    <!-- CENTRAL CONTENT CARD -->
+    <div class="content-panel" id="contentDiv">
+      <div class="active-card">
+        <h2 class="card-header">ZOZO & RAYCHICKN II</h2>
+        <p class="kh-body">Happy 5th Anniversary, Zozo! ❤️</p>
+        <p class="kh-body">Welcome to our custom ReMind menu. Select any section on the left to explore our memories, timeline, and letters!</p>
+      </div>
+    </div>
 
-        <!-- CENTRAL CONTENT PANEL -->
-        <div class="content-panel" id="contentDiv">
-            <!-- Initial Card Loaded (Start / New Game equivalent) -->
-            <div class="active-card" id="currentSection">
-                <h2 class="card-header">ZOZO & RAYCHICKN II</h2>
-                <p class="kh-body">Happy 5th Anniversary, Zozo! Your adventure begins.</p>
-                <p class="kh-body">Welcome back. Select a story.</p>
+    <!-- BOTTOM HELP BAR -->
+    <div class="bottom-bar">
+      <span>Select data to load...</span>
+      <span>Ver. 5.0 (2021 - 2026)</span>
+    </div>
+
+  </div>
+
+  <script>
+    function switchSection(sectionId) {
+      const contentDiv = document.getElementById('contentDiv');
+      const menuItems = document.querySelectorAll('.menu-item');
+
+      // Update Active Button
+      menuItems.forEach(item => item.classList.remove('active'));
+      const clickedBtn = document.querySelector(`.menu-item[onclick*='${sectionId}']`);
+      if (clickedBtn) clickedBtn.classList.add('active');
+
+      // Update Card Content
+      let newHtml = '';
+
+      if (sectionId === 'welcome') {
+        newHtml = `
+          <div class="active-card">
+            <h2 class="card-header">ZOZO & RAYCHICKN II</h2>
+            <p class="kh-body">Happy 5th Anniversary, Zozo! ❤️</p>
+            <p class="kh-body">Welcome to our custom ReMind menu. Select any section on the left to explore our memories, timeline, and letters!</p>
+          </div>`;
+      } else if (sectionId === 'journey') {
+        newHtml = `
+          <div class="active-card">
+            <h2 class="card-header">OUR JOURNEY</h2>
+            <p class="kh-body"><b>Year 1 (2021-2022):</b> Where it all started!</p>
+            <p class="kh-body"><b>Year 2 (2022-2023):</b> Making memories and growing closer.</p>
+            <p class="kh-body"><b>Year 3 (2023-2024):</b> Building our little routines.</p>
+            <p class="kh-body"><b>Year 4 (2024-2025):</b> Road trips & endless laughs.</p>
+            <p class="kh-body"><b>Year 5 (2025-2026):</b> Celebrating half a decade together!</p>
+          </div>`;
+      } else if (sectionId === 'gallery') {
+        newHtml = `
+          <div class="active-card">
+            <h2 class="card-header">MEMORY CACHE</h2>
+            <div class="gallery-grid">
+              <div class="gallery-card"><img src="IMG_9733.jpeg"><p>Our First Drink 🍹</p></div>
+              <div class="gallery-card"><img src="IMG_5759.jpeg"><p>Goth x Dreadhead 🖤</p></div>
+              <div class="gallery-card"><img src="IMG_5218.jpeg"><p>Our First Holiday ✈️</p></div>
+              <div class="gallery-card"><img src="IMG_2467.jpeg"><p>First Time Over 🏠</p></div>
+              <div class="gallery-card"><img src="DSC_0071 2.jpeg"><p>Prom King & Queen 👑</p></div>
+              <div class="gallery-card"><img src="IMG_1850 2.jpeg"><p>Halloween 🎃</p></div>
             </div>
-        </div>
+          </div>`;
+      } else if (sectionId === 'letters') {
+        newHtml = `
+          <div class="active-card">
+            <h2 class="card-header">OPEN WHEN LETTERS</h2>
+            <p class="kh-body"><b>✉️ Open When You Miss Me:</b> [Add your letter text here]</p>
+            <p class="kh-body"><b>✉️ Open On Our Anniversary:</b> [Add your letter text here]</p>
+          </div>`;
+      } else if (sectionId === 'quiz') {
+        newHtml = `
+          <div class="active-card">
+            <h2 class="card-header">THE CHALLENGE</h2>
+            <p class="kh-body">How well do you know our 5 years together?</p>
+            <p class="kh-body"><b>Q1: Where was our first official date?</b></p>
+          </div>`;
+      } else if (sectionId === 'credits') {
+        newHtml = `
+          <div class="active-card">
+            <h2 class="card-header">SPECIAL THANKS</h2>
+            <p class="kh-body"><b>Created By:</b> Raychickn</p>
+            <p class="kh-body"><b>For:</b> Zozo</p>
+            <p class="kh-body">Thank you for 5 amazing years. Here is to many more chapters together!</p>
+          </div>`;
+      }
 
-    </div>
+      contentDiv.innerHTML = newHtml;
+    }
 
-    <!-- SECTIONS JAVASCRIPT (The dynamic switching part) -->
-    <script>
-        // Setup KH Cursor sound playback
-        const cursorSound = document.getElementById("khCursor");
-        const menuItems = document.querySelectorAll('.menu-item');
-
-        menuItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                cursorSound.currentTime = 0; // Rewind to start
-                cursorSound.play(); // Play signature KH ping sound
-            });
-        });
-
-        // The main switching function
-        function switchSection(sectionId) {
-            cursorSound.currentTime = 0; cursorSound.play(); // Play sound on selection click
-
-            const contentDiv = document.getElementById('contentDiv');
-            contentDiv.innerHTML = ''; // Clear current content
-
-            let newHtml = '';
-
-            // 1. UPDATE ACTIVE MENU BUTTON
-            menuItems.forEach(item => item.classList.remove('active'));
-            // Dynamically find the clicked menu item by looking at its onclick value
-            const clickedBtn = document.querySelector(`.menu-item[onclick*='${sectionId}']`);
-            if (clickedBtn) clickedBtn.classList.add('active');
-
-            // 2. GENERATE NEW CARD CONTENT
-            if (sectionId === 'welcome') {
-                newHtml = `
-                    <div class="active-card">
-                        <h2 class="card-header">ZOZO & RAYCHICKN II</h2>
-                        <p class="kh-body">Happy 5th Anniversary, Zozo! Your adventure begins.</p>
-                        <p class="kh-body">Welcome back. Select a story.</p>
-                    </div>`;
-            } else if (sectionId === 'journey') {
-                newHtml = `
-                    <div class="active-card">
-                        <h2 class="card-header">OUR JOURNEY</h2>
-                        <p class="kh-body" style="font-size: 0.9rem;">2021-2022 — Year 1: Destiny Islands (Our Start)</p>
-                        <p class="kh-body" style="font-size: 0.9rem;">2022-2023 — Year 2: Expanding Horizons</p>
-                        <p class="kh-body" style="font-size: 0.9rem;">2023-2024 — Year 3: Routine & Growing Connection</p>
-                        <p class="kh-body" style="font-size: 0.9rem;">2024-2025 — Year 4: New Worlds Visited (Road trips)</p>
-                        <p class="kh-body" style="font-size: 0.9rem;">2025-2026 — Year 5: Half a Decade (Kingdom Hearts)</p>
-                    </div>`;
-            } else if (sectionId === 'gallery') {
-                // INSERT YOUR ACTUAL PHOTO GALLERY CODE HERE
-                newHtml = `
-                    <div class="active-card">
-                        <h2 class="card-header">MEMORY CACHE</h2>
-                        <p class="kh-body" style="font-size: 0.8rem; margin-top: -10px; margin-bottom: 20px;">Memories of our worlds connected.</p>
-                        <div class="gallery-grid">
-                            <div class="gallery-card"><img src="IMG_9733.jpeg" alt="Our first drink"></div>
-                            <div class="gallery-card"><img src="IMG_5759.jpeg" alt="Goth x Dreadhead"></div>
-                            <div class="gallery-card"><img src="IMG_5218.jpeg" alt="Our first holiday"></div>
-                            <div class="gallery-card"><img src="IMG_2467.jpeg" alt="First time coming over"></div>
-                            <div class="gallery-card"><img src="DSC_0071 2.jpeg" alt="Prom King & Queen"></div>
-                            <div class="gallery-card"><img src="IMG_1850 2.jpeg" alt="Halloween"></div>
-                        </div>
-                    </div>`;
-            } else if (sectionId === 'letters') {
-                newHtml = `
-                    <div class="active-card">
-                        <h2 class="card-header">REPORTS FROM BEYOND</h2>
-                        <p class="kh-body">Ansem's Report 01: On Zozo's Smile...</p>
-                        <p class="kh-body">Kingdom Letter 01: [Reserved for Anniversary Letter]</p>
-                        <p class="kh-body">Kingdom Letter 02: Open When... [Customize These]</p>
-                    </div>`;
-            } else if (sectionId === 'quiz') {
-                newHtml = `
-                    <div class="active-card">
-                        <h2 class="card-header">THE CHALLENGE</h2>
-                        <p class="kh-body">Unlock the memories. Prove your bond.</p>
-                        <p class="kh-body">[Quiz implementation: Customize Q1: When did we first start?]</p>
-                    </div>`;
-            } else if (sectionId === 'credits') {
-                newHtml = `
-                    <div class="active-card">
-                        <h2 class="card-header">END CREDITS</h2>
-                        <p class="kh-body">Creator: Raychickn (Keyblade Master)</p>
-                        <p class="kh-body">Starring: Zozo (Goddess of Light)</p>
-                        <p class="kh-body">Thank you for 5 amazing years. Kingdom Hearts will always connect us.</p>
-                        <p class="kh-body" style="font-family: 'Playfair Display', serif; font-size: 2rem;">THE END</p>
-                    </div>`;
-            }
-
-            contentDiv.innerHTML = newHtml;
-        }
-
-        // 3. AUDIO MANAGEMENT SCRIPT
-        function toggleMusic() {
-            const music = document.getElementById("khBgm");
-            const btn = document.getElementById("musicBtn");
-            if (music.paused) {
-                music.play().catch(error => { console.log("Browsers block autoplay. Waiting for user interaction."); });
-                btn.innerText = "🎵 ⏸️ PAUSE";
-                btn.style.background = "#fff"; btn.style.color="#000";
-            } else {
-                music.pause();
-                btn.innerText = "🎵 ▶️ PLAY";
-                btn.style.background = "rgba(0,0,0,0.5)"; btn.style.color="white";
-            }
-        }
-    </script>
-
+    function toggleMusic() {
+      const music = document.getElementById("khBgm");
+      const btn = document.getElementById("musicBtn");
+      if (music.paused) {
+        music.play();
+        btn.innerText = "⏸ PAUSE";
+        btn.style.background = "#2a52be";
+        btn.style.color = "#ffffff";
+      } else {
+        music.pause();
+        btn.innerText = "▶ MUSIC";
+        btn.style.background = "#ffffff";
+        btn.style.color = "#2a52be";
+      }
+    }
+  </script>
 </body>
 </html>
