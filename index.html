@@ -3,194 +3,323 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy 5th Anniversary!</title>
+  <title>TAKE YOUR HEART | Zozo & Raychickn</title>
+  <!-- Google Fonts: Impactful Persona-style typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
+  
   <style>
+    /* --- PERSONA 5 BASE STYLES --- */
     :root {
-      --bg: #fff5f5;
-      --card-bg: #ffffff;
-      --accent: #e56b6f;
-      --accent-hover: #b55255;
-      --text: #2b2d42;
+      --p5-red: #e60012;
+      --p5-black: #111111;
+      --p5-white: #ffffff;
+      --p5-yellow: #fff200;
     }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--p5-black);
+      color: var(--p5-white);
       margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px 20px;
-      background: linear-gradient(135deg, #ffccd5, #fff5f5);
-    }
-    h1 { color: var(--accent); margin-bottom: 5px; }
-    nav {
+      padding: 20px 10px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      /* Dynamic Persona 5 Halftone Background Pattern */
+      background-image: 
+        radial-gradient(circle, rgba(230, 0, 18, 0.4) 15%, transparent 16%),
+        radial-gradient(circle, rgba(230, 0, 18, 0.4) 15%, transparent 16%);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+
+    /* --- SLANTED SECTION CARDS --- */
+    .section {
+      width: 95%;
+      max-width: 650px;
+      margin: 25px 0;
+      background: var(--p5-red);
+      color: var(--p5-black);
+      padding: 20px;
+      /* Signature P5 Slant */
+      transform: skew(-4deg) rotate(-1deg);
+      border: 4px solid var(--p5-black);
+      box-shadow: 8px 8px 0px var(--p5-white), 14px 14px 0px var(--p5-black);
+    }
+
+    h2 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2rem;
+      text-transform: uppercase;
+      background: var(--p5-black);
+      color: var(--p5-white);
+      display: inline-block;
+      padding: 5px 15px;
+      margin: -35px 0 15px -10px;
+      transform: skew(6deg) rotate(-2deg);
+      box-shadow: 4px 4px 0px var(--p5-yellow);
+    }
+
+    /* --- MUSIC CONTROL BANNER --- */
+    .music-card {
+      background: var(--p5-black);
+      color: var(--p5-white);
+      border: 3px solid var(--p5-yellow);
+      text-align: center;
+    }
+
+    .p5-btn {
+      background: var(--p5-yellow);
+      color: var(--p5-black);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      padding: 12px 24px;
+      border: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      transform: skew(-6deg);
+      box-shadow: 4px 4px 0px var(--p5-red);
+      transition: all 0.1s ease;
+    }
+
+    .p5-btn:active {
+      transform: skew(-6deg) translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--p5-red);
+    }
+
+    /* --- TIMELINE SECTION --- */
+    .timeline-item {
+      background: var(--p5-white);
+      color: var(--p5-black);
+      margin: 12px 0;
+      padding: 10px 15px;
+      border-left: 8px solid var(--p5-black);
+      transform: skew(2deg);
+      font-weight: 900;
+    }
+
+    /* --- GALLERY GRID --- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 15px;
     }
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: bold;
-      padding: 8px 16px;
-      border-radius: 20px;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+    @media (min-width: 550px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
-    .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-    .section { background: var(--card-bg); padding: 30px; margin-bottom: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-    h2 { color: var(--accent); border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
-    
-    /* Timeline */
-    .timeline-item { border-left: 3px solid var(--accent); padding-left: 20px; margin: 20px 0; position: relative; }
-    .timeline-item::before { content: ''; width: 12px; height: 12px; background: var(--accent); position: absolute; left: -7.5px; top: 5px; border-radius: 50%; }
 
-    /* Gallery */
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-    .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+    .gallery-card {
+      background: var(--p5-black);
+      padding: 8px;
+      border: 3px solid var(--p5-white);
+      transform: rotate(-2deg);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-    /* Open When Letters */
-    .letter-btn { background: var(--bg); border: 1px solid var(--accent); color: var(--accent); width: 100%; text-align: left; padding: 12px; margin: 8px 0; border-radius: 6px; cursor: pointer; font-size: 1rem; }
-    .letter-content { display: none; padding: 15px; background: #fffafb; border-left: 3px solid var(--accent); margin-bottom: 10px; }
+    .gallery-card:nth-child(even) {
+      transform: rotate(2deg);
+    }
 
-    /* Quiz */
-    .quiz-option { display: block; margin: 8px 0; padding: 10px; background: var(--bg); border-radius: 6px; cursor: pointer; }
-    .quiz-option:hover { background: #ffe3e5; }
+    .gallery-card:hover {
+      transform: scale(1.05) rotate(0deg);
+      box-shadow: 0 0 15px var(--p5-yellow);
+      z-index: 5;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      filter: contrast(115%);
+      border: 2px solid var(--p5-black);
+    }
+
+    .caption {
+      color: var(--p5-yellow);
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-top: 6px;
+      margin-bottom: 2px;
+      text-align: center;
+    }
+
+    /* --- PAUSE MENU POPUP (MODAL) --- */
+    .photo-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(230, 0, 18, 0.9); /* Crimson overlay */
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: var(--p5-black);
+      border: 5px solid var(--p5-white);
+      padding: 15px;
+      max-width: 90%;
+      text-align: center;
+      transform: skew(-3deg) rotate(-1deg);
+      box-shadow: 12px 12px 0px var(--p5-yellow);
+      position: relative;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 60vh;
+      border: 3px solid var(--p5-white);
+      object-fit: contain;
+    }
+
+    .modal-caption {
+      color: var(--p5-yellow);
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: var(--p5-yellow);
+      color: var(--p5-black);
+      font-weight: 900;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 22px;
+      cursor: pointer;
+      border: 3px solid var(--p5-black);
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Happy 5th Anniversary!</h1>
-    <p>5 years of incredible memories, adventures, and love.</p>
-    <nav>
-      <a href="#timeline">Timeline</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#letters">Open When</a>
-      <a href="#quiz">Quiz</a>
-      <a href="#playlist">Our Playlist</a>
-    </nav>
-  </header>
+  <!-- BACKGROUND MUSIC PLAYER -->
+  <audio id="p5Music" loop>
+    <!-- Replace music.mp3 with your actual uploaded audio file name -->
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-  <div class="container">
-    
-    <!-- TIMELINE SECTION -->
-    <div id="timeline" class="section">
-      <h2>Our 5-Year Journey</h2>
-      <div class="timeline-item">
-        <strong>Year 1 (2021)</strong>
-        <p>Our first date, discovering our favorite coffee spot, and late-night talks.</p>
-      </div>
-      <div class="timeline-item">
-        <strong>Year 2 (2022)</strong>
-        <p>Our first big trip together to the mountains and moving into our place.</p>
-      </div>
-      <div class="timeline-item">
-        <strong>Year 3 (2023)</strong>
-        <p>Adopting our pet and building our little routines.</p>
-      </div>
-      <div class="timeline-item">
-        <strong>Year 4 (2024)</strong>
-        <p>Road trips, cooking disasters, and endless laughs.</p>
-      </div>
-      <div class="timeline-item">
-        <strong>Year 5 (2025-2026)</strong>
-        <p>Celebrating half a decade together—and so many more years to come!</p>
-      </div>
+  <!-- HEADER & MUSIC SECTION -->
+  <div class="section music-card">
+    <h2>TAKE YOUR HEART</h2>
+    <p style="font-weight: 900;">HAPPY 5TH ANNIVERSARY ZOZO! ❤️</p>
+    <button class="p5-btn" onclick="toggleMusic()" id="musicBtn">▶ PLAY MUSIC</button>
+  </div>
+
+  <!-- TIMELINE SECTION -->
+  <div class="section">
+    <h2>THE JOURNEY</h2>
+    <div class="timeline-item">
+      YEAR 1 (2021-2022) — Where it all started!
     </div>
+    <div class="timeline-item">
+      YEAR 2 (2022-2023) — Making memories & growing closer.
+    </div>
+    <div class="timeline-item">
+      YEAR 3 (2023-2024) — Adopting our routines.
+    </div>
+    <div class="timeline-item">
+      YEAR 4 (2024-2025) — Road trips, laughs, and adventures.
+    </div>
+    <div class="timeline-item">
+      YEAR 5 (2025-2026) — Half a decade together!
+    </div>
+  </div>
 
-    <!-- GALLERY SECTION -->
-   <div id="gallery" class="section">
-    <h2>Memory Gallery</h2>
-    <p>A museum of raychickn and zozo :p</p>
+  <!-- GALLERY SECTION -->
+  <div class="section">
+    <h2>MEMORIES</h2>
+    <p style="font-weight: 900; color: var(--p5-white); text-shadow: 2px 2px 0px #000;">A museum of raychickn and zozo :p</p>
     
     <div class="gallery-grid">
-      <div class="gallery-card">
+      <div class="gallery-card" onclick="openModal('IMG_9733.jpeg', 'Our First Drink 🍹')">
         <img src="IMG_9733.jpeg" alt="Our first drink">
         <p class="caption">Our First Drink 🍹</p>
       </div>
 
-      <div class="gallery-card">
+      <div class="gallery-card" onclick="openModal('IMG_5759.jpeg', 'Goth x Dreadhead 🖤')">
         <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
         <p class="caption">Goth x Dreadhead 🖤</p>
       </div>
 
-      <div class="gallery-card">
+      <div class="gallery-card" onclick="openModal('IMG_5218.jpeg', 'Our First Holiday ✈️')">
         <img src="IMG_5218.jpeg" alt="Our first holiday">
         <p class="caption">Our First Holiday ✈️</p>
       </div>
 
-      <div class="gallery-card">
+      <div class="gallery-card" onclick="openModal('IMG_2467.jpeg', 'First Time Coming Over 🏠')">
         <img src="IMG_2467.jpeg" alt="First time coming over">
         <p class="caption">First Time Coming Over 🏠</p>
       </div>
 
-      <div class="gallery-card">
+      <div class="gallery-card" onclick="openModal('DSC_0071 2.jpeg', 'Prom King & Queen 👑')">
         <img src="DSC_0071 2.jpeg" alt="Prom King and Queen">
         <p class="caption">Prom King & Queen 👑</p>
       </div>
 
-      <div class="gallery-card">
+      <div class="gallery-card" onclick="openModal('IMG_1850 2.jpeg', 'Halloween 🎃')">
         <img src="IMG_1850 2.jpeg" alt="Halloween">
         <p class="caption">Halloween 🎃</p>
       </div>
     </div>
   </div>
 
-    <!-- OPEN WHEN LETTERS -->
-    <div id="letters" class="section">
-      <h2>"Open When..." Letters</h2>
-      
-      <button class="letter-btn" onclick="toggleLetter('letter1')">✉️ Open when you need a smile...</button>
-      <div id="letter1" class="letter-content">
-        <p>Remember that time we got completely lost in the rain? I wouldn't have wanted to be stranded with anyone else.</p>
-      </div>
-
-      <button class="letter-btn" onclick="toggleLetter('letter2')">✉️ Open when you miss me...</button>
-      <div id="letter2" class="letter-content">
-        <p>I'm always just a call away. I love you more than words can say!</p>
-      </div>
+  <!-- PAUSE MENU POPUP MODAL -->
+  <div id="photoModal" class="photo-modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="Enlarged Memory">
+      <p id="modalCaption" class="modal-caption"></p>
     </div>
-
-    <!-- QUIZ SECTION -->
-    <div id="quiz" class="section">
-      <h2>How Well Do You Remember?</h2>
-      <p>Q1: Where was our very first date?</p>
-      <div class="quiz-option" onclick="answerQuiz(true)">A) The Italian place downtown</div>
-      <div class="quiz-option" onclick="answerQuiz(false)">B) The movie theater</div>
-      <div class="quiz-option" onclick="answerQuiz(false)">C) The park</div>
-      <p id="quiz-result" style="font-weight:bold; color: var(--accent); margin-top: 15px;"></p>
-    </div>
-
-    <!-- PLAYLIST SECTION -->
-    <div id="playlist" class="section">
-      <h2>Our Soundtrack</h2>
-      <p>Songs that remind me of us.</p>
-      <!-- Replace the src URL below with your Spotify Embed Link -->
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-
   </div>
 
   <script>
-    function toggleLetter(id) {
-      const el = document.getElementById(id);
-      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-    }
-
-    function answerQuiz(isCorrect) {
-      const res = document.getElementById('quiz-result');
-      if (isCorrect) {
-        res.innerText = "Correct! You remembered! ❤️";
+    /* --- MUSIC TOGGLE FUNCTION --- */
+    function toggleMusic() {
+      var music = document.getElementById("p5Music");
+      var btn = document.getElementById("musicBtn");
+      if (music.paused) {
+        music.play();
+        btn.innerText = "⏸ PAUSE MUSIC";
+        btn.style.background = "#ffffff";
       } else {
-        res.innerText = "Nice try, but nope! Guess again! 😉";
+        music.pause();
+        btn.innerText = "▶ PLAY MUSIC";
+        btn.style.background = "#fff200";
       }
     }
+
+    /* --- MODAL FUNCTIONS --- */
+    function openModal(imgSrc, captionText) {
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalCaption').innerText = captionText;
+      document.getElementById('photoModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('photoModal').style.display = 'none';
+    }
   </script>
+
 </body>
 </html>
