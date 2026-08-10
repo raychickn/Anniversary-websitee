@@ -4,16 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TAKE YOUR HEART | Zozo & Raychickn</title>
-  <!-- Authentic P5 Typography Styles via Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,800;0,900;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
   
   <style>
+    /* STRICT PALETTE: RED, BLACK, WHITE ONLY */
     :root {
       --p5-red: #d50a0a;
       --p5-black: #080808;
-      --p5-white: #f4f4f4;
-      --p5-yellow: #fff200;
-      --p5-cyan: #00e5ff;
+      --p5-white: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -38,7 +36,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(8, 8, 8, 0.94);
+      background: rgba(8, 8, 8, 0.95);
       backdrop-filter: blur(10px);
       z-index: 9999;
       display: flex;
@@ -51,7 +49,7 @@
 
     .card-container {
       width: 360px;
-      height: 230px;
+      height: 240px;
       position: relative;
       transform-style: preserve-3d;
       transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -76,32 +74,33 @@
       text-align: center;
     }
 
-    /* CARD FRONT: AUTHENTIC PHANTOM THIEVES LOGO */
+    /* CARD FRONT: EXACT TARGET RINGS + TOP HAT FLAME MASK SVG */
     .card-front {
       background: var(--p5-red);
-      background-image: 
-        radial-gradient(circle, var(--p5-black) 18%, transparent 19%),
-        radial-gradient(circle, var(--p5-red) 38%, transparent 39%);
-      background-size: 70px 70px;
+      /* Red and Black Target Rings */
+      background-image: radial-gradient(circle, var(--p5-black) 18%, var(--p5-red) 19%, var(--p5-red) 35%, var(--p5-black) 36%, var(--p5-black) 52%, var(--p5-red) 53%);
       transform: rotate(-3deg);
     }
 
-    /* SVG Mask Logo Styling */
-    .p5-logo-svg {
+    /* Top Hat Mask Vector Graphic */
+    .p5-hat-logo {
       width: 130px;
       height: auto;
       filter: drop-shadow(4px 4px 0px var(--p5-black));
     }
 
-    .tyh-text {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 1.6rem;
+    /* Black and White Cutout Text Badge from Mug */
+    .tyh-badge {
       background: var(--p5-black);
       color: var(--p5-white);
-      padding: 3px 12px;
-      transform: skewX(-12deg) rotate(-2deg);
-      box-shadow: 3px 3px 0 var(--p5-yellow);
-      margin-top: 8px;
+      border: 3px solid var(--p5-white);
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.4rem;
+      padding: 2px 10px;
+      transform: skewX(-10deg) rotate(-2deg);
+      box-shadow: 4px 4px 0 var(--p5-black);
+      margin-top: 6px;
+      letter-spacing: 1px;
     }
 
     .click-prompt {
@@ -109,7 +108,7 @@
       bottom: -40px;
       font-family: 'Anton', sans-serif;
       font-size: 1.1rem;
-      color: var(--p5-yellow);
+      color: var(--p5-white);
       letter-spacing: 2px;
       text-shadow: 2px 2px 0 var(--p5-black);
       animation: pulse 0.8s infinite alternate;
@@ -117,7 +116,7 @@
 
     @keyframes pulse { from { opacity: 0.4; } to { opacity: 1; } }
 
-    /* CARD BACK: EXACT P5 RANSOM NOTE STYLING */
+    /* CARD BACK: STRICT BLACK & WHITE RANSOM NOTE */
     .card-back {
       background: var(--p5-red);
       transform: rotateY(180deg) rotate(2deg);
@@ -127,17 +126,15 @@
       background: var(--p5-black);
       border: 3px solid var(--p5-white);
       padding: 15px;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       transform: skew(-2deg);
-      box-shadow: 6px 6px 0 var(--p5-yellow);
+      box-shadow: 6px 6px 0 var(--p5-black);
     }
 
-    /* Staggered Cut-Out Ransom Font Blocks */
     .ransom-line {
       font-family: 'Anton', sans-serif;
       text-transform: uppercase;
@@ -155,16 +152,15 @@
       line-height: 1.2;
     }
 
-    /* Alternating P5 Ransom Colors & Rotations */
+    /* ONLY BLACK AND WHITE CHARACTERS */
     .ransom-char:nth-child(odd) { background: var(--p5-white); color: var(--p5-black); transform: rotate(-3deg); }
-    .ransom-char:nth-child(even) { background: var(--p5-red); color: var(--p5-white); transform: rotate(4deg); font-size: 1.3rem; }
-    .ransom-char:nth-child(3n) { background: var(--p5-yellow); color: var(--p5-black); transform: rotate(-2deg); }
+    .ransom-char:nth-child(even) { background: var(--p5-black); color: var(--p5-white); border: 1px solid var(--p5-white); transform: rotate(4deg); font-size: 1.3rem; }
 
     #enter-btn {
       opacity: 0;
       pointer-events: none;
       margin-top: 50px;
-      background: var(--p5-yellow);
+      background: var(--p5-white);
       color: var(--p5-black);
       border: 4px solid var(--p5-black);
       font-family: 'Anton', sans-serif;
@@ -172,7 +168,7 @@
       padding: 8px 35px;
       cursor: pointer;
       transform: skewX(-12deg);
-      box-shadow: 6px 6px 0 var(--p5-white);
+      box-shadow: 6px 6px 0 var(--p5-black);
       transition: all 0.3s ease;
     }
 
@@ -264,7 +260,7 @@
       transform: rotate(2deg); transition: transform 0.2s; cursor: pointer;
     }
     .p5-photo:nth-child(even) { transform: rotate(-1deg); }
-    .p5-photo:hover { transform: scale(1.05) rotate(0); z-index: 5; box-shadow: 0 0 15px var(--p5-cyan); }
+    .p5-photo:hover { transform: scale(1.05) rotate(0); z-index: 5; box-shadow: 0 0 15px var(--p5-white); }
 
     .p5-photo img {
       width: 100%; height: 140px; object-fit: cover; filter: contrast(120%) grayscale(20%);
@@ -295,19 +291,24 @@
   <div id="calling-card-overlay">
     <div class="card-container" id="callingCard" onclick="flipCard()">
       
-      <!-- FRONT OF CARD: AUTHENTIC PHANTOM THIEVES MASK SVG -->
+      <!-- FRONT OF CARD: TOP HAT + FLAME MASK + TARGET RINGS -->
       <div class="card-face card-front">
-        <svg class="p5-logo-svg" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M250 20C180 20 100 70 30 110C20 115 10 130 20 140C50 170 120 220 200 240C230 248 270 248 300 240C380 220 450 170 480 140C490 130 480 115 470 110C400 70 320 20 250 20Z" fill="white" stroke="black" stroke-width="12"/>
-          <path d="M160 110C120 110 80 130 60 150C90 170 140 180 180 160C190 155 180 120 160 110Z" fill="black"/>
-          <path d="M340 110C380 110 420 130 440 150C410 170 360 180 320 160C310 155 320 120 340 110Z" fill="black"/>
-          <path d="M250 40C220 70 180 90 130 100C180 120 220 150 250 210C280 150 320 120 370 100C320 90 280 70 250 40Z" fill="red"/>
+        <svg class="p5-hat-logo" viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Top Hat Base & Brim -->
+          <path d="M40 180 C80 230 220 230 260 180 C270 165 240 150 200 165 C150 180 90 180 40 180 Z" fill="#080808" stroke="#ffffff" stroke-width="6"/>
+          <path d="M75 160 L95 40 C140 20 200 20 230 50 L205 155 Z" fill="#d50a0a" stroke="#080808" stroke-width="8"/>
+          <path d="M85 150 C120 165 180 165 210 148 L206 130 C170 145 110 145 88 132 Z" fill="#080808"/>
+          <!-- Flame Phantom Mask Overlay -->
+          <path d="M120 120 C100 140 110 190 150 210 C190 220 250 190 260 140 C270 100 230 90 200 110 C180 120 180 90 210 70 C160 70 130 90 120 120 Z" fill="#ffffff" stroke="#080808" stroke-width="7"/>
+          <path d="M145 150 C135 160 145 180 165 175 C175 170 170 150 155 148 Z" fill="#080808"/>
+          <path d="M205 145 C195 155 205 175 225 170 C235 165 230 145 215 143 Z" fill="#080808"/>
         </svg>
-        <div class="tyh-text">TAKE YOUR HEART</div>
+
+        <div class="tyh-badge">TAKE YOUR HEART</div>
         <div class="click-prompt">▼ CLICK TO OPEN ▼</div>
       </div>
 
-      <!-- BACK OF CARD: RANSOM NOTE TYPOGRAPHY -->
+      <!-- BACK OF CARD: STRICT BLACK & WHITE RANSOM NOTE -->
       <div class="card-face card-back">
         <div class="p5-ransom-note">
           <div class="ransom-line">
