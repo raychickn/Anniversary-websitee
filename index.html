@@ -3,513 +3,408 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TAKE YOUR HEART | Zozo & Raychickn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,800;0,900;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <title>Our Memory Scrapbook 💕</title>
+  <!-- Google Fonts: Handwritten & Soft Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
   
   <style>
-    /* STRICT PALETTE: RED, BLACK, WHITE ONLY */
     :root {
-      --p5-red: #d50a0a;
-      --p5-black: #080808;
-      --p5-white: #ffffff;
+      --bg-pink: #ffe6ea;
+      --card-pink: #fff0f3;
+      --accent-rose: #ff4d6d;
+      --text-dark: #590d22;
+      --tape-color: rgba(255, 182, 193, 0.6);
     }
 
     * { box-sizing: border-box; }
 
     body {
-      margin: 0; padding: 0;
-      height: 100vh;
-      background-color: var(--p5-red);
-      font-family: 'Montserrat', sans-serif;
-      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--bg-pink);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 20px 10px 80px 10px;
       display: flex;
-      background-image: 
-        linear-gradient(105deg, transparent 40%, var(--p5-black) 40%, var(--p5-black) 45%, transparent 45%),
-        radial-gradient(circle, rgba(0,0,0,0.2) 2px, transparent 2px);
-      background-size: 100% 100%, 14px 14px;
+      flex-direction: column;
+      align-items: center;
+      background-image: radial-gradient(#ffb3c1 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
     }
 
     /* =========================================================
-       1. CALLING CARD INTRO OVERLAY
+       1. CAT QUESTION INTERACTIVE INTRO
        ========================================================= */
-    #calling-card-overlay {
+    #cat-intro-overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(8, 8, 8, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 230, 234, 0.98);
+      backdrop-filter: blur(8px);
       z-index: 9999;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      perspective: 1200px;
-      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-
-    .card-container {
-      width: 360px;
-      height: 240px;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      cursor: pointer;
-    }
-
-    .card-container.flipped {
-      transform: rotateY(180deg);
-    }
-
-    .card-face {
-      position: absolute;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      border: 4px solid var(--p5-black);
-      box-shadow: 10px 10px 0 var(--p5-white), 16px 16px 0 var(--p5-black);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
       text-align: center;
+      padding: 20px;
+      transition: opacity 0.5s ease;
     }
 
-    /* CARD FRONT: EXACT TARGET RINGS + TOP HAT FLAME MASK SVG */
-    .card-front {
-      background: var(--p5-red);
-      /* Red and Black Target Rings */
-      background-image: radial-gradient(circle, var(--p5-black) 18%, var(--p5-red) 19%, var(--p5-red) 35%, var(--p5-black) 36%, var(--p5-black) 52%, var(--p5-red) 53%);
-      transform: rotate(-3deg);
+    .cat-box {
+      background: #ffffff;
+      border: 3px solid #ffb3c1;
+      border-radius: 24px;
+      padding: 30px 20px;
+      max-width: 360px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.15);
+      position: relative;
     }
 
-    /* Top Hat Mask Vector Graphic */
-    .p5-hat-logo {
-      width: 130px;
-      height: auto;
-      filter: drop-shadow(4px 4px 0px var(--p5-black));
+    .cat-emoji {
+      font-size: 4.5rem;
+      margin-bottom: 10px;
+      display: inline-block;
+      transition: transform 0.3s ease;
     }
 
-    /* Black and White Cutout Text Badge from Mug */
-    .tyh-badge {
-      background: var(--p5-black);
-      color: var(--p5-white);
-      border: 3px solid var(--p5-white);
-      font-family: 'Permanent Marker', cursive;
-      font-size: 1.4rem;
-      padding: 2px 10px;
-      transform: skewX(-10deg) rotate(-2deg);
-      box-shadow: 4px 4px 0 var(--p5-black);
-      margin-top: 6px;
-      letter-spacing: 1px;
+    .question-title {
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      color: var(--accent-rose);
+      margin: 10px 0 20px 0;
+      line-height: 1.1;
     }
 
-    .click-prompt {
-      position: absolute;
-      bottom: -40px;
-      font-family: 'Anton', sans-serif;
-      font-size: 1.1rem;
-      color: var(--p5-white);
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 0 var(--p5-black);
-      animation: pulse 0.8s infinite alternate;
-    }
-
-    @keyframes pulse { from { opacity: 0.4; } to { opacity: 1; } }
-
-    /* CARD BACK: STRICT BLACK & WHITE RANSOM NOTE */
-    .card-back {
-      background: var(--p5-red);
-      transform: rotateY(180deg) rotate(2deg);
-    }
-
-    .p5-ransom-note {
-      background: var(--p5-black);
-      border: 3px solid var(--p5-white);
-      padding: 15px;
-      width: 100%; height: 100%;
+    .btn-container {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      transform: skew(-2deg);
-      box-shadow: 6px 6px 0 var(--p5-black);
+      gap: 15px;
+      min-height: 60px;
     }
 
-    .ransom-line {
-      font-family: 'Anton', sans-serif;
-      text-transform: uppercase;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 3px;
-      margin: 2px 0;
-    }
-
-    .ransom-char {
-      display: inline-block;
-      padding: 1px 6px;
-      font-size: 1.2rem;
-      line-height: 1.2;
-    }
-
-    /* ONLY BLACK AND WHITE CHARACTERS */
-    .ransom-char:nth-child(odd) { background: var(--p5-white); color: var(--p5-black); transform: rotate(-3deg); }
-    .ransom-char:nth-child(even) { background: var(--p5-black); color: var(--p5-white); border: 1px solid var(--p5-white); transform: rotate(4deg); font-size: 1.3rem; }
-
-    #enter-btn {
-      opacity: 0;
-      pointer-events: none;
-      margin-top: 50px;
-      background: var(--p5-white);
-      color: var(--p5-black);
-      border: 4px solid var(--p5-black);
-      font-family: 'Anton', sans-serif;
-      font-size: 2rem;
-      padding: 8px 35px;
+    .choice-btn {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 24px;
       cursor: pointer;
-      transform: skewX(-12deg);
-      box-shadow: 6px 6px 0 var(--p5-black);
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
-    #enter-btn.visible {
-      opacity: 1;
-      pointer-events: auto;
+    .btn-yes {
+      background: var(--accent-rose);
+      color: #ffffff;
+    }
+
+    .btn-no {
+      background: #ffe3e8;
+      color: var(--accent-rose);
+      border: 2px solid #ffb3c1;
     }
 
     /* =========================================================
-       2. MAIN WEBSITE INTERFACE
+       2. SCRAPBOOK WEBSITE CONTENT
        ========================================================= */
-    .bg-command {
-      position: absolute; bottom: -20px; right: -20px;
-      font-family: 'Permanent Marker', cursive; font-size: 8rem;
-      color: transparent; -webkit-text-stroke: 3px var(--p5-black);
-      transform: rotate(-10deg); opacity: 0.15; z-index: 0; pointer-events: none;
+    .scrapbook-cover {
+      width: 95%; max-width: 500px;
+      background: #ffffff;
+      border: 3px dashed #ffb3c1;
+      border-radius: 20px;
+      padding: 25px 15px;
+      margin-bottom: 25px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.1);
+      position: relative;
     }
 
-    .p5-menu {
-      width: 35%; height: 100%;
-      display: flex; flex-direction: column; justify-content: center;
-      padding-left: 20px; z-index: 10; gap: 15px;
+    .scrapbook-cover::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 110px; height: 24px;
+      background: var(--tape-color);
+      border-radius: 4px;
     }
 
-    .menu-btn {
-      background: none; border: none; color: var(--p5-white);
-      font-family: 'Anton', sans-serif; font-size: 3.5rem;
-      text-transform: uppercase; text-align: left; cursor: pointer;
-      transform: skewY(-5deg) skewX(-10deg); transition: all 0.1s;
-      text-shadow: 3px 3px 0 var(--p5-black), -1px -1px 0 var(--p5-black), 
-                   3px -1px 0 var(--p5-black), -1px 3px 0 var(--p5-black),
-                   6px 6px 0 rgba(0,0,0,0.4);
+    h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 2.8rem;
+      color: var(--accent-rose);
+      margin: 5px 0;
     }
 
-    .menu-btn span:nth-child(even) { font-size: 2.8rem; }
-    .menu-btn span:nth-child(3n) { font-size: 4rem; }
-
-    .menu-btn:hover, .menu-btn.active {
-      color: var(--p5-black);
-      text-shadow: 2px 2px 0 var(--p5-white), -2px -2px 0 var(--p5-white), 
-                   2px -2px 0 var(--p5-white), -2px 2px 0 var(--p5-white);
-      transform: skewY(-5deg) skewX(-10deg) scale(1.05) translateX(20px);
+    .page-card {
+      width: 95%; max-width: 500px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 15px rgba(255, 77, 109, 0.08);
+      border: 2px solid #fff0f3;
     }
 
-    .menu-btn.active::after {
-      content: ''; position: absolute; top: 0; left: -10px; width: 110%; height: 100%;
-      background: var(--p5-white); z-index: -1; transform: translate(-5px, 5px);
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
     }
 
-    .p5-content-area {
-      width: 65%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 10; padding: 40px;
+    .page-title {
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-rose);
     }
 
-    .confidant-card {
-      background: var(--p5-white); width: 100%; max-width: 700px; height: 85vh;
-      clip-path: polygon(2% 1%, 98% 0%, 100% 98%, 1% 99%, 0% 50%);
-      padding: 30px; position: relative; display: flex; flex-direction: column;
-      animation: cardPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .page-subtitle {
+      font-size: 0.85rem;
+      color: #a4133c;
     }
 
-    @keyframes cardPop {
-      0% { transform: scale(0.8) rotate(5deg); opacity: 0; }
-      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    .page-content {
+      display: none;
+      padding-top: 15px;
+      animation: fadeIn 0.3s ease;
     }
 
-    .card-header {
-      background: var(--p5-black); color: var(--p5-white);
-      padding: 10px 20px; transform: skewX(-15deg); margin-bottom: 20px;
-      display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 4px 4px 0 var(--p5-red);
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .polaroid-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
 
-    .card-header h2 {
-      font-family: 'Montserrat', sans-serif; font-weight: 900; font-style: italic;
-      font-size: 1.8rem; margin: 0; transform: skewX(15deg); text-transform: uppercase; letter-spacing: 2px;
+    .polaroid {
+      background: #ffffff;
+      padding: 8px 8px 18px 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transform: rotate(-2deg);
+      border: 1px solid #ffe3e8;
+      border-radius: 8px;
+      text-align: center;
     }
 
-    .rank-stars { color: var(--p5-white); font-size: 1.5rem; transform: skewX(15deg); }
-    .inner-content { flex: 1; overflow-y: auto; padding-right: 10px; }
+    .polaroid:nth-child(even) { transform: rotate(2deg); }
 
-    .p5-gallery {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px;
+    .polaroid img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
     }
 
-    .p5-photo {
-      background: var(--p5-black); padding: 6px; position: relative;
-      transform: rotate(2deg); transition: transform 0.2s; cursor: pointer;
-    }
-    .p5-photo:nth-child(even) { transform: rotate(-1deg); }
-    .p5-photo:hover { transform: scale(1.05) rotate(0); z-index: 5; box-shadow: 0 0 15px var(--p5-white); }
-
-    .p5-photo img {
-      width: 100%; height: 140px; object-fit: cover; filter: contrast(120%) grayscale(20%);
-    }
-
-    .p5-photo p {
-      font-family: 'Permanent Marker', cursive; color: var(--p5-white);
-      text-align: center; margin: 5px 0 0 0; font-size: 1.1rem;
-    }
-
-    .play-btn {
-      background: var(--p5-red); color: var(--p5-white); border: 3px solid var(--p5-black);
-      font-family: 'Anton', sans-serif; font-size: 1.5rem; padding: 5px 20px; cursor: pointer;
-      text-transform: uppercase; letter-spacing: 1px; transform: skewX(-10deg);
-      box-shadow: 4px 4px 0 var(--p5-black); transition: all 0.1s; margin-bottom: 15px;
-    }
-
-    .corner-flair {
-      position: absolute; bottom: -15px; right: -10px;
-      font-family: 'Permanent Marker', cursive; font-size: 3rem; color: var(--p5-black);
-      transform: rotate(-15deg); text-shadow: 2px 2px 0 var(--p5-white);
+    .polaroid-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-top: 6px;
+      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. CALLING CARD INTRO OVERLAY -->
-  <div id="calling-card-overlay">
-    <div class="card-container" id="callingCard" onclick="flipCard()">
+  <!-- 1. CAT QUESTION INTRO -->
+  <div id="cat-intro-overlay">
+    <div class="cat-box">
+      <div class="cat-emoji" id="catEmoji">🐱</div>
+      <div class="question-title" id="questionText">Do you love me? 🥺</div>
       
-      <!-- FRONT OF CARD: TOP HAT + FLAME MASK + TARGET RINGS -->
-      <div class="card-face card-front">
-        <svg class="p5-hat-logo" viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Top Hat Base & Brim -->
-          <path d="M40 180 C80 230 220 230 260 180 C270 165 240 150 200 165 C150 180 90 180 40 180 Z" fill="#080808" stroke="#ffffff" stroke-width="6"/>
-          <path d="M75 160 L95 40 C140 20 200 20 230 50 L205 155 Z" fill="#d50a0a" stroke="#080808" stroke-width="8"/>
-          <path d="M85 150 C120 165 180 165 210 148 L206 130 C170 145 110 145 88 132 Z" fill="#080808"/>
-          <!-- Flame Phantom Mask Overlay -->
-          <path d="M120 120 C100 140 110 190 150 210 C190 220 250 190 260 140 C270 100 230 90 200 110 C180 120 180 90 210 70 C160 70 130 90 120 120 Z" fill="#ffffff" stroke="#080808" stroke-width="7"/>
-          <path d="M145 150 C135 160 145 180 165 175 C175 170 170 150 155 148 Z" fill="#080808"/>
-          <path d="M205 145 C195 155 205 175 225 170 C235 165 230 145 215 143 Z" fill="#080808"/>
-        </svg>
-
-        <div class="tyh-badge">TAKE YOUR HEART</div>
-        <div class="click-prompt">▼ CLICK TO OPEN ▼</div>
+      <div class="btn-container">
+        <button class="choice-btn btn-yes" id="yesBtn" onclick="handleYes()">Yes! 💕</button>
+        <button class="choice-btn btn-no" id="noBtn" onclick="handleNo()">No 🙈</button>
       </div>
-
-      <!-- BACK OF CARD: STRICT BLACK & WHITE RANSOM NOTE -->
-      <div class="card-face card-back">
-        <div class="p5-ransom-note">
-          <div class="ransom-line">
-            <span class="ransom-char">S</span><span class="ransom-char">I</span><span class="ransom-char">R</span>
-            <span class="ransom-char">Z</span><span class="ransom-char">O</span><span class="ransom-char">Z</span><span class="ransom-char">O</span>
-          </div>
-          <div class="ransom-line">
-            <span class="ransom-char">Y</span><span class="ransom-char">O</span><span class="ransom-char">U</span><span class="ransom-char">R</span>
-            <span class="ransom-char">H</span><span class="ransom-char">E</span><span class="ransom-char">A</span><span class="ransom-char">R</span><span class="ransom-char">T</span>
-          </div>
-          <div class="ransom-line">
-            <span class="ransom-char">H</span><span class="ransom-char">A</span><span class="ransom-char">S</span>
-            <span class="ransom-char">B</span><span class="ransom-char">E</span><span class="ransom-char">E</span><span class="ransom-char">N</span>
-          </div>
-          <div class="ransom-line">
-            <span class="ransom-char">S</span><span class="ransom-char">T</span><span class="ransom-char">O</span><span class="ransom-char">L</span><span class="ransom-char">E</span><span class="ransom-char">N</span>!
-          </div>
-        </div>
-      </div>
-
     </div>
-
-    <button id="enter-btn" onclick="enterPalace()">▶ ENTER PALACE</button>
   </div>
 
-  <!-- 2. MAIN WEBSITE INTERFACE -->
-  <div class="bg-command">COMMAND</div>
+  <!-- 2. SCRAPBOOK MAIN WEBSITE -->
+  <div class="scrapbook-cover">
+    <h1>Zozo & Raychickn</h1>
+    <p style="font-weight: 700; color: #a4133c; margin: 0;">Our 5-Year Memory Scrapbook 💕</p>
+  </div>
 
-  <audio id="song_y1" src="song_year1.mp3"></audio>
-  <audio id="song_y2" src="song_year2.mp3"></audio>
-
-  <nav class="p5-menu">
-    <button class="menu-btn active" onclick="loadData('y1', this)">
-      <span>Y</span>e<span>A</span>r <span>1</span>
-    </button>
-    <button class="menu-btn" onclick="loadData('y2', this)">
-      <span>Y</span>e<span>A</span>r <span>2</span>
-    </button>
-    <button class="menu-btn" onclick="loadData('y3', this)">
-      <span>Y</span>e<span>A</span>r <span>3</span>
-    </button>
-    <button class="menu-btn" onclick="loadData('y4', this)">
-      <span>Y</span>e<span>A</span>r <span>4</span>
-    </button>
-    <button class="menu-btn" onclick="loadData('y5', this)">
-      <span>Y</span>e<span>A</span>r <span>5</span>
-    </button>
-  </nav>
-
-  <main class="p5-content-area">
-    <div class="confidant-card" id="card-display">
-      <div class="card-header">
-        <h2>CONFIDANT RANK: 1</h2>
-        <div class="rank-stars">★☆☆☆☆</div>
+  <!-- CHAPTER 1 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year1')">
+      <div>
+        <div class="page-title">Year 1 (2021-2022)</div>
+        <div class="page-subtitle">Where it all started...</div>
       </div>
-      
-      <div class="inner-content">
-        <button class="play-btn" onclick="toggleAudio('song_y1', this)">▶ Play BGM</button>
-        <p style="font-weight: 900; font-size: 1.1rem; margin-top:0;">2021-2022: THE AWAKENING.</p>
-        <p>Where our story began. The first time our worlds collided.</p>
-        
-        <div class="p5-gallery">
-          <div class="p5-photo">
-            <img src="IMG_9733.jpeg" alt="Drink">
-            <p>FIRST DRINK</p>
-          </div>
-          <div class="p5-photo">
-            <img src="IMG_2467.jpeg" alt="House">
-            <p>FIRST VISIT</p>
-          </div>
+      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
+    </div>
+
+    <div class="page-content" id="year1">
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_9733.jpeg" alt="First Drink">
+          <p class="polaroid-caption">Our First Drink 🍹</p>
+        </div>
+        <div class="polaroid">
+          <img src="IMG_2467.jpeg" alt="First Time Over">
+          <p class="polaroid-caption">First Time Over 🏠</p>
         </div>
       </div>
-      
-      <div class="corner-flair">MEMORIES</div>
     </div>
-  </main>
+  </div>
+
+  <!-- CHAPTER 2 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year2')">
+      <div>
+        <div class="page-title">Year 2 (2022-2023)</div>
+        <div class="page-subtitle">Making memories together</div>
+      </div>
+      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
+    </div>
+
+    <div class="page-content" id="year2">
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
+          <p class="polaroid-caption">Goth x Dreadhead 🖤</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 3 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year3')">
+      <div>
+        <div class="page-title">Year 3 (2023-2024)</div>
+        <div class="page-subtitle">Our favorite routines & holidays</div>
+      </div>
+      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
+    </div>
+
+    <div class="page-content" id="year3">
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_5218.jpeg" alt="First Holiday">
+          <p class="polaroid-caption">Our First Holiday ✈️</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 4 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year4')">
+      <div>
+        <div class="page-title">Year 4 (2024-2025)</div>
+        <div class="page-subtitle">Laughs and adventures</div>
+      </div>
+      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
+    </div>
+
+    <div class="page-content" id="year4">
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="DSC_0071 2.jpeg" alt="Prom King & Queen">
+          <p class="polaroid-caption">Prom King & Queen 👑</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 5 -->
+  <div class="page-card">
+    <div class="page-header" onclick="togglePage('year5')">
+      <div>
+        <div class="page-title">Year 5 (2025-2026)</div>
+        <div class="page-subtitle">Half a decade together!</div>
+      </div>
+      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
+    </div>
+
+    <div class="page-content" id="year5">
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_1850 2.jpeg" alt="Halloween">
+          <p class="polaroid-caption">Halloween 🎃</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    let cardFlipped = false;
+    /* CAT QUESTION LOGIC */
+    let noClickCount = 0;
+    let stage = 1; // Stage 1 = Initial Question, Stage 2 = "Really?"
 
-    function flipCard() {
-      if (!cardFlipped) {
-        document.getElementById('callingCard').classList.add('flipped');
-        document.getElementById('enter-btn').classList.add('visible');
-        cardFlipped = true;
+    function handleNo() {
+      const noBtn = document.getElementById('noBtn');
+      const yesBtn = document.getElementById('yesBtn');
+      const catEmoji = document.getElementById('catEmoji');
+
+      noClickCount++;
+
+      // Make "No" button shrink
+      let newScale = Math.max(0, 1 - (noClickCount * 0.25));
+      noBtn.style.transform = `scale(${newScale})`;
+
+      // Make "Yes" button grow slightly
+      yesBtn.style.transform = `scale(${1 + (noClickCount * 0.15)})`;
+
+      // Change cat emoji to sadder ones
+      if (noClickCount === 1) catEmoji.innerText = '😿';
+      if (noClickCount === 2) catEmoji.innerText = '😿';
+      if (noClickCount >= 3) {
+        catEmoji.innerText = '😭';
+        noBtn.style.display = 'none'; // Shrinks to nothing & vanishes!
       }
     }
 
-    function enterPalace() {
-      const overlay = document.getElementById('calling-card-overlay');
-      overlay.style.transform = 'translateY(-100vh)';
-      setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 600);
-    }
+    function handleYes() {
+      const questionText = document.getElementById('questionText');
+      const catEmoji = document.getElementById('catEmoji');
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn = document.getElementById('noBtn');
 
-    const gameData = {
-      'y1': {
-        rank: "1", stars: "★☆☆☆☆", song: "song_y1",
-        title: "2021-2022: THE AWAKENING.",
-        desc: "Where our story began. The first time our worlds collided.",
-        photos: [
-          { src: "IMG_9733.jpeg", cap: "FIRST DRINK" },
-          { src: "IMG_2467.jpeg", cap: "FIRST VISIT" }
-        ]
-      },
-      'y2': {
-        rank: "2", stars: "★★☆☆☆", song: "song_y2",
-        title: "2022-2023: EXPANDING HORIZONS.",
-        desc: "Growing closer. Taking on palaces together.",
-        photos: [
-          { src: "IMG_5759.jpeg", cap: "GOTH x DREADHEAD" }
-        ]
-      },
-      'y3': {
-        rank: "3", stars: "★★★☆☆", song: "song_y3",
-        title: "2023-2024: UNBREAKABLE BOND.",
-        desc: "Our favorite routines and holiday trips.",
-        photos: [
-          { src: "IMG_5218.jpeg", cap: "FIRST HOLIDAY" }
-        ]
-      },
-      'y4': {
-        rank: "4", stars: "★★★★☆", song: "song_y4",
-        title: "2024-2025: ROAD TRIP ARC.",
-        desc: "Unforgettable memories and endless laughs.",
-        photos: [
-          { src: "DSC_0071 2.jpeg", cap: "PROM ROYALS" }
-        ]
-      },
-      'y5': {
-        rank: "MAX", stars: "★★★★★", song: "song_y5",
-        title: "2025-2026: HALF A DECADE.",
-        desc: "5 whole years. Our Confidant Rank is officially MAXED OUT.",
-        photos: [
-          { src: "IMG_1850 2.jpeg", cap: "HALLOWEEN" }
-        ]
-      }
-    };
-
-    let currentAudio = null;
-
-    function loadData(yearId, btnElement) {
-      document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
-      btnElement.classList.add('active');
-
-      const data = gameData[yearId];
-
-      let photoHTML = '';
-      data.photos.forEach(img => {
-        photoHTML += `
-          <div class="p5-photo">
-            <img src="${img.src}" alt="${img.cap}">
-            <p>${img.cap}</p>
-          </div>
-        `;
-      });
-
-      const display = document.getElementById('card-display');
-      display.style.animation = 'none';
-      display.offsetHeight;
-      display.style.animation = null; 
-
-      display.innerHTML = `
-        <div class="card-header">
-          <h2>CONFIDANT RANK: ${data.rank}</h2>
-          <div class="rank-stars">${data.stars}</div>
-        </div>
+      if (stage === 1) {
+        // First "Yes" click -> Ask "Really?"
+        stage = 2;
+        catEmoji.innerText = '😻';
+        questionText.innerText = 'Really?? 🥹💖';
+        yesBtn.innerText = 'YES REALLY! 🥰';
         
-        <div class="inner-content">
-          <button class="play-btn" onclick="toggleAudio('${data.song}', this)">▶ Play BGM</button>
-          <p style="font-weight: 900; font-size: 1.1rem; margin-top:0;">${data.title}</p>
-          <p>${data.desc}</p>
-          
-          <div class="p5-gallery">
-            ${photoHTML}
-          </div>
-        </div>
-        
-        <div class="corner-flair">MEMORIES</div>
-      `;
+        // Reset "No" button for Stage 2
+        noClickCount = 0;
+        noBtn.style.display = 'inline-block';
+        noBtn.style.transform = 'scale(1)';
+        noBtn.innerText = 'Wait... 😅';
+        yesBtn.style.transform = 'scale(1)';
+
+      } else if (stage === 2) {
+        // Second "Yes" click -> Happy Cat & Unlock Site!
+        catEmoji.innerText = '😸🎉';
+        questionText.innerText = 'Yay! Welcome to our scrapbook! 💕';
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+
+        // Fade out overlay after 1 second
+        setTimeout(() => {
+          const overlay = document.getElementById('cat-intro-overlay');
+          overlay.style.opacity = '0';
+          setTimeout(() => overlay.style.display = 'none', 500);
+        }, 1000);
+      }
     }
 
-    function toggleAudio(audioId, btnElement) {
-      const track = document.getElementById(audioId);
-      if (!track) return;
-
-      if (currentAudio && currentAudio !== track) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-      }
-
-      if (track.paused) {
-        track.play();
-        btnElement.innerText = "⏸ PAUSE BGM";
-        currentAudio = track;
-      } else {
-        track.pause();
-        btnElement.innerText = "▶ PLAY BGM";
-      }
+    /* SCRAPBOOK EXPAND FUNCTION */
+    function togglePage(id) {
+      const content = document.getElementById(id);
+      content.style.display = content.style.display === "block" ? "none" : "block";
     }
   </script>
+
 </body>
 </html>
