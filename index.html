@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autumn Scrapbook | Zozo & Raychickn</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
@@ -27,7 +26,7 @@
       width: 100vw;
       background-color: var(--autumn-bg);
       font-family: 'Montserrat', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
       color: var(--autumn-brown);
       user-select: none;
       background-image: radial-gradient(#d8c7b5 1.5px, transparent 1.5px);
@@ -113,18 +112,15 @@
     .btn-no { background: #efe3d3; color: var(--autumn-brown); border: 2px solid var(--autumn-amber); }
 
     /* =========================================================
-       2. MAIN WEBSITE LAYOUT
+       2. MAIN WEBSITE LAYOUT (FLEXBOX / GRID)
        ========================================================= */
     .header-logo {
-      position: absolute;
-      top: 20px; left: 35px;
-      z-index: 10;
-      transform: skewX(-4deg);
+      padding: 20px 35px 10px 35px;
     }
 
     .header-logo h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       color: var(--autumn-terracotta);
       margin: 0;
       text-shadow: 2px 2px 0px #edd8c4;
@@ -133,50 +129,52 @@
     .header-logo span {
       font-family: 'Caveat', cursive;
       color: var(--autumn-leaf);
-      font-size: 3rem;
+      font-size: 2.8rem;
+    }
+
+    /* 3-COLUMN MAIN WRAPPER */
+    .main-wrapper {
+      display: flex;
+      gap: 20px;
+      padding: 10px 35px 30px 35px;
+      height: calc(100vh - 100px);
     }
 
     /* LEFT MENU */
     .p3-menu {
-      position: absolute;
-      top: 120px; left: 35px;
+      flex: 0 0 220px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      z-index: 10;
     }
 
     .menu-item {
       background: var(--paper-white);
       color: var(--autumn-brown);
       border: 3px solid var(--autumn-terracotta);
-      padding: 10px 20px;
+      padding: 10px 15px;
       font-family: 'Caveat', cursive;
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       font-weight: 700;
       cursor: pointer;
-      transform: skewX(-12deg);
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: skewX(-10deg);
+      transition: all 0.25s ease;
       box-shadow: 4px 4px 0px var(--autumn-amber);
-      width: 220px;
       border-radius: 6px;
+      text-align: left;
     }
 
     .menu-item:hover, .menu-item.active {
       color: var(--paper-white);
       background: var(--autumn-terracotta);
-      transform: skewX(-12deg) scale(1.06) translateX(10px);
+      transform: skewX(-10deg) translateX(8px);
       box-shadow: 6px 6px 0px var(--autumn-leaf);
     }
 
     /* CENTER SCRAPBOOK CARD */
     .content-area {
-      position: absolute;
-      top: 110px;
-      left: 280px;
-      width: 48vw;
-      height: 78vh;
-      z-index: 10;
+      flex: 1;
+      height: 100%;
     }
 
     .scrapbook-card {
@@ -188,7 +186,6 @@
       box-shadow: 0 10px 25px rgba(74, 51, 42, 0.08);
       overflow-y: auto;
       position: relative;
-      animation: p3SlideIn 0.35s ease-out;
     }
 
     .scrapbook-card::before {
@@ -201,14 +198,9 @@
       border-radius: 4px;
     }
 
-    @keyframes p3SlideIn {
-      from { opacity: 0; transform: skewX(-4deg) translateX(-20px); }
-      to { opacity: 1; transform: skewX(0deg) translateX(0); }
-    }
-
     .card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       color: var(--autumn-terracotta);
       margin-top: 0;
       border-bottom: 2px wavy var(--autumn-amber);
@@ -263,34 +255,26 @@
       margin-bottom: 0;
     }
 
-    /* =========================================================
-       3. RIGHT SIDE PANEL (STATS & PROFILE CARD)
-       ========================================================= */
+    /* RIGHT PANEL (STATS & NOTES) */
     .right-panel {
-      position: absolute;
-      top: 110px;
-      right: 30px;
-      width: 20vw;
-      min-width: 250px;
-      height: 78vh;
+      flex: 0 0 260px;
       display: flex;
       flex-direction: column;
       gap: 15px;
-      z-index: 10;
+      height: 100%;
     }
 
     .right-card {
       background: var(--paper-white);
       border: 2px solid var(--autumn-amber);
       border-radius: 14px;
-      padding: 18px;
+      padding: 16px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.04);
-      position: relative;
     }
 
     .right-card-title {
       font-family: 'Caveat', cursive;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: var(--autumn-terracotta);
       margin-top: 0;
       margin-bottom: 10px;
@@ -315,7 +299,7 @@
       border: none;
       padding: 10px;
       font-family: 'Caveat', cursive;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       cursor: pointer;
       border-radius: 12px;
@@ -324,6 +308,14 @@
     }
 
     .audio-btn:hover { transform: scale(1.02); }
+
+    /* MOBILE RESPONSIVE ADAPTATION */
+    @media (max-width: 850px) {
+      body { overflow-y: auto; height: auto; }
+      .main-wrapper { flex-direction: column; height: auto; }
+      .p3-menu { flex-direction: row; flex-wrap: wrap; }
+      .right-panel { flex: none; width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -349,64 +341,69 @@
     <h1>Zozo & Raychickn <span>Scrapbook</span></h1>
   </div>
 
-  <!-- LEFT MENU -->
-  <nav class="p3-menu">
-    <button class="menu-item active" onclick="switchTab('y1', this)">Year 1 (2021-22)</button>
-    <button class="menu-item" onclick="switchTab('y2', this)">Year 2 (2022-23)</button>
-    <button class="menu-item" onclick="switchTab('y3', this)">Year 3 (2023-24)</button>
-    <button class="menu-item" onclick="switchTab('y4', this)">Year 4 (2024-25)</button>
-    <button class="menu-item" onclick="switchTab('y5', this)">Year 5 (2025-26)</button>
-  </nav>
+  <!-- 3-COLUMN MAIN LAYOUT -->
+  <div class="main-wrapper">
 
-  <!-- CENTER CONTENT -->
-  <main class="content-area">
-    <div class="scrapbook-card" id="displayCard">
-      <h2 class="card-title">
-        Chapter 1: The Awakening 🍂
-        <span class="chapter-badge">2021 – 2022</span>
-      </h2>
-      <p style="font-size: 1rem; line-height: 1.5;">
-        Where our story first began. Exploring new places, making memories, and starting our journey together.
-      </p>
+    <!-- LEFT MENU -->
+    <nav class="p3-menu">
+      <button class="menu-item active" onclick="switchTab('y1', this)">Year 1 (2021-22)</button>
+      <button class="menu-item" onclick="switchTab('y2', this)">Year 2 (2022-23)</button>
+      <button class="menu-item" onclick="switchTab('y3', this)">Year 3 (2023-24)</button>
+      <button class="menu-item" onclick="switchTab('y4', this)">Year 4 (2024-25)</button>
+      <button class="menu-item" onclick="switchTab('y5', this)">Year 5 (2025-26)</button>
+    </nav>
 
-      <div class="polaroid-grid">
-        <div class="polaroid">
-          <img src="IMG_9733.jpeg" alt="Our First Drink">
-          <p class="polaroid-caption">Our First Drink 🍹</p>
-        </div>
-        <div class="polaroid">
-          <img src="IMG_2467.jpeg" alt="First Time Coming Over">
-          <p class="polaroid-caption">First Time Coming Over 🏠</p>
+    <!-- CENTER CONTENT -->
+    <main class="content-area">
+      <div class="scrapbook-card" id="displayCard">
+        <h2 class="card-title">
+          Chapter 1: The Awakening 🍂
+          <span class="chapter-badge">2021 – 2022</span>
+        </h2>
+        <p style="font-size: 0.95rem; line-height: 1.5;">
+          Where our story first began. Exploring new places, making memories, and starting our journey together.
+        </p>
+
+        <div class="polaroid-grid">
+          <div class="polaroid">
+            <img src="IMG_9733.jpeg" alt="Our First Drink">
+            <p class="polaroid-caption">Our First Drink 🍹</p>
+          </div>
+          <div class="polaroid">
+            <img src="IMG_2467.jpeg" alt="First Time Coming Over">
+            <p class="polaroid-caption">First Time Coming Over 🏠</p>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <!-- RIGHT PANEL (STATS & MUSIC CONTROLLER) -->
-  <aside class="right-panel">
-    <!-- MUSIC CARD -->
-    <div class="right-card">
-      <div class="right-card-title">Atmosphere 🍁</div>
-      <button class="audio-btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Autumn BGM</button>
-    </div>
+    <!-- RIGHT PANEL (STATS & MUSIC CONTROLLER) -->
+    <aside class="right-panel">
+      <!-- MUSIC CARD -->
+      <div class="right-card">
+        <div class="right-card-title">Atmosphere 🍁</div>
+        <button class="audio-btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Autumn BGM</button>
+      </div>
 
-    <!-- STATS CARD -->
-    <div class="right-card">
-      <div class="right-card-title">Our Stats 📊</div>
-      <div class="stat-row"><span>Days Together:</span> <span class="stat-val">1,826 Days</span></div>
-      <div class="stat-row"><span>Anniversary:</span> <span class="stat-val">5th Year</span></div>
-      <div class="stat-row"><span>Favorite Duo:</span> <span class="stat-val">Zozo & Ray</span></div>
-      <div class="stat-row"><span>Status:</span> <span class="stat-val">Going Strong 💕</span></div>
-    </div>
+      <!-- STATS CARD -->
+      <div class="right-card">
+        <div class="right-card-title">Our Stats 📊</div>
+        <div class="stat-row"><span>Days Together:</span> <span class="stat-val">1,826 Days</span></div>
+        <div class="stat-row"><span>Anniversary:</span> <span class="stat-val">5th Year</span></div>
+        <div class="stat-row"><span>Favorite Duo:</span> <span class="stat-val">Zozo & Ray</span></div>
+        <div class="stat-row"><span>Status:</span> <span class="stat-val">Going Strong 💕</span></div>
+      </div>
 
-    <!-- NOTE CARD -->
-    <div class="right-card" style="flex: 1;">
-      <div class="right-card-title">Note to Zozo 💌</div>
-      <p style="font-family: 'Caveat', cursive; font-size: 1.2rem; margin: 0; line-height: 1.3;">
-        Thank you for 5 amazing years. Tap through each chapter on the left to walk through our memories!
-      </p>
-    </div>
-  </aside>
+      <!-- NOTE CARD -->
+      <div class="right-card" style="flex: 1;">
+        <div class="right-card-title">Note to Zozo 💌</div>
+        <p style="font-family: 'Caveat', cursive; font-size: 1.2rem; margin: 0; line-height: 1.3;">
+          Thank you for 5 amazing years. Tap through each chapter on the left to walk through our memories!
+        </p>
+      </div>
+    </aside>
+
+  </div>
 
   <script>
     /* CAT INTRO LOGIC */
@@ -471,7 +468,7 @@
           Chapter 1: The Awakening 🍂
           <span class="chapter-badge">2021 – 2022</span>
         </h2>
-        <p style="font-size: 1rem; line-height: 1.5;">
+        <p style="font-size: 0.95rem; line-height: 1.5;">
           Where our story first began. Exploring new places, making memories, and starting our journey together.
         </p>
         <div class="polaroid-grid">
@@ -490,7 +487,7 @@
           Chapter 2: Growing Closer 🍁
           <span class="chapter-badge">2022 – 2023</span>
         </h2>
-        <p style="font-size: 1rem; line-height: 1.5;">
+        <p style="font-size: 0.95rem; line-height: 1.5;">
           Building memories, finding our favorite spots, and growing closer every day.
         </p>
         <div class="polaroid-grid">
@@ -505,7 +502,7 @@
           Chapter 3: Routines & Trips ☕
           <span class="chapter-badge">2023 – 2024</span>
         </h2>
-        <p style="font-size: 1rem; line-height: 1.5;">
+        <p style="font-size: 0.95rem; line-height: 1.5;">
           Cozy routines, holiday trips, and celebrating every small milestone.
         </p>
         <div class="polaroid-grid">
@@ -520,7 +517,7 @@
           Chapter 4: Adventures 🎃
           <span class="chapter-badge">2024 – 2025</span>
         </h2>
-        <p style="font-size: 1rem; line-height: 1.5;">
+        <p style="font-size: 0.95rem; line-height: 1.5;">
           Road trips, endless laughs, and special occasions.
         </p>
         <div class="polaroid-grid">
@@ -535,7 +532,7 @@
           Chapter 5: Half a Decade 🎉
           <span class="chapter-badge">2025 – 2026</span>
         </h2>
-        <p style="font-size: 1rem; line-height: 1.5;">
+        <p style="font-size: 0.95rem; line-height: 1.5;">
           Celebrating 5 whole years together—and so many more chapters to come!
         </p>
         <div class="polaroid-grid">
@@ -553,10 +550,6 @@
       btn.classList.add('active');
 
       const card = document.getElementById('displayCard');
-      card.style.animation = 'none';
-      card.offsetHeight;
-      card.style.animation = 'p3SlideIn 0.35s ease-out';
-
       card.innerHTML = yearData[tabKey];
     }
 
