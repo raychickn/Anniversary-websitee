@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jade's Persona | P3R Portfolio</title>
-  <!-- Google Fonts: Anton (Impactful Slanted Titles) & Rajdhani (Futuristic UI font) -->
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <title>Autumn Scrapbook | Zozo & Raychickn</title>
+  <!-- Google Fonts: Playfair Display (Serif headers) + Caveat (Handwritten text) + Montserrat (UI text) -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================
-       PERSONA 3 RELOAD COLOR PALETTE & VARIABLES
+       AUTUMN SCRAPBOOK COLOR PALETTE & VARIABLES
        ========================================== */
     :root {
-      --p3-blue: #0044cc;
-      --p3-cyan: #00d0ff;
-      --p3-dark-blue: #001845;
-      --p3-yellow: #ffd000;
-      --p3-white: #ffffff;
-      --p3-black: #050a14;
+      --autumn-bg: #f8f1e5;        /* Warm cream/beige paper background */
+      --autumn-terracotta: #c85a32;/* Deep warm rust/terracotta */
+      --autumn-amber: #e09f3e;     /* Golden amber */
+      --autumn-brown: #4a332a;     /* Rich dark brown text */
+      --autumn-leaf: #9e2a2b;      /* Deep autumn leaf red */
+      --tape-color: rgba(224, 159, 62, 0.45); /* Golden Washi tape */
+      --paper-white: #fffdf9;
     }
 
     * { box-sizing: border-box; }
@@ -27,445 +28,398 @@
       padding: 0;
       height: 100vh;
       width: 100vw;
-      background-color: var(--p3-black);
-      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--autumn-bg);
+      font-family: 'Montserrat', sans-serif;
       overflow: hidden;
-      color: var(--p3-white);
+      color: var(--autumn-brown);
       user-select: none;
-      /* P3 Dynamic Water/Ocean Blue Wave Gradient Background */
-      background: linear-gradient(135deg, var(--p3-black) 0%, #001f54 40%, #00429d 80%, var(--p3-cyan) 100%);
+      /* Soft paper dot texture background */
+      background-image: radial-gradient(#d8c7b5 1.5px, transparent 1.5px);
+      background-size: 22px 22px;
+    }
+
+    /* Floating Autumn Leaves Graphic Accents */
+    .leaf-decor {
+      position: absolute;
+      font-size: 2.5rem;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.8;
+      animation: floatLeaf 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatLeaf {
+      from { transform: translateY(0px) rotate(0deg); }
+      to { transform: translateY(-15px) rotate(10deg); }
     }
 
     /* ==========================================
-       BACKGROUND WAVE GRAPHICS & WATER PATTERNS
-       ========================================== */
-    .bg-wave {
-      position: absolute;
-      top: -10%;
-      right: -10%;
-      width: 65vw;
-      height: 120vh;
-      background: rgba(0, 208, 255, 0.2);
-      transform: rotate(-15deg);
-      border-left: 8px solid var(--p3-white);
-      box-shadow: -15px 0 30px rgba(0, 208, 255, 0.4);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .bg-wave-secondary {
-      position: absolute;
-      bottom: -20%;
-      left: -10%;
-      width: 50vw;
-      height: 80vh;
-      background: rgba(0, 68, 204, 0.3);
-      transform: rotate(12deg);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Character Artwork Overlay (As seen on right side of video) */
-    .character-art {
-      position: absolute;
-      right: 2vw;
-      bottom: 0;
-      height: 92vh;
-      width: 45vw;
-      object-fit: contain;
-      object-position: bottom right;
-      z-index: 2;
-      filter: drop-shadow(-10px 10px 20px rgba(0, 0, 0, 0.8));
-      transition: all 0.4s ease-in-out;
-      pointer-events: none;
-    }
-
-    /* ==========================================
-       TOP LOGO / TITLE HEADER
+       HEADER LOGO
        ========================================== */
     .header-logo {
       position: absolute;
       top: 25px;
       left: 35px;
       z-index: 10;
-      transform: skewX(-12deg) rotate(-2deg);
+      transform: skewX(-6deg) rotate(-2deg);
     }
 
     .header-logo h1 {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 3.5rem;
-      color: var(--p3-white);
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      color: var(--autumn-terracotta);
       margin: 0;
-      text-transform: uppercase;
-      text-shadow: 4px 4px 0px var(--p3-blue), 8px 8px 0px var(--p3-black);
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+      text-shadow: 3px 3px 0px #edd8c4;
     }
 
     .header-logo span {
-      color: var(--p3-cyan);
+      font-family: 'Caveat', cursive;
+      color: var(--autumn-leaf);
+      font-size: 3.5rem;
     }
 
     /* ==========================================
-       MAIN NAVIGATION MENU (LEFT SIDE)
+       SLANTED SCRAPBOOK MENU (LEFT SIDE)
        ========================================== */
     .p3-menu {
       position: absolute;
-      top: 150px;
+      top: 140px;
       left: 30px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       z-index: 10;
     }
 
     .menu-item {
-      background: var(--p3-dark-blue);
-      color: var(--p3-white);
-      border: 3px solid var(--p3-cyan);
-      padding: 12px 30px;
-      font-family: 'Anton', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      background: var(--paper-white);
+      color: var(--autumn-brown);
+      border: 3px solid var(--autumn-terracotta);
+      padding: 12px 25px;
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      font-weight: 700;
       cursor: pointer;
-      transform: skewX(-18deg);
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: skewX(-14deg);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
-      box-shadow: 6px 6px 0px var(--p3-black);
-      width: 260px;
-    }
-
-    .menu-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--p3-cyan);
-      transition: all 0.2s ease;
-      z-index: -1;
+      box-shadow: 5px 5px 0px var(--autumn-amber);
+      width: 250px;
+      border-radius: 6px;
     }
 
     .menu-item:hover, .menu-item.active {
-      color: var(--p3-black);
-      background: var(--p3-cyan);
-      border-color: var(--p3-white);
-      transform: skewX(-18deg) scale(1.08) translateX(15px);
-      box-shadow: 8px 8px 0px var(--p3-yellow);
-    }
-
-    .menu-item.active::after {
-      content: '▲';
-      position: absolute;
-      right: 15px;
-      color: var(--p3-black);
-      font-size: 1.2rem;
-      transform: rotate(90deg) skewX(18deg);
+      color: var(--paper-white);
+      background: var(--autumn-terracotta);
+      border-color: var(--autumn-brown);
+      transform: skewX(-14deg) scale(1.08) translateX(15px);
+      box-shadow: 8px 8px 0px var(--autumn-leaf);
     }
 
     /* ==========================================
-       CENTRAL DISPLAY CARD (P3R UI BOX)
+       CENTRAL SCRAPBOOK CARD (P3-STYLE TRANSITIONS)
        ========================================== */
     .content-area {
       position: absolute;
-      top: 130px;
-      left: 320px;
-      width: 38vw;
-      height: 72vh;
+      top: 120px;
+      left: 310px;
+      width: 65vw;
+      max-width: 850px;
+      height: 76vh;
       z-index: 10;
     }
 
-    .p3-card {
-      background: rgba(5, 10, 20, 0.85);
-      backdrop-filter: blur(12px);
-      border: 3px solid var(--p3-white);
-      border-left: 10px solid var(--p3-cyan);
+    .scrapbook-card {
+      background: var(--paper-white);
+      border: 3px dashed var(--autumn-terracotta);
       padding: 30px;
       height: 100%;
-      border-radius: 4px;
-      transform: skewX(-6deg);
-      box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 208, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(74, 51, 42, 0.1);
       overflow-y: auto;
+      position: relative;
       animation: p3SlideIn 0.35s ease-out;
     }
 
+    /* Washi tape on top of the card */
+    .scrapbook-card::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 130px;
+      height: 26px;
+      background: var(--tape-color);
+      border-radius: 4px;
+    }
+
     @keyframes p3SlideIn {
-      from { opacity: 0; transform: skewX(-6deg) translateX(-30px); }
-      to { opacity: 1; transform: skewX(-6deg) translateX(0); }
+      from { opacity: 0; transform: skewX(-4deg) translateX(-30px); }
+      to { opacity: 1; transform: skewX(0deg) translateX(0); }
     }
 
     .card-title {
-      font-family: 'Anton', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
-      color: var(--p3-cyan);
-      text-transform: uppercase;
+      color: var(--autumn-terracotta);
       margin-top: 0;
-      letter-spacing: 2px;
-      border-bottom: 2px solid var(--p3-white);
+      border-bottom: 2px wavy var(--autumn-amber);
       padding-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .rank-badge {
-      background: var(--p3-yellow);
-      color: var(--p3-black);
-      font-size: 1rem;
-      padding: 2px 12px;
-      transform: skewX(6deg);
-      font-weight: 800;
+    .chapter-badge {
+      font-family: 'Caveat', cursive;
+      background: var(--autumn-amber);
+      color: var(--paper-white);
+      font-size: 1.4rem;
+      padding: 2px 14px;
+      border-radius: 20px;
     }
 
-    /* LIST & STATS LAYOUT (From Video 00:15) */
-    .p3-list-item {
-      background: rgba(0, 68, 204, 0.4);
-      border-left: 5px solid var(--p3-yellow);
-      margin: 12px 0;
-      padding: 12px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.2s;
+    /* POLAROID PHOTO GRID INSIDE CARDS */
+    .polaroid-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
     }
 
-    .p3-list-item:hover {
-      background: rgba(0, 208, 255, 0.4);
+    .polaroid {
+      background: #ffffff;
+      padding: 10px 10px 20px 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transform: rotate(-2deg);
+      border: 1px solid #f0ebe1;
+      border-radius: 6px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
     }
 
-    .item-label {
-      font-weight: 800;
-      font-size: 1.2rem;
-      text-transform: uppercase;
+    .polaroid:nth-child(even) { transform: rotate(2deg); }
+
+    .polaroid:hover {
+      transform: scale(1.05) rotate(0deg);
+      box-shadow: 0 10px 25px rgba(200, 90, 50, 0.2);
+      z-index: 5;
     }
 
-    .item-sub {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.8);
+    .polaroid img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid #eee;
     }
 
-    /* EQUIP / SOCIALS LAYOUT (From Video 00:25) */
-    .equip-slot {
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid var(--p3-cyan);
-      margin-bottom: 12px;
-      padding: 10px 15px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-      color: var(--p3-white);
-      transition: all 0.2s;
+    .polaroid-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      color: var(--autumn-brown);
+      margin-top: 8px;
+      margin-bottom: 0;
     }
 
-    .equip-slot:hover {
-      background: var(--p3-cyan);
-      color: var(--p3-black);
-      transform: scale(1.02);
+    /* Small tape on polaroids */
+    .polaroid::before {
+      content: '';
+      position: absolute;
+      top: -8px; left: 35%;
+      width: 30%; height: 14px;
+      background: var(--tape-color);
     }
 
-    .equip-type {
-      background: var(--p3-black);
-      color: var(--p3-yellow);
-      padding: 4px 8px;
-      font-weight: 800;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-    }
-
-    /* AUDIO PLAYER BUTTON */
+    /* AUDIO CONTROLLER BUTTON */
     .audio-btn {
       position: absolute;
-      bottom: 20px;
+      bottom: 25px;
       left: 35px;
-      background: var(--p3-yellow);
-      color: var(--p3-black);
+      background: var(--autumn-amber);
+      color: var(--paper-white);
       border: none;
-      padding: 10px 20px;
-      font-family: 'Anton', sans-serif;
-      font-size: 1.1rem;
+      padding: 10px 22px;
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      font-weight: 700;
       cursor: pointer;
-      transform: skewX(-12deg);
-      box-shadow: 4px 4px 0px var(--p3-black);
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(224, 159, 62, 0.4);
       z-index: 100;
+      transition: transform 0.2s;
+    }
+
+    .audio-btn:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
 
-  <!-- BACKGROUND MUSIC PLAYER -->
-  <audio id="p3Bgm" loop src="p3r_music.mp3"></audio>
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgm" loop src="autumn_music.mp3"></audio>
 
-  <!-- FLOATING AUDIO CONTROLLER -->
-  <button class="audio-btn" onclick="toggleMusic()" id="musicBtn">▶ BGM: Mass Destruction</button>
+  <!-- FLOATING DECORATIONS -->
+  <div class="leaf-decor" style="top: 15px; right: 5vw;">🍁</div>
+  <div class="leaf-decor" style="bottom: 40px; right: 3vw; animation-delay: 1s;">🍂</div>
 
-  <!-- P3R BACKGROUND GRAPHICS -->
-  <div class="bg-wave"></div>
-  <div class="bg-wave-secondary"></div>
+  <!-- AUDIO CONTROLLER -->
+  <button class="audio-btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Autumn BGM</button>
 
-  <!-- TITLE HEADER -->
+  <!-- HEADER TITLE -->
   <div class="header-logo">
-    <h1>Jade's <span>Persona</span></h1>
+    <h1>Zozo & Raychickn <span>Scrapbook</span></h1>
   </div>
 
-  <!-- CHARACTER ARTWORK (Updates dynamically or can be replaced with your own artwork) -->
-  <!-- ALERT: Replace character.png with your own transparent character artwork file -->
-  <img src="https://i.ibb.co/31pvhS0/makoto-p3r.png" alt="Persona Character" class="character-art" id="characterArt">
-
-  <!-- LEFT NAVIGATION MENU -->
+  <!-- SLANTED NAVIGATION MENU (P3 TRANSITION MECHANIC) -->
   <nav class="p3-menu">
-    <button class="menu-item active" onclick="switchTab('about', this)">About Me</button>
-    <button class="menu-item" onclick="switchTab('list', this)">S.Links / List</button>
-    <button class="menu-item" onclick="switchTab('equip', this)">Equip / Socials</button>
-    <button class="menu-item" onclick="switchTab('side', this)">Side Projects</button>
+    <button class="menu-item active" onclick="switchTab('y1', this)">Year 1 (2021-22)</button>
+    <button class="menu-item" onclick="switchTab('y2', this)">Year 2 (2022-23)</button>
+    <button class="menu-item" onclick="switchTab('y3', this)">Year 3 (2023-24)</button>
+    <button class="menu-item" onclick="switchTab('y4', this)">Year 4 (2024-25)</button>
+    <button class="menu-item" onclick="switchTab('y5', this)">Year 5 (2025-26)</button>
   </nav>
 
-  <!-- CENTRAL CONTENT CARD -->
+  <!-- CENTRAL SCRAPBOOK CARD -->
   <main class="content-area">
-    <div class="p3-card" id="displayCard">
-      <!-- DEFAULT CONTENT: ABOUT ME (STATUS SCREEN) -->
+    <div class="scrapbook-card" id="displayCard">
+      <!-- DEFAULT CONTENT (YEAR 1) -->
       <h2 class="card-title">
-        Status 
-        <span class="rank-badge">LV. 21</span>
+        Chapter 1: The Awakening 🍂
+        <span class="chapter-badge">2021 – 2022</span>
       </h2>
       <p style="font-size: 1.1rem; line-height: 1.6;">
-        <b>ARCHETYPE:</b> Full-Stack Developer & Persona Enthusiast.<br>
-        Welcome to my portfolio! Built in the style of Persona 3 Reload's iconic blue UI.
+        Where our story first began. Exploring new places, making memories, and starting our journey together.
       </p>
 
-      <div class="p3-list-item">
-        <div>
-          <div class="item-label">Fun Fact About Me</div>
-          <div class="item-sub">Spent 8 hours coding this Persona 3 website interface!</div>
+      <div class="polaroid-grid">
+        <div class="polaroid">
+          <img src="IMG_9733.jpeg" alt="Our First Drink">
+          <p class="polaroid-caption">Our First Drink 🍹</p>
         </div>
-      </div>
-
-      <div class="p3-list-item">
-        <div>
-          <div class="item-label">Wired Fact About Me</div>
-          <div class="item-sub">Can memorize video game UI layouts after seeing them once.</div>
+        <div class="polaroid">
+          <img src="IMG_2467.jpeg" alt="First Time Coming Over">
+          <p class="polaroid-caption">First Time Coming Over 🏠</p>
         </div>
       </div>
     </div>
   </main>
 
   <script>
-    // DATA DATABASE FOR DIFFERENT SECTIONS
-    const contentData = {
-      'about': `
-        <h2 class="card-title">Status <span class="rank-badge">LV. 21</span></h2>
+    // DATA STORE FOR YOUR YEARS & PHOTOS
+    const yearData = {
+      'y1': `
+        <h2 class="card-title">
+          Chapter 1: The Awakening 🍂
+          <span class="chapter-badge">2021 – 2022</span>
+        </h2>
         <p style="font-size: 1.1rem; line-height: 1.6;">
-          <b>ARCHETYPE:</b> Full-Stack Developer & Persona Enthusiast.<br>
-          Welcome to my portfolio! Built in the style of Persona 3 Reload's iconic blue UI.
+          Where our story first began. Exploring new places, making memories, and starting our journey together.
         </p>
-        <div class="p3-list-item">
-          <div>
-            <div class="item-label">Fun Fact About Me</div>
-            <div class="item-sub">Spent 8 hours coding this Persona 3 website interface!</div>
+        <div class="polaroid-grid">
+          <div class="polaroid">
+            <img src="IMG_9733.jpeg" alt="Our First Drink">
+            <p class="polaroid-caption">Our First Drink 🍹</p>
           </div>
-        </div>
-        <div class="p3-list-item">
-          <div>
-            <div class="item-label">Wired Fact About Me</div>
-            <div class="item-sub">Can memorize video game UI layouts after seeing them once.</div>
+          <div class="polaroid">
+            <img src="IMG_2467.jpeg" alt="First Time Coming Over">
+            <p class="polaroid-caption">First Time Coming Over 🏠</p>
           </div>
         </div>
       `,
-      'list': `
-        <h2 class="card-title">S.Links & List <span class="rank-badge">RANK 5</span></h2>
-        <div class="p3-list-item">
-          <div>
-            <div class="item-label">01. EDUCATION</div>
-            <div class="item-sub">University / Computer Science Major</div>
+      'y2': `
+        <h2 class="card-title">
+          Chapter 2: Growing Closer 🍁
+          <span class="chapter-badge">2022 – 2023</span>
+        </h2>
+        <p style="font-size: 1.1rem; line-height: 1.6;">
+          Building memories, finding our favorite spots, and growing closer every day.
+        </p>
+        <div class="polaroid-grid">
+          <div class="polaroid">
+            <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
+            <p class="polaroid-caption">Goth x Dreadhead 🖤</p>
           </div>
-          <span class="rank-badge">RANK 5</span>
-        </div>
-        <div class="p3-list-item">
-          <div>
-            <div class="item-label">02. SKILLS</div>
-            <div class="item-sub">HTML, CSS, JavaScript, React, UI Design</div>
-          </div>
-          <span class="rank-badge">RANK 4</span>
-        </div>
-        <div class="p3-list-item">
-          <div>
-            <div class="item-label">03. PROJECTS</div>
-            <div class="item-sub">Web Development & Custom Persona Interfaces</div>
-          </div>
-          <span class="rank-badge">RANK 3</span>
         </div>
       `,
-      'equip': `
-        <h2 class="card-title">Equip / Socials <span class="rank-badge">LINKED</span></h2>
-        <p style="font-size: 0.95rem; margin-bottom: 15px;">Equipped Social Channels & Contact Outlets:</p>
-        
-        <a href="https://twitch.tv" target="_blank" class="equip-slot">
-          <span class="equip-type">SLOT 1</span>
-          <div>
-            <div style="font-weight: 800;">TWITCH</div>
-            <div style="font-size: 0.85rem; opacity: 0.8;">@your_handle</div>
-          </div>
-        </a>
-
-        <a href="https://instagram.com" target="_blank" class="equip-slot">
-          <span class="equip-type">SLOT 2</span>
-          <div>
-            <div style="font-weight: 800;">INSTAGRAM</div>
-            <div style="font-size: 0.85rem; opacity: 0.8;">@your_handle</div>
-          </div>
-        </a>
-
-        <a href="https://tiktok.com" target="_blank" class="equip-slot">
-          <span class="equip-type">SLOT 3</span>
-          <div>
-            <div style="font-weight: 800;">TIKTOK</div>
-            <div style="font-size: 0.85rem; opacity: 0.8;">@your_handle</div>
-          </div>
-        </a>
-      `,
-      'side': `
-        <h2 class="card-title">Side Projects <span class="rank-badge">NEW</span></h2>
-        <div class="p3-list-item">
-          <div>
-            <div class="item-label">Persona 3 Reload UI Web Template</div>
-            <div class="item-sub">Interactive portfolio website built with pure HTML/CSS.</div>
+      'y3': `
+        <h2 class="card-title">
+          Chapter 3: Routines & Trips ☕
+          <span class="chapter-badge">2023 – 2024</span>
+        </h2>
+        <p style="font-size: 1.1rem; line-height: 1.6;">
+          Cozy routines, holiday trips, and celebrating every small milestone.
+        </p>
+        <div class="polaroid-grid">
+          <div class="polaroid">
+            <img src="IMG_5218.jpeg" alt="Our First Holiday">
+            <p class="polaroid-caption">Our First Holiday ✈️</p>
           </div>
         </div>
-        <div class="p3-list-item">
-          <div>
-            <div class="item-label">Custom Web App</div>
-            <div class="item-sub">Interactive gaming hub & tracker.</div>
+      `,
+      'y4': `
+        <h2 class="card-title">
+          Chapter 4: Adventures 🎃
+          <span class="chapter-badge">2024 – 2025</span>
+        </h2>
+        <p style="font-size: 1.1rem; line-height: 1.6;">
+          Road trips, endless laughs, and special occasions.
+        </p>
+        <div class="polaroid-grid">
+          <div class="polaroid">
+            <img src="DSC_0071 2.jpeg" alt="Prom King & Queen">
+            <p class="polaroid-caption">Prom King & Queen 👑</p>
+          </div>
+        </div>
+      `,
+      'y5': `
+        <h2 class="card-title">
+          Chapter 5: Half a Decade 🎉
+          <span class="chapter-badge">2025 – 2026</span>
+        </h2>
+        <p style="font-size: 1.1rem; line-height: 1.6;">
+          Celebrating 5 whole years together—and so many more chapters to come!
+        </p>
+        <div class="polaroid-grid">
+          <div class="polaroid">
+            <img src="IMG_1850 2.jpeg" alt="Halloween">
+            <p class="polaroid-caption">Halloween 🎃</p>
           </div>
         </div>
       `
     };
 
-    // DYNAMIC TAB SWITCHING
+    // DYNAMIC P3-STYLE TRANSITION LOGIC
     function switchTab(tabKey, btn) {
       document.querySelectorAll('.menu-item').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const card = document.getElementById('displayCard');
+      // Reset animation class to re-trigger slide-in
       card.style.animation = 'none';
-      card.offsetHeight; // Trigger reflow
+      card.offsetHeight; // trigger reflow
       card.style.animation = 'p3SlideIn 0.35s ease-out';
-      
-      card.innerHTML = contentData[tabKey];
+
+      card.innerHTML = yearData[tabKey];
     }
 
-    // AUDIO PLAYBACK CONTROL
+    // AUDIO PLAYBACK
     function toggleMusic() {
-      const audio = document.getElementById('p3Bgm');
+      const audio = document.getElementById('bgm');
       const btn = document.getElementById('musicBtn');
+
       if (audio.paused) {
-        audio.play().catch(e => console.log("Audio blocked until click"));
-        btn.innerText = "⏸ PAUSE BGM";
-        btn.style.background = "#00d0ff";
+        audio.play().catch(e => console.log("Audio waiting for user click"));
+        btn.innerText = "⏸ Pause BGM";
+        btn.style.background = "#c85a32";
       } else {
         audio.pause();
-        btn.innerText = "▶ BGM: Mass Destruction";
-        btn.style.background = "#ffd000";
+        btn.innerText = "🎵 Play Autumn BGM";
+        btn.style.background = "#e09f3e";
       }
     }
   </script>
