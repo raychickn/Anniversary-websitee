@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autumn Scrapbook | Zozo & Raychickn</title>
+  <title>Valentine's & Autumn Scrapbook | Zozo & Raychickn</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
@@ -34,85 +35,72 @@
     }
 
     /* =========================================================
-       1. CAT QUESTION INTRO OVERLAY
+       1. VALENTINE INTRO OVERLAY (CONVERTED FROM YOUR REACT CODE)
        ========================================================= */
-    #cat-intro-overlay {
+    #val-intro-overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(248, 241, 229, 0.98);
-      backdrop-filter: blur(8px);
+      background: #ffe6ea;
       z-index: 9999;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 20px;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.6s ease;
     }
 
-    .cat-box {
-      background: var(--paper-white);
-      border: 3px dashed var(--autumn-terracotta);
-      border-radius: 24px;
-      padding: 30px 20px;
-      max-width: 380px;
-      width: 90%;
-      box-shadow: 0 10px 25px rgba(200, 90, 50, 0.15);
-      position: relative;
+    .val-gif {
+      max-width: 250px;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 12px;
     }
 
-    .cat-box::before {
-      content: '';
-      position: absolute;
-      top: -12px; left: 50%;
-      transform: translateX(-50%) rotate(-1deg);
-      width: 100px; height: 22px;
-      background: var(--tape-color);
-      border-radius: 4px;
-    }
-
-    .cat-emoji {
-      font-size: 4.5rem;
-      margin-bottom: 10px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .question-title {
-      font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      color: var(--autumn-terracotta);
-      margin: 10px 0 20px 0;
-      line-height: 1.1;
-    }
-
-    .btn-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      min-height: 60px;
-    }
-
-    .choice-btn {
-      font-family: 'Montserrat', sans-serif;
+    .val-title {
+      font-size: 2rem;
       font-weight: 800;
-      font-size: 1rem;
-      border: none;
-      border-radius: 20px;
-      padding: 10px 22px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      color: #d63384;
+      margin: 10px 0 20px 0;
     }
 
-    .btn-yes { background: var(--autumn-terracotta); color: #ffffff; }
-    .btn-no { background: #efe3d3; color: var(--autumn-brown); border: 2px solid var(--autumn-amber); }
+    .val-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-yes-val {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
+    }
+
+    .btn-no-val {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
 
     /* =========================================================
-       2. MAIN WEBSITE LAYOUT (FLEXBOX / GRID)
+       2. AUTUMN SCRAPBOOK MAIN WEBSITE
        ========================================================= */
     .header-logo {
       padding: 20px 35px 10px 35px;
@@ -132,7 +120,6 @@
       font-size: 2.8rem;
     }
 
-    /* 3-COLUMN MAIN WRAPPER */
     .main-wrapper {
       display: flex;
       gap: 20px;
@@ -171,7 +158,7 @@
       box-shadow: 6px 6px 0px var(--autumn-leaf);
     }
 
-    /* CENTER SCRAPBOOK CARD */
+    /* CENTER CARD */
     .content-area {
       flex: 1;
       height: 100%;
@@ -255,7 +242,7 @@
       margin-bottom: 0;
     }
 
-    /* RIGHT PANEL (STATS & NOTES) */
+    /* RIGHT PANEL */
     .right-panel {
       flex: 0 0 260px;
       display: flex;
@@ -309,7 +296,6 @@
 
     .audio-btn:hover { transform: scale(1.02); }
 
-    /* MOBILE RESPONSIVE ADAPTATION */
     @media (max-width: 850px) {
       body { overflow-y: auto; height: auto; }
       .main-wrapper { flex-direction: column; height: auto; }
@@ -320,15 +306,14 @@
 </head>
 <body>
 
-  <!-- 1. CAT QUESTION INTRO -->
-  <div id="cat-intro-overlay">
-    <div class="cat-box">
-      <div class="cat-emoji" id="catEmoji">🐱</div>
-      <div class="question-title" id="questionText">Do you love me? 🥺</div>
-      
-      <div class="btn-container">
-        <button class="choice-btn btn-yes" id="yesBtn" onclick="handleYes()">Yes! 💕</button>
-        <button class="choice-btn btn-no" id="noBtn" onclick="handleNo()">No 🙈</button>
+  <!-- 1. VALENTINE INTRO OVERLAY -->
+  <div id="val-intro-overlay">
+    <div id="intro-screen">
+      <img id="valGif" class="val-gif" src="https://media.tenor.com/VIChDQ6ejRQAAAAj/jumping-bear-hearts-no-png.gif" alt="Jumping Bear">
+      <h1 class="val-title" id="valTitle">Will you be my Valentine? 💘</h1>
+      <div class="val-buttons">
+        <button class="btn-yes-val" id="yesBtn" onclick="handleYes()">Yes</button>
+        <button class="btn-no-val" id="noBtn" onclick="handleNo()">No</button>
       </div>
     </div>
   </div>
@@ -377,15 +362,13 @@
       </div>
     </main>
 
-    <!-- RIGHT PANEL (STATS & MUSIC CONTROLLER) -->
+    <!-- RIGHT PANEL -->
     <aside class="right-panel">
-      <!-- MUSIC CARD -->
       <div class="right-card">
         <div class="right-card-title">Atmosphere 🍁</div>
         <button class="audio-btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Autumn BGM</button>
       </div>
 
-      <!-- STATS CARD -->
       <div class="right-card">
         <div class="right-card-title">Our Stats 📊</div>
         <div class="stat-row"><span>Days Together:</span> <span class="stat-val">1,826 Days</span></div>
@@ -394,7 +377,6 @@
         <div class="stat-row"><span>Status:</span> <span class="stat-val">Going Strong 💕</span></div>
       </div>
 
-      <!-- NOTE CARD -->
       <div class="right-card" style="flex: 1;">
         <div class="right-card-title">Note to Zozo 💌</div>
         <p style="font-family: 'Caveat', cursive; font-size: 1.2rem; margin: 0; line-height: 1.3;">
@@ -406,62 +388,61 @@
   </div>
 
   <script>
-    /* CAT INTRO LOGIC */
-    let noClickCount = 0;
-    let stage = 1;
+    /* =========================================================
+       CONVERTED REACT CODE LOGIC
+       ========================================================= */
+    const NO_PHRASES = [
+      "No 💔",
+      "Pretty please? 🥺",
+      "But we'd be so cute together! 💕",
+      "One more chance, pookie?",
+      "Don't break my heart :(",
+      "What about a maybe?",
+      "Please don't do this to me, I'm fragile",
+    ];
+
+    const secondImg = "https://media.tenor.com/f1xnRxTRxLAAAAAj/bears-with-kisses-bg.gif";
+
+    let noClicks = 0;
 
     function handleNo() {
-      const noBtn = document.getElementById('noBtn');
+      noClicks++;
       const yesBtn = document.getElementById('yesBtn');
-      const catEmoji = document.getElementById('catEmoji');
+      const noBtn = document.getElementById('noBtn');
 
-      noClickCount++;
+      // Calculate yes button size: (noClicks * 20) + 16
+      const yesButtonSize = (noClicks * 20) + 16;
+      yesBtn.style.fontSize = yesButtonSize + 'px';
 
-      let newScale = Math.max(0, 1 - (noClickCount * 0.25));
-      noBtn.style.transform = `scale(${newScale})`;
-      yesBtn.style.transform = `scale(${1 + (noClickCount * 0.15)})`;
-
-      if (noClickCount === 1) catEmoji.innerText = '😿';
-      if (noClickCount === 2) catEmoji.innerText = '😿';
-      if (noClickCount >= 3) {
-        catEmoji.innerText = '😭';
-        noBtn.style.display = 'none';
-      }
+      // Update No Button text from phrase array
+      const phraseIndex = Math.min(noClicks - 1, NO_PHRASES.length - 1);
+      noBtn.innerText = NO_PHRASES[phraseIndex];
     }
 
     function handleYes() {
-      const questionText = document.getElementById('questionText');
-      const catEmoji = document.getElementById('catEmoji');
-      const yesBtn = document.getElementById('yesBtn');
-      const noBtn = document.getElementById('noBtn');
+      const valGif = document.getElementById('valGif');
+      const introScreen = document.getElementById('intro-screen');
 
-      if (stage === 1) {
-        stage = 2;
-        catEmoji.innerText = '😻';
-        questionText.innerText = 'Really?? 🥹💖';
-        yesBtn.innerText = 'YES REALLY! 🥰';
-        
-        noClickCount = 0;
-        noBtn.style.display = 'inline-block';
-        noBtn.style.transform = 'scale(1)';
-        noBtn.innerText = 'Wait... 😅';
-        yesBtn.style.transform = 'scale(1)';
+      // Update image and text to winning screen
+      valGif.src = secondImg;
+      introScreen.innerHTML = `
+        <img src="${secondImg}" class="val-gif" />
+        <div style="font-size: 48px; color: #ff4d6d; font-weight: bold; margin-bottom: 20px;">
+          Yay!!! 💖🎉
+        </div>
+      `;
 
-      } else if (stage === 2) {
-        catEmoji.innerText = '😸🎉';
-        questionText.innerText = 'Yay! Welcome to our scrapbook! 💕';
-        yesBtn.style.display = 'none';
-        noBtn.style.display = 'none';
-
-        setTimeout(() => {
-          const overlay = document.getElementById('cat-intro-overlay');
-          overlay.style.opacity = '0';
-          setTimeout(() => overlay.style.display = 'none', 500);
-        }, 1000);
-      }
+      // Wait 1.8 seconds then slide the intro off to show the Autumn Scrapbook!
+      setTimeout(() => {
+        const overlay = document.getElementById('val-intro-overlay');
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.style.display = 'none', 600);
+      }, 1800);
     }
 
-    /* YEAR DATA */
+    /* =========================================================
+       SCRAPBOOK & TAB LOGIC
+       ========================================================= */
     const yearData = {
       'y1': `
         <h2 class="card-title">
@@ -544,7 +525,6 @@
       `
     };
 
-    /* TAB SWITCHING */
     function switchTab(tabKey, btn) {
       document.querySelectorAll('.menu-item').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -553,7 +533,6 @@
       card.innerHTML = yearData[tabKey];
     }
 
-    /* AUDIO PLAYBACK */
     function toggleMusic() {
       const audio = document.getElementById('bgm');
       const btn = document.getElementById('musicBtn');
