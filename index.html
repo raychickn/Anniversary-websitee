@@ -3,408 +3,471 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Memory Scrapbook 💕</title>
-  <!-- Google Fonts: Handwritten & Soft Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <title>chickn's P3 | P3R Portfolio</title>
+  <!-- Google Fonts: Anton (Impactful Slanted Titles) & Rajdhani (Futuristic UI font) -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
   
   <style>
+    /* ==========================================
+       PERSONA 3 RELOAD COLOR PALETTE & VARIABLES
+       ========================================== */
     :root {
-      --bg-pink: #ffe6ea;
-      --card-pink: #fff0f3;
-      --accent-rose: #ff4d6d;
-      --text-dark: #590d22;
-      --tape-color: rgba(255, 182, 193, 0.6);
+      --p3-blue: #0044cc;
+      --p3-cyan: #00d0ff;
+      --p3-dark-blue: #001845;
+      --p3-yellow: #ffd000;
+      --p3-white: #ffffff;
+      --p3-black: #050a14;
     }
 
     * { box-sizing: border-box; }
 
     body {
-      font-family: 'Nunito', sans-serif;
-      background-color: var(--bg-pink);
-      color: var(--text-dark);
       margin: 0;
-      padding: 20px 10px 80px 10px;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: var(--p3-black);
+      font-family: 'Rajdhani', sans-serif;
+      overflow: hidden;
+      color: var(--p3-white);
+      user-select: none;
+      /* P3 Dynamic Water/Ocean Blue Wave Gradient Background */
+      background: linear-gradient(135deg, var(--p3-black) 0%, #001f54 40%, #00429d 80%, var(--p3-cyan) 100%);
+    }
+
+    /* ==========================================
+       BACKGROUND WAVE GRAPHICS & WATER PATTERNS
+       ========================================== */
+    .bg-wave {
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 65vw;
+      height: 120vh;
+      background: rgba(0, 208, 255, 0.2);
+      transform: rotate(-15deg);
+      border-left: 8px solid var(--p3-white);
+      box-shadow: -15px 0 30px rgba(0, 208, 255, 0.4);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .bg-wave-secondary {
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 50vw;
+      height: 80vh;
+      background: rgba(0, 68, 204, 0.3);
+      transform: rotate(12deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Character Artwork Overlay (As seen on right side of video) */
+    .character-art {
+      position: absolute;
+      right: 2vw;
+      bottom: 0;
+      height: 92vh;
+      width: 45vw;
+      object-fit: contain;
+      object-position: bottom right;
+      z-index: 2;
+      filter: drop-shadow(-10px 10px 20px rgba(0, 0, 0, 0.8));
+      transition: all 0.4s ease-in-out;
+      pointer-events: none;
+    }
+
+    /* ==========================================
+       TOP LOGO / TITLE HEADER
+       ========================================== */
+    .header-logo {
+      position: absolute;
+      top: 25px;
+      left: 35px;
+      z-index: 10;
+      transform: skewX(-12deg) rotate(-2deg);
+    }
+
+    .header-logo h1 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 3.5rem;
+      color: var(--p3-white);
+      margin: 0;
+      text-transform: uppercase;
+      text-shadow: 4px 4px 0px var(--p3-blue), 8px 8px 0px var(--p3-black);
+      letter-spacing: 2px;
+    }
+
+    .header-logo span {
+      color: var(--p3-cyan);
+    }
+
+    /* ==========================================
+       MAIN NAVIGATION MENU (LEFT SIDE)
+       ========================================== */
+    .p3-menu {
+      position: absolute;
+      top: 150px;
+      left: 30px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      background-image: radial-gradient(#ffb3c1 1.5px, transparent 1.5px);
-      background-size: 24px 24px;
+      gap: 12px;
+      z-index: 10;
     }
 
-    /* =========================================================
-       1. CAT QUESTION INTERACTIVE INTRO
-       ========================================================= */
-    #cat-intro-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(255, 230, 234, 0.98);
-      backdrop-filter: blur(8px);
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      transition: opacity 0.5s ease;
-    }
-
-    .cat-box {
-      background: #ffffff;
-      border: 3px solid #ffb3c1;
-      border-radius: 24px;
-      padding: 30px 20px;
-      max-width: 360px;
-      width: 90%;
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.15);
-      position: relative;
-    }
-
-    .cat-emoji {
-      font-size: 4.5rem;
-      margin-bottom: 10px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .question-title {
-      font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      color: var(--accent-rose);
-      margin: 10px 0 20px 0;
-      line-height: 1.1;
-    }
-
-    .btn-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      min-height: 60px;
-    }
-
-    .choice-btn {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 20px;
-      padding: 10px 24px;
+    .menu-item {
+      background: var(--p3-dark-blue);
+      color: var(--p3-white);
+      border: 3px solid var(--p3-cyan);
+      padding: 12px 30px;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .btn-yes {
-      background: var(--accent-rose);
-      color: #ffffff;
-    }
-
-    .btn-no {
-      background: #ffe3e8;
-      color: var(--accent-rose);
-      border: 2px solid #ffb3c1;
-    }
-
-    /* =========================================================
-       2. SCRAPBOOK WEBSITE CONTENT
-       ========================================================= */
-    .scrapbook-cover {
-      width: 95%; max-width: 500px;
-      background: #ffffff;
-      border: 3px dashed #ffb3c1;
-      border-radius: 20px;
-      padding: 25px 15px;
-      margin-bottom: 25px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.1);
+      transform: skewX(-18deg);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
+      box-shadow: 6px 6px 0px var(--p3-black);
+      width: 260px;
     }
 
-    .scrapbook-cover::before {
+    .menu-item::before {
       content: '';
       position: absolute;
-      top: -12px; left: 50%;
-      transform: translateX(-50%) rotate(-1deg);
-      width: 110px; height: 24px;
-      background: var(--tape-color);
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--p3-cyan);
+      transition: all 0.2s ease;
+      z-index: -1;
+    }
+
+    .menu-item:hover, .menu-item.active {
+      color: var(--p3-black);
+      background: var(--p3-cyan);
+      border-color: var(--p3-white);
+      transform: skewX(-18deg) scale(1.08) translateX(15px);
+      box-shadow: 8px 8px 0px var(--p3-yellow);
+    }
+
+    .menu-item.active::after {
+      content: '▲';
+      position: absolute;
+      right: 15px;
+      color: var(--p3-black);
+      font-size: 1.2rem;
+      transform: rotate(90deg) skewX(18deg);
+    }
+
+    /* ==========================================
+       CENTRAL DISPLAY CARD (P3R UI BOX)
+       ========================================== */
+    .content-area {
+      position: absolute;
+      top: 130px;
+      left: 320px;
+      width: 38vw;
+      height: 72vh;
+      z-index: 10;
+    }
+
+    .p3-card {
+      background: rgba(5, 10, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border: 3px solid var(--p3-white);
+      border-left: 10px solid var(--p3-cyan);
+      padding: 30px;
+      height: 100%;
       border-radius: 4px;
+      transform: skewX(-6deg);
+      box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 208, 255, 0.2);
+      overflow-y: auto;
+      animation: p3SlideIn 0.35s ease-out;
     }
 
-    h1 {
-      font-family: 'Caveat', cursive;
-      font-size: 2.8rem;
-      color: var(--accent-rose);
-      margin: 5px 0;
+    @keyframes p3SlideIn {
+      from { opacity: 0; transform: skewX(-6deg) translateX(-30px); }
+      to { opacity: 1; transform: skewX(-6deg) translateX(0); }
     }
 
-    .page-card {
-      width: 95%; max-width: 500px;
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 15px rgba(255, 77, 109, 0.08);
-      border: 2px solid #fff0f3;
-    }
-
-    .page-header {
+    .card-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.2rem;
+      color: var(--p3-cyan);
+      text-transform: uppercase;
+      margin-top: 0;
+      letter-spacing: 2px;
+      border-bottom: 2px solid var(--p3-white);
+      padding-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      cursor: pointer;
     }
 
-    .page-title {
-      font-family: 'Caveat', cursive;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--accent-rose);
+    .rank-badge {
+      background: var(--p3-yellow);
+      color: var(--p3-black);
+      font-size: 1rem;
+      padding: 2px 12px;
+      transform: skewX(6deg);
+      font-weight: 800;
     }
 
-    .page-subtitle {
+    /* LIST & STATS LAYOUT (From Video 00:15) */
+    .p3-list-item {
+      background: rgba(0, 68, 204, 0.4);
+      border-left: 5px solid var(--p3-yellow);
+      margin: 12px 0;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .p3-list-item:hover {
+      background: rgba(0, 208, 255, 0.4);
+    }
+
+    .item-label {
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .item-sub {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* EQUIP / SOCIALS LAYOUT (From Video 00:25) */
+    .equip-slot {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid var(--p3-cyan);
+      margin-bottom: 12px;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      color: var(--p3-white);
+      transition: all 0.2s;
+    }
+
+    .equip-slot:hover {
+      background: var(--p3-cyan);
+      color: var(--p3-black);
+      transform: scale(1.02);
+    }
+
+    .equip-type {
+      background: var(--p3-black);
+      color: var(--p3-yellow);
+      padding: 4px 8px;
+      font-weight: 800;
       font-size: 0.85rem;
-      color: #a4133c;
+      text-transform: uppercase;
     }
 
-    .page-content {
-      display: none;
-      padding-top: 15px;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .polaroid-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .polaroid {
-      background: #ffffff;
-      padding: 8px 8px 18px 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      transform: rotate(-2deg);
-      border: 1px solid #ffe3e8;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .polaroid:nth-child(even) { transform: rotate(2deg); }
-
-    .polaroid img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .polaroid-caption {
-      font-family: 'Caveat', cursive;
+    /* AUDIO PLAYER BUTTON */
+    .audio-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 35px;
+      background: var(--p3-yellow);
+      color: var(--p3-black);
+      border: none;
+      padding: 10px 20px;
+      font-family: 'Anton', sans-serif;
       font-size: 1.1rem;
-      color: var(--text-dark);
-      margin-top: 6px;
-      margin-bottom: 0;
+      cursor: pointer;
+      transform: skewX(-12deg);
+      box-shadow: 4px 4px 0px var(--p3-black);
+      z-index: 100;
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. CAT QUESTION INTRO -->
-  <div id="cat-intro-overlay">
-    <div class="cat-box">
-      <div class="cat-emoji" id="catEmoji">🐱</div>
-      <div class="question-title" id="questionText">Do you love me? 🥺</div>
-      
-      <div class="btn-container">
-        <button class="choice-btn btn-yes" id="yesBtn" onclick="handleYes()">Yes! 💕</button>
-        <button class="choice-btn btn-no" id="noBtn" onclick="handleNo()">No 🙈</button>
-      </div>
-    </div>
+  <!-- BACKGROUND MUSIC PLAYER -->
+  <audio id="p3Bgm" loop src="p3r_music.mp3"></audio>
+
+  <!-- FLOATING AUDIO CONTROLLER -->
+  <button class="audio-btn" onclick="toggleMusic()" id="musicBtn">▶ BGM: Mass Destruction</button>
+
+  <!-- P3R BACKGROUND GRAPHICS -->
+  <div class="bg-wave"></div>
+  <div class="bg-wave-secondary"></div>
+
+  <!-- TITLE HEADER -->
+  <div class="header-logo">
+    <h1>Jade's <span>Persona</span></h1>
   </div>
 
-  <!-- 2. SCRAPBOOK MAIN WEBSITE -->
-  <div class="scrapbook-cover">
-    <h1>Zozo & Raychickn</h1>
-    <p style="font-weight: 700; color: #a4133c; margin: 0;">Our 5-Year Memory Scrapbook 💕</p>
-  </div>
+  <!-- CHARACTER ARTWORK (Updates dynamically or can be replaced with your own artwork) -->
+  <!-- ALERT: Replace character.png with your own transparent character artwork file -->
+  <img src="https://i.ibb.co/31pvhS0/makoto-p3r.png" alt="Persona Character" class="character-art" id="characterArt">
 
-  <!-- CHAPTER 1 -->
-  <div class="page-card">
-    <div class="page-header" onclick="togglePage('year1')">
-      <div>
-        <div class="page-title">Year 1 (2021-2022)</div>
-        <div class="page-subtitle">Where it all started...</div>
-      </div>
-      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
-    </div>
+  <!-- LEFT NAVIGATION MENU -->
+  <nav class="p3-menu">
+    <button class="menu-item active" onclick="switchTab('about', this)">About Me</button>
+    <button class="menu-item" onclick="switchTab('list', this)">S.Links / List</button>
+    <button class="menu-item" onclick="switchTab('equip', this)">Equip / Socials</button>
+    <button class="menu-item" onclick="switchTab('side', this)">Side Projects</button>
+  </nav>
 
-    <div class="page-content" id="year1">
-      <div class="polaroid-grid">
-        <div class="polaroid">
-          <img src="IMG_9733.jpeg" alt="First Drink">
-          <p class="polaroid-caption">Our First Drink 🍹</p>
+  <!-- CENTRAL CONTENT CARD -->
+  <main class="content-area">
+    <div class="p3-card" id="displayCard">
+      <!-- DEFAULT CONTENT: ABOUT ME (STATUS SCREEN) -->
+      <h2 class="card-title">
+        Status 
+        <span class="rank-badge">LV. 21</span>
+      </h2>
+      <p style="font-size: 1.1rem; line-height: 1.6;">
+        <b>ARCHETYPE:</b> Full-Stack Developer & Persona Enthusiast.<br>
+        Welcome to my portfolio! Built in the style of Persona 3 Reload's iconic blue UI.
+      </p>
+
+      <div class="p3-list-item">
+        <div>
+          <div class="item-label">Fun Fact About Me</div>
+          <div class="item-sub">Spent 8 hours coding this Persona 3 website interface!</div>
         </div>
-        <div class="polaroid">
-          <img src="IMG_2467.jpeg" alt="First Time Over">
-          <p class="polaroid-caption">First Time Over 🏠</p>
-        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- CHAPTER 2 -->
-  <div class="page-card">
-    <div class="page-header" onclick="togglePage('year2')">
-      <div>
-        <div class="page-title">Year 2 (2022-2023)</div>
-        <div class="page-subtitle">Making memories together</div>
-      </div>
-      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
-    </div>
-
-    <div class="page-content" id="year2">
-      <div class="polaroid-grid">
-        <div class="polaroid">
-          <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
-          <p class="polaroid-caption">Goth x Dreadhead 🖤</p>
+      <div class="p3-list-item">
+        <div>
+          <div class="item-label">Wired Fact About Me</div>
+          <div class="item-sub">Can memorize video game UI layouts after seeing them once.</div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- CHAPTER 3 -->
-  <div class="page-card">
-    <div class="page-header" onclick="togglePage('year3')">
-      <div>
-        <div class="page-title">Year 3 (2023-2024)</div>
-        <div class="page-subtitle">Our favorite routines & holidays</div>
-      </div>
-      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
-    </div>
-
-    <div class="page-content" id="year3">
-      <div class="polaroid-grid">
-        <div class="polaroid">
-          <img src="IMG_5218.jpeg" alt="First Holiday">
-          <p class="polaroid-caption">Our First Holiday ✈️</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CHAPTER 4 -->
-  <div class="page-card">
-    <div class="page-header" onclick="togglePage('year4')">
-      <div>
-        <div class="page-title">Year 4 (2024-2025)</div>
-        <div class="page-subtitle">Laughs and adventures</div>
-      </div>
-      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
-    </div>
-
-    <div class="page-content" id="year4">
-      <div class="polaroid-grid">
-        <div class="polaroid">
-          <img src="DSC_0071 2.jpeg" alt="Prom King & Queen">
-          <p class="polaroid-caption">Prom King & Queen 👑</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CHAPTER 5 -->
-  <div class="page-card">
-    <div class="page-header" onclick="togglePage('year5')">
-      <div>
-        <div class="page-title">Year 5 (2025-2026)</div>
-        <div class="page-subtitle">Half a decade together!</div>
-      </div>
-      <span style="color: var(--accent-rose); font-weight:bold;">🌸</span>
-    </div>
-
-    <div class="page-content" id="year5">
-      <div class="polaroid-grid">
-        <div class="polaroid">
-          <img src="IMG_1850 2.jpeg" alt="Halloween">
-          <p class="polaroid-caption">Halloween 🎃</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </main>
 
   <script>
-    /* CAT QUESTION LOGIC */
-    let noClickCount = 0;
-    let stage = 1; // Stage 1 = Initial Question, Stage 2 = "Really?"
-
-    function handleNo() {
-      const noBtn = document.getElementById('noBtn');
-      const yesBtn = document.getElementById('yesBtn');
-      const catEmoji = document.getElementById('catEmoji');
-
-      noClickCount++;
-
-      // Make "No" button shrink
-      let newScale = Math.max(0, 1 - (noClickCount * 0.25));
-      noBtn.style.transform = `scale(${newScale})`;
-
-      // Make "Yes" button grow slightly
-      yesBtn.style.transform = `scale(${1 + (noClickCount * 0.15)})`;
-
-      // Change cat emoji to sadder ones
-      if (noClickCount === 1) catEmoji.innerText = '😿';
-      if (noClickCount === 2) catEmoji.innerText = '😿';
-      if (noClickCount >= 3) {
-        catEmoji.innerText = '😭';
-        noBtn.style.display = 'none'; // Shrinks to nothing & vanishes!
-      }
-    }
-
-    function handleYes() {
-      const questionText = document.getElementById('questionText');
-      const catEmoji = document.getElementById('catEmoji');
-      const yesBtn = document.getElementById('yesBtn');
-      const noBtn = document.getElementById('noBtn');
-
-      if (stage === 1) {
-        // First "Yes" click -> Ask "Really?"
-        stage = 2;
-        catEmoji.innerText = '😻';
-        questionText.innerText = 'Really?? 🥹💖';
-        yesBtn.innerText = 'YES REALLY! 🥰';
+    // DATA DATABASE FOR DIFFERENT SECTIONS
+    const contentData = {
+      'about': `
+        <h2 class="card-title">Status <span class="rank-badge">LV. 21</span></h2>
+        <p style="font-size: 1.1rem; line-height: 1.6;">
+          <b>ARCHETYPE:</b> Full-Stack Developer & Persona Enthusiast.<br>
+          Welcome to my portfolio! Built in the style of Persona 3 Reload's iconic blue UI.
+        </p>
+        <div class="p3-list-item">
+          <div>
+            <div class="item-label">Fun Fact About Me</div>
+            <div class="item-sub">Spent 8 hours coding this Persona 3 website interface!</div>
+          </div>
+        </div>
+        <div class="p3-list-item">
+          <div>
+            <div class="item-label">Wired Fact About Me</div>
+            <div class="item-sub">Can memorize video game UI layouts after seeing them once.</div>
+          </div>
+        </div>
+      `,
+      'list': `
+        <h2 class="card-title">S.Links & List <span class="rank-badge">RANK 5</span></h2>
+        <div class="p3-list-item">
+          <div>
+            <div class="item-label">01. EDUCATION</div>
+            <div class="item-sub">University / Computer Science Major</div>
+          </div>
+          <span class="rank-badge">RANK 5</span>
+        </div>
+        <div class="p3-list-item">
+          <div>
+            <div class="item-label">02. SKILLS</div>
+            <div class="item-sub">HTML, CSS, JavaScript, React, UI Design</div>
+          </div>
+          <span class="rank-badge">RANK 4</span>
+        </div>
+        <div class="p3-list-item">
+          <div>
+            <div class="item-label">03. PROJECTS</div>
+            <div class="item-sub">Web Development & Custom Persona Interfaces</div>
+          </div>
+          <span class="rank-badge">RANK 3</span>
+        </div>
+      `,
+      'equip': `
+        <h2 class="card-title">Equip / Socials <span class="rank-badge">LINKED</span></h2>
+        <p style="font-size: 0.95rem; margin-bottom: 15px;">Equipped Social Channels & Contact Outlets:</p>
         
-        // Reset "No" button for Stage 2
-        noClickCount = 0;
-        noBtn.style.display = 'inline-block';
-        noBtn.style.transform = 'scale(1)';
-        noBtn.innerText = 'Wait... 😅';
-        yesBtn.style.transform = 'scale(1)';
+        <a href="https://twitch.tv" target="_blank" class="equip-slot">
+          <span class="equip-type">SLOT 1</span>
+          <div>
+            <div style="font-weight: 800;">TWITCH</div>
+            <div style="font-size: 0.85rem; opacity: 0.8;">@your_handle</div>
+          </div>
+        </a>
 
-      } else if (stage === 2) {
-        // Second "Yes" click -> Happy Cat & Unlock Site!
-        catEmoji.innerText = '😸🎉';
-        questionText.innerText = 'Yay! Welcome to our scrapbook! 💕';
-        yesBtn.style.display = 'none';
-        noBtn.style.display = 'none';
+        <a href="https://instagram.com" target="_blank" class="equip-slot">
+          <span class="equip-type">SLOT 2</span>
+          <div>
+            <div style="font-weight: 800;">INSTAGRAM</div>
+            <div style="font-size: 0.85rem; opacity: 0.8;">@your_handle</div>
+          </div>
+        </a>
 
-        // Fade out overlay after 1 second
-        setTimeout(() => {
-          const overlay = document.getElementById('cat-intro-overlay');
-          overlay.style.opacity = '0';
-          setTimeout(() => overlay.style.display = 'none', 500);
-        }, 1000);
-      }
+        <a href="https://tiktok.com" target="_blank" class="equip-slot">
+          <span class="equip-type">SLOT 3</span>
+          <div>
+            <div style="font-weight: 800;">TIKTOK</div>
+            <div style="font-size: 0.85rem; opacity: 0.8;">@your_handle</div>
+          </div>
+        </a>
+      `,
+      'side': `
+        <h2 class="card-title">Side Projects <span class="rank-badge">NEW</span></h2>
+        <div class="p3-list-item">
+          <div>
+            <div class="item-label">Persona 3 Reload UI Web Template</div>
+            <div class="item-sub">Interactive portfolio website built with pure HTML/CSS.</div>
+          </div>
+        </div>
+        <div class="p3-list-item">
+          <div>
+            <div class="item-label">Custom Web App</div>
+            <div class="item-sub">Interactive gaming hub & tracker.</div>
+          </div>
+        </div>
+      `
+    };
+
+    // DYNAMIC TAB SWITCHING
+    function switchTab(tabKey, btn) {
+      document.querySelectorAll('.menu-item').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const card = document.getElementById('displayCard');
+      card.style.animation = 'none';
+      card.offsetHeight; // Trigger reflow
+      card.style.animation = 'p3SlideIn 0.35s ease-out';
+      
+      card.innerHTML = contentData[tabKey];
     }
 
-    /* SCRAPBOOK EXPAND FUNCTION */
-    function togglePage(id) {
-      const content = document.getElementById(id);
-      content.style.display = content.style.display === "block" ? "none" : "block";
+    // AUDIO PLAYBACK CONTROL
+    function toggleMusic() {
+      const audio = document.getElementById('p3Bgm');
+      const btn = document.getElementById('musicBtn');
+      if (audio.paused) {
+        audio.play().catch(e => console.log("Audio blocked until click"));
+        btn.innerText = "⏸ PAUSE BGM";
+        btn.style.background = "#00d0ff";
+      } else {
+        audio.pause();
+        btn.innerText = "▶ BGM: Mass Destruction";
+        btn.style.background = "#ffd000";
+      }
     }
   </script>
-
 </body>
 </html>
