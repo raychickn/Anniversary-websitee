@@ -667,7 +667,7 @@
     <!-- CENTER CONTENT -->
     <main class="content-area">
       <div class="scrapbook-card" id="displayCard">
-        <!-- RENDERED BY JAVASCRIPT ON LOAD -->
+        <!-- Rendered automatically on load -->
       </div>
     </main>
 
@@ -682,14 +682,14 @@
         <div class="right-card-title">Our Stats 📊</div>
         <div class="stat-row"><span>Days Together:</span> <span class="stat-val">1,826 Days</span></div>
         <div class="stat-row"><span>Anniversary:</span> <span class="stat-val">5th Year</span></div>
-        <div class="stat-row"><span>Favorite Food:</span> <span class="stat-val">Chicken Burger</span></div>
+        <div class="stat-row"><span>Favorite Duo:</span> <span class="stat-val">Zozo & Ray</span></div>
         <div class="stat-row"><span>Status:</span> <span class="stat-val">Going Strong 💕</span></div>
       </div>
 
       <div class="right-card" style="flex: 1;">
         <div class="right-card-title">Note to Zozo 💌</div>
         <p style="font-family: 'Rajdhani', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--autumn-brown); margin: 0; line-height: 1.4;">
-          Thank you for 5 amazing years. I thought for 5 years I would change it up a bit and make a semi permanent archive of us, our memories and everything! Just ignore how none of the pictures reallt correlate with the date or titles...
+          Thank you for 5 amazing years. Tap through each chapter on the left to walk through our memories!
         </p>
       </div>
     </aside>
@@ -756,7 +756,7 @@
     }
 
     /* =========================================================
-       MODAL EXPAND LOGIC (SAFE LOOKUP - NO STRING BREAKING)
+       YOUR EXACT MEMORY DATA
        ========================================================= */
     const memoriesData = {
       'y1': {
@@ -791,6 +791,9 @@
       }
     };
 
+    /* =========================================================
+       MODAL EXPAND POP-UP LOGIC
+       ========================================================= */
     function openMemoryModalByKey(key) {
       const data = memoriesData[key];
       if (!data) return;
@@ -812,7 +815,7 @@
     }
 
     /* =========================================================
-       SCRAPBOOK CHAPTER DATA (ALL 5 CHAPTERS FIXED)
+       SCRAPBOOK CHAPTER DATA (DYNAMIC RENDERING)
        ========================================================= */
     const yearData = {
       'y1': `
@@ -828,15 +831,13 @@
           <div class="memory-entry" onclick="openMemoryModalByKey('y1')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
-                <img src="IMG_2467.jpeg" alt="First Time Coming Over">
+                <img src="${memoriesData['y1'].img}" alt="${memoriesData['y1'].title}">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">First Time Coming Over</h3>
-              <p class="memory-caption">Making memories at home 🏠</p>
-              <p class="memory-desc">
-                The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.
-              </p>
+              <h3 class="memory-post-title">${memoriesData['y1'].title}</h3>
+              <p class="memory-caption">${memoriesData['y1'].caption}</p>
+              <p class="memory-desc">${memoriesData['y1'].desc}</p>
             </div>
           </div>
         </div>
@@ -854,15 +855,13 @@
           <div class="memory-entry" onclick="openMemoryModalByKey('y2')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
-                <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
+                <img src="${memoriesData['y2'].img}" alt="${memoriesData['y2'].title}">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">Goth x Dreadhead</h3>
-              <p class="memory-caption">Our iconic look together 🖤</p>
-              <p class="memory-desc">
-                One of my absolute favorite photos of us! The energy was unmatched and everyone knew we were the best duo.
-              </p>
+              <h3 class="memory-post-title">${memoriesData['y2'].title}</h3>
+              <p class="memory-caption">${memoriesData['y2'].caption}</p>
+              <p class="memory-desc">${memoriesData['y2'].desc}</p>
             </div>
           </div>
         </div>
@@ -880,15 +879,13 @@
           <div class="memory-entry" onclick="openMemoryModalByKey('y3')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
-                <img src="IMG_5218.jpeg" alt="Our First Holiday">
+                <img src="${memoriesData['y3'].img}" alt="${memoriesData['y3'].title}">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">Our First Holiday</h3>
-              <p class="memory-caption">Traveling the world with you ✈️</p>
-              <p class="memory-desc">
-                Taking our first big trip away! Exploring new sights, trying new foods, and making unforgettable memories away from home.
-              </p>
+              <h3 class="memory-post-title">${memoriesData['y3'].title}</h3>
+              <p class="memory-caption">${memoriesData['y3'].caption}</p>
+              <p class="memory-desc">${memoriesData['y3'].desc}</p>
             </div>
           </div>
         </div>
@@ -906,15 +903,13 @@
           <div class="memory-entry" onclick="openMemoryModalByKey('y4')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
-                <img src="DSC_0071 2.jpeg" alt="Prom King & Queen">
+                <img src="${memoriesData['y4'].img}" alt="${memoriesData['y4'].title}">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">Prom King & Queen</h3>
-              <p class="memory-caption">Dressed up to the nines 👑</p>
-              <p class="memory-desc">
-                Looking back at how far we have come together. We really clean up well!
-              </p>
+              <h3 class="memory-post-title">${memoriesData['y4'].title}</h3>
+              <p class="memory-caption">${memoriesData['y4'].caption}</p>
+              <p class="memory-desc">${memoriesData['y4'].desc}</p>
             </div>
           </div>
         </div>
@@ -932,15 +927,13 @@
           <div class="memory-entry" onclick="openMemoryModalByKey('y5')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
-                <img src="IMG_1850 2.jpeg" alt="Halloween">
+                <img src="${memoriesData['y5'].img}" alt="${memoriesData['y5'].title}">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">Halloween</h3>
-              <p class="memory-caption">5 Years Strong & Still Having Fun 🎃</p>
-              <p class="memory-desc">
-                Half a decade of love, laughter, and support. Thank you for being the best partner I could ever ask for!
-              </p>
+              <h3 class="memory-post-title">${memoriesData['y5'].title}</h3>
+              <p class="memory-caption">${memoriesData['y5'].caption}</p>
+              <p class="memory-desc">${memoriesData['y5'].desc}</p>
             </div>
           </div>
         </div>
