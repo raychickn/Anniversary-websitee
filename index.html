@@ -323,7 +323,7 @@
   </div>
 
   <!-- BGM AUDIO -->
-  <audio id="bgm" loop src="autumn_music.mp3"></audio>
+  <audio id="bgm"The Cure - Pictures Of You.mp3"></audio>
 
   <!-- HEADER TITLE -->
   <div class="header-logo">
@@ -423,27 +423,41 @@
       noBtn.innerText = NO_PHRASES[phraseIndex];
     }
 
-    function handleYes() {
-      const valGif = document.getElementById('valGif');
-      const introScreen = document.getElementById('intro-screen');
+   function handleYes() {
+  const valGif = document.getElementById('valGif');
+  const introScreen = document.getElementById('intro-screen');
+  const audio = document.getElementById('bgm');
+  const btn = document.getElementById('musicBtn');
 
-      // Update image and text to winning screen
-      valGif.src = secondImg;
-      introScreen.innerHTML = `
-        <img src="${secondImg}" class="val-gif" />
-        <div style="font-size: 48px; color: #ff4d6d; font-weight: bold; margin-bottom: 20px;">
-          Yay!!! 💖🎉
-        </div>
-      `;
+  // 1. START PLAYING MUSIC AUTOMATICALLY
+  if (audio) {
+    audio.play().then(() => {
+      // Update the button text to show it's playing
+      if (btn) {
+        btn.innerText = "⏸ Pause BGM";
+        btn.style.background = "#c85a32";
+      }
+    }).catch(err => {
+      console.log("Audio playback error:", err);
+    });
+  }
 
-      // Wait 1.8 seconds then slide the intro off to show the Autumn Scrapbook!
-      setTimeout(() => {
-        const overlay = document.getElementById('val-intro-overlay');
-        overlay.style.opacity = '0';
-        setTimeout(() => overlay.style.display = 'none', 600);
-      }, 1800);
-    }
+  // 2. SHOW WINNING SCREEN (BEARS CELEBRATING)
+  valGif.src = secondImg;
+  introScreen.innerHTML = `
+    <img src="${secondImg}" class="val-gif" />
+    <div style="font-size: 48px; color: #ff4d6d; font-weight: bold; margin-bottom: 20px;">
+      Yay!!! 💖🎉
+    </div>
+  `;
 
+  // 3. FADE OUT INTRO & REVEAL MAIN WEBSITE
+  setTimeout(() => {
+    const overlay = document.getElementById('val-intro-overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 600);
+  }, 1800);
+}
     /* =========================================================
        SCRAPBOOK & TAB LOGIC
        ========================================================= */
