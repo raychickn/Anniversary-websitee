@@ -147,12 +147,19 @@
       height: calc(100vh - 90px);
     }
 
-    /* LEFT MENU */
-    .p3-menu {
-      flex: 0 0 230px;
+    /* LEFT CONTAINER (BUTTONS + WHY I MADE THIS BOX) */
+    .left-container {
+      flex: 0 0 240px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 15px;
+      height: 100%;
+    }
+
+    .p3-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .menu-item {
@@ -161,7 +168,7 @@
       border: 3px solid var(--autumn-terracotta);
       padding: 10px 18px;
       font-family: 'Patrick Hand', cursive;
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: 700;
       cursor: pointer;
       transform: skewX(-8deg);
@@ -176,6 +183,35 @@
       background: var(--autumn-terracotta);
       transform: skewX(-8deg) scale(1.05) translateX(10px);
       box-shadow: 6px 6px 0px var(--autumn-leaf);
+    }
+
+    /* WHY I MADE THIS BOX (BELOW BUTTONS) */
+    .about-site-card {
+      background: var(--paper-white);
+      border: 2px dashed var(--autumn-amber);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .about-site-title {
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1.45rem;
+      color: var(--autumn-terracotta);
+      margin-top: 0;
+      margin-bottom: 6px;
+      border-bottom: 1px dashed var(--autumn-amber);
+      padding-bottom: 4px;
+    }
+
+    .about-site-text {
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      color: var(--autumn-brown);
+      margin: 0;
+      line-height: 1.35;
     }
 
     /* CENTER CARD */
@@ -237,7 +273,7 @@
     }
 
     /* =========================================================
-       POST LAYOUT: PHOTO ON LEFT + STORY/CAPTION ON RIGHT
+       POST LAYOUT: FULL-WIDTH PHOTO ON LEFT + CAPTION ON RIGHT
        ========================================================= */
     .memory-list {
       display: flex;
@@ -251,22 +287,24 @@
       border-radius: 16px;
       padding: 16px;
       display: flex;
-      gap: 20px;
-      align-items: center;
+      gap: 22px;
+      align-items: stretch;
       box-shadow: 0 6px 16px rgba(0,0,0,0.04);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       position: relative;
     }
 
     .memory-entry:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: 0 10px 22px rgba(200, 90, 50, 0.12);
     }
 
-    /* Left Photo Container */
+    /* Left Photo Container (Takes up entire left 50% block) */
     .memory-photo-side {
-      flex: 0 0 200px;
-      text-align: center;
+      flex: 0 0 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .memory-polaroid {
@@ -275,32 +313,33 @@
       border: 1px solid #e8dec8;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-      transform: rotate(-2deg);
-      transition: transform 0.2s;
-    }
-
-    .memory-entry:hover .memory-polaroid {
-      transform: rotate(0deg) scale(1.03);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .memory-polaroid img {
       width: 100%;
-      height: 170px;
+      height: 280px;
       object-fit: cover;
       border-radius: 6px;
     }
 
-    /* Right Text/Caption Container */
+    /* Right Text/Caption Container (Takes up remaining 50%) */
     .memory-text-side {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      justify-content: center;
+      gap: 8px;
+      padding: 5px 10px;
     }
 
     .memory-post-title {
       font-family: 'Patrick Hand', cursive;
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       font-weight: 700;
       color: var(--autumn-terracotta);
       margin: 0;
@@ -317,15 +356,15 @@
 
     .memory-desc {
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.95rem;
-      line-height: 1.5;
+      font-size: 0.98rem;
+      line-height: 1.55;
       color: var(--autumn-brown);
       margin: 4px 0 0 0;
     }
 
     /* RIGHT PANEL */
     .right-panel {
-      flex: 0 0 260px;
+      flex: 0 0 250px;
       display: flex;
       flex-direction: column;
       gap: 15px;
@@ -380,9 +419,10 @@
     @media (max-width: 900px) {
       body { overflow-y: auto; height: auto; }
       .main-wrapper { flex-direction: column; height: auto; }
-      .p3-menu { flex-direction: row; flex-wrap: wrap; flex: none; width: 100%; }
+      .left-container { flex: none; width: 100%; }
+      .p3-menu { flex-direction: row; flex-wrap: wrap; }
       .memory-entry { flex-direction: column; }
-      .memory-photo-side { width: 100%; max-width: 250px; }
+      .memory-photo-side { flex: none; width: 100%; }
       .right-panel { flex: none; width: 100%; }
     }
   </style>
@@ -412,21 +452,31 @@
   <!-- 3-COLUMN MAIN LAYOUT -->
   <div class="main-wrapper">
 
-    <!-- LEFT MENU WITH NEW CHAPTER NAMES -->
-    <nav class="p3-menu">
-      <button class="menu-item active" onclick="switchTab('y1', this)">1. Instagram DMs</button>
-      <button class="menu-item" onclick="switchTab('y2', this)">2. Growing Closer</button>
-      <button class="menu-item" onclick="switchTab('y3', this)">3. Fear</button>
-      <button class="menu-item" onclick="switchTab('y4', this)">4. Adventures</button>
-      <button class="menu-item" onclick="switchTab('y5', this)">5. Half a Decade</button>
-    </nav>
+    <!-- LEFT CONTAINER (BUTTONS + WHY I MADE THIS BOX) -->
+    <div class="left-container">
+      <nav class="p3-menu">
+        <button class="menu-item active" onclick="switchTab('y1', this)">1. Instagram DMs</button>
+        <button class="menu-item" onclick="switchTab('y2', this)">2. Growing Closer</button>
+        <button class="menu-item" onclick="switchTab('y3', this)">3. Fear</button>
+        <button class="menu-item" onclick="switchTab('y4', this)">4. Adventures</button>
+        <button class="menu-item" onclick="switchTab('y5', this)">5. Half a Decade</button>
+      </nav>
+
+      <!-- WHY I MADE THIS SECTION -->
+      <div class="about-site-card">
+        <div class="about-site-title">Why I Made This 🍂</div>
+        <p class="about-site-text">
+          I wanted to create a special place dedicated to our 5 years together. Every chapter represents a milestone of us growing, laughing, and building our story together!
+        </p>
+      </div>
+    </div>
 
     <!-- CENTER CONTENT -->
     <main class="content-area">
       <div class="scrapbook-card" id="displayCard">
         <!-- YEAR 1 DEFAULT CONTENT -->
         <h2 class="card-title">
-          Chapter 1: Instagram DMs 🍂
+          Chapter 1: Instagram DMs
           <span class="chapter-badge">2021 – 2022</span>
         </h2>
         <p class="chapter-intro">
@@ -434,23 +484,6 @@
         </p>
 
         <div class="memory-list">
-          <!-- ENTRY 1 -->
-          <div class="memory-entry">
-            <div class="memory-photo-side">
-              <div class="memory-polaroid">
-                <img src="IMG_9733.jpeg" alt="Our First Drink">
-              </div>
-            </div>
-            <div class="memory-text-side">
-              <h3 class="memory-post-title">Our First Drink 🍹</h3>
-              <p class="memory-caption">"The start of something special..."</p>
-              <p class="memory-desc">
-                We grabbed our first drink together! I remember being so excited (and lowkey nervous), but talking with you felt so effortless right from the start.
-              </p>
-            </div>
-          </div>
-
-          <!-- ENTRY 2 -->
           <div class="memory-entry">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
@@ -531,7 +564,6 @@
       const audio = document.getElementById('bgm');
       const btn = document.getElementById('musicBtn');
 
-      // Play music
       if (audio) {
         audio.play().then(() => {
           if (btn) {
@@ -543,7 +575,6 @@
         });
       }
 
-      // Celebration Screen
       valGif.src = secondImg;
       introScreen.innerHTML = `
         <img src="${secondImg}" class="val-gif" />
@@ -552,7 +583,6 @@
         </div>
       `;
 
-      // Fade out intro
       setTimeout(() => {
         const overlay = document.getElementById('val-intro-overlay');
         overlay.style.opacity = '0';
@@ -561,12 +591,12 @@
     }
 
     /* =========================================================
-       SCRAPBOOK CHAPTER DATA (UPDATED CHAPTER NAMES)
+       SCRAPBOOK CHAPTER DATA (TITLES WITHOUT EMOJIS, BODY WITH EMOJIS)
        ========================================================= */
     const yearData = {
       'y1': `
         <h2 class="card-title">
-          Chapter 1: Instagram DMs 🍂
+          Chapter 1: Instagram DMs
           <span class="chapter-badge">2021 – 2022</span>
         </h2>
         <p class="chapter-intro">
@@ -574,21 +604,6 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry">
-            <div class="memory-photo-side">
-              <div class="memory-polaroid">
-                <img src="IMG_9733.jpeg" alt="Our First Drink">
-              </div>
-            </div>
-            <div class="memory-text-side">
-              <h3 class="memory-post-title">Our First Drink 🍹</h3>
-              <p class="memory-caption">"The start of something special..."</p>
-              <p class="memory-desc">
-                We grabbed our first drink together! I remember being so excited (and lowkey nervous), but talking with you felt so effortless right from the start.
-              </p>
-            </div>
-          </div>
-
           <div class="memory-entry">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
@@ -607,7 +622,7 @@
       `,
       'y2': `
         <h2 class="card-title">
-          Chapter 2: Growing Closer 🍁
+          Chapter 2: Growing Closer
           <span class="chapter-badge">2022 – 2023</span>
         </h2>
         <p class="chapter-intro">
@@ -633,7 +648,7 @@
       `,
       'y3': `
         <h2 class="card-title">
-          Chapter 3: Fear ☕
+          Chapter 3: Fear
           <span class="chapter-badge">2023 – 2024</span>
         </h2>
         <p class="chapter-intro">
@@ -659,7 +674,7 @@
       `,
       'y4': `
         <h2 class="card-title">
-          Chapter 4: Adventures 🎃
+          Chapter 4: Adventures
           <span class="chapter-badge">2024 – 2025</span>
         </h2>
         <p class="chapter-intro">
@@ -685,7 +700,7 @@
       `,
       'y5': `
         <h2 class="card-title">
-          Chapter 5: Half a Decade 🎉
+          Chapter 5: Half a Decade
           <span class="chapter-badge">2025 – 2026</span>
         </h2>
         <p class="chapter-intro">
