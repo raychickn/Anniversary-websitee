@@ -21,25 +21,25 @@
     * { box-sizing: border-box; }
 
     body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-  font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden;
-  color: var(--autumn-brown);
-  user-select: none;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      color: var(--autumn-brown);
+      user-select: none;
 
-  /* --- CUSTOM BACKGROUND IMAGE SETTINGS --- */
-  background-image: url('IMG_0720.jpeg'); /* Your image file name */
-  background-size: cover;                     /* Stretches to fill entire screen */
-  background-position: center;                /* Centers the image */
-  background-repeat: no-repeat;               /* Prevents repeating tiles */
-  background-attachment: fixed;              /* Keeps image locked while scrolling */
-}
+      /* --- CUSTOM BACKGROUND IMAGE SETTINGS --- */
+      background-image: url('IMG_0720.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
 
     /* =========================================================
-       1. VALENTINE INTRO OVERLAY (CONVERTED FROM YOUR REACT CODE)
+       1. VALENTINE INTRO OVERLAY
        ========================================================= */
     #val-intro-overlay {
       position: fixed;
@@ -310,7 +310,7 @@
 </head>
 <body>
 
-  <!-- 1.  INTRO OVERLAY -->
+  <!-- 1. INTRO OVERLAY -->
   <div id="val-intro-overlay">
     <div id="intro-screen">
       <img id="valGif" class="val-gif" src="https://media.tenor.com/VIChDQ6ejRQAAAAj/jumping-bear-hearts-no-png.gif" alt="Jumping Bear">
@@ -322,8 +322,8 @@
     </div>
   </div>
 
-  <!-- BGM AUDIO -->
-  <audio id="bgm"The Cure - Pictures Of You.mp3"></audio>
+  <!-- BGM AUDIO (FIXED SYNTAX) -->
+  <audio id="bgm" loop preload="auto" playsinline src="The Cure - Pictures Of You.mp3"></audio>
 
   <!-- HEADER TITLE -->
   <div class="header-logo">
@@ -414,50 +414,48 @@
       const yesBtn = document.getElementById('yesBtn');
       const noBtn = document.getElementById('noBtn');
 
-      // Calculate yes button size: (noClicks * 20) + 16
       const yesButtonSize = (noClicks * 20) + 16;
       yesBtn.style.fontSize = yesButtonSize + 'px';
 
-      // Update No Button text from phrase array
       const phraseIndex = Math.min(noClicks - 1, NO_PHRASES.length - 1);
       noBtn.innerText = NO_PHRASES[phraseIndex];
     }
 
-   function handleYes() {
-  const valGif = document.getElementById('valGif');
-  const introScreen = document.getElementById('intro-screen');
-  const audio = document.getElementById('bgm');
-  const btn = document.getElementById('musicBtn');
+    function handleYes() {
+      const valGif = document.getElementById('valGif');
+      const introScreen = document.getElementById('intro-screen');
+      const audio = document.getElementById('bgm');
+      const btn = document.getElementById('musicBtn');
 
-  // 1. START PLAYING MUSIC AUTOMATICALLY
-  if (audio) {
-    audio.play().then(() => {
-      // Update the button text to show it's playing
-      if (btn) {
-        btn.innerText = "⏸ Pause BGM";
-        btn.style.background = "#c85a32";
+      // 1. PLAY MUSIC ON TAP
+      if (audio) {
+        audio.play().then(() => {
+          if (btn) {
+            btn.innerText = "⏸ Pause BGM";
+            btn.style.background = "#c85a32";
+          }
+        }).catch(err => {
+          console.warn("Audio playback issue:", err);
+        });
       }
-    }).catch(err => {
-      console.log("Audio playback error:", err);
-    });
-  }
 
-  // 2. SHOW WINNING SCREEN (BEARS CELEBRATING)
-  valGif.src = secondImg;
-  introScreen.innerHTML = `
-    <img src="${secondImg}" class="val-gif" />
-    <div style="font-size: 48px; color: #ff4d6d; font-weight: bold; margin-bottom: 20px;">
-      Yay!!! 💖🎉
-    </div>
-  `;
+      // 2. CELEBRATION SCREEN
+      valGif.src = secondImg;
+      introScreen.innerHTML = `
+        <img src="${secondImg}" class="val-gif" />
+        <div style="font-size: 48px; color: #ff4d6d; font-weight: bold; margin-bottom: 20px;">
+          Yay!!! 💖🎉
+        </div>
+      `;
 
-  // 3. FADE OUT INTRO & REVEAL MAIN WEBSITE
-  setTimeout(() => {
-    const overlay = document.getElementById('val-intro-overlay');
-    overlay.style.opacity = '0';
-    setTimeout(() => overlay.style.display = 'none', 600);
-  }, 1800);
-}
+      // 3. FADE OUT INTRO TO SHOW MAIN SCRAPBOOK
+      setTimeout(() => {
+        const overlay = document.getElementById('val-intro-overlay');
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.style.display = 'none', 600);
+      }, 1800);
+    }
+
     /* =========================================================
        SCRAPBOOK & TAB LOGIC
        ========================================================= */
