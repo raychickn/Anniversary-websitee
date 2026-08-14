@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Scrapbook | Zozo & Raychickn</title>
-  <!-- Google Fonts: Shrikhand (Retro Aesthetic Title), Anton (Persona Headers), Rajdhani (Sleek UI text) -->
+  <title>Zozo & Raychickn</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@600;700;800&family=Shrikhand&display=swap" rel="stylesheet">
   
   <style>
@@ -76,12 +76,6 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       transform: skewX(-6deg);
-      animation: gentleFloat 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes gentleFloat {
-      from { transform: skewX(-6deg) translateY(0px); }
-      to { transform: skewX(-6deg) translateY(-8px); }
     }
 
     .val-buttons {
@@ -128,7 +122,7 @@
     }
 
     /* =========================================================
-       2. TOP LOGO (GREEN SHIMMER)
+       2. TOP LOGO (STILL, NO SWAYING)
        ========================================================= */
     .header-logo {
       padding: 15px 35px 5px 35px;
@@ -137,30 +131,11 @@
     .header-logo h1 {
       font-family: 'Shrikhand', cursive;
       font-size: 2.8rem;
+      color: var(--autumn-terracotta);
       margin: 0;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       display: inline-block;
-      background: linear-gradient(45deg, var(--autumn-terracotta), var(--autumn-amber), var(--autumn-leaf));
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(2px 2px 0px rgba(27, 67, 50, 0.2));
-      animation: autumnShimmer 4s ease infinite alternate;
-    }
-
-    @keyframes autumnShimmer {
-      0% { background-position: 0% 50%; transform: rotate(-1deg); }
-      100% { background-position: 100% 50%; transform: rotate(1deg); }
-    }
-
-    .header-logo span {
-      font-family: 'Anton', sans-serif;
-      color: var(--autumn-brown);
-      -webkit-text-fill-color: var(--autumn-brown);
-      font-size: 2.2rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-left: 8px;
+      text-shadow: 2px 2px 0px rgba(27, 67, 50, 0.15);
     }
 
     /* =========================================================
@@ -672,9 +647,9 @@
     </div>
   </div>
 
-  <!-- HEADER TITLE -->
+  <!-- HEADER TITLE (CLEAN, STILL & SHARP) -->
   <div class="header-logo">
-    <h1>Zozo & Raychickn </span></h1>
+    <h1>Zozo & Raychickn</h1>
   </div>
 
   <!-- 3-COLUMN MAIN LAYOUT -->
