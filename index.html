@@ -21,18 +21,22 @@
     * { box-sizing: border-box; }
 
     body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      width: 100vw;
-      background-color: var(--autumn-bg);
-      font-family: 'Montserrat', sans-serif;
-      overflow-x: hidden;
-      color: var(--autumn-brown);
-      user-select: none;
-      background-image: radial-gradient(#d8c7b5 1.5px, transparent 1.5px);
-      background-size: 22px 22px;
-    }
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  color: var(--autumn-brown);
+  user-select: none;
+
+  /* --- CUSTOM BACKGROUND IMAGE SETTINGS --- */
+  background-image: url('IMG_0720.jpeg'); /* Your image file name */
+  background-size: cover;                     /* Stretches to fill entire screen */
+  background-position: center;                /* Centers the image */
+  background-repeat: no-repeat;               /* Prevents repeating tiles */
+  background-attachment: fixed;              /* Keeps image locked while scrolling */
+}
 
     /* =========================================================
        1. VALENTINE INTRO OVERLAY (CONVERTED FROM YOUR REACT CODE)
