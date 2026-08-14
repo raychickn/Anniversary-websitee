@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autumn Scrapbook | Zozo & Raychickn</title>
-  <!-- Google Fonts: Persona 3/4/5 UI Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet">
+  <title> Scrapbook | Zozo & Raychickn</title>
+  <!-- Google Fonts: Shrikhand (Retro Aesthetic Title), Anton (Persona Headers), Rajdhani (Sleek UI text) -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@600;700;800&family=Shrikhand&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -73,7 +73,12 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       transform: skewX(-6deg);
-      animation: personaShake 2s infinite ease-in-out;
+      animation: gentleFloat 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentleFloat {
+      from { transform: skewX(-6deg) translateY(0px); }
+      to { transform: skewX(-6deg) translateY(-8px); }
     }
 
     .val-buttons {
@@ -100,6 +105,10 @@
       transition: all 0.2s ease;
     }
 
+    .btn-yes-val:hover {
+      transform: skewX(-8deg) scale(1.05);
+    }
+
     .btn-no-val {
       font-size: 1.1rem;
       padding: 10px 24px;
@@ -116,48 +125,44 @@
     }
 
     /* =========================================================
-       2. PERSONA SHAKE & FLASH KEYFRAMES
-       ========================================================= */
-    @keyframes personaShake {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      20% { transform: translate(-2px, 1px) rotate(-1deg); }
-      40% { transform: translate(2px, -1px) rotate(1.5deg); }
-      60% { transform: translate(-1px, -2px) rotate(-0.5deg); }
-      80% { transform: translate(2px, 1px) rotate(1deg); }
-      100% { transform: translate(0, 0) rotate(0deg); }
-    }
-
-    .persona-shake:hover {
-      animation: personaShake 0.2s infinite linear;
-      color: var(--autumn-leaf);
-    }
-
-    /* =========================================================
-       3. MAIN SCRAPBOOK LAYOUT (PERSONA STYLED)
+       2. TOP LOGO (NEW RETRO-MODERN FONT & SHIMMER)
        ========================================================= */
     .header-logo {
       padding: 15px 35px 5px 35px;
     }
 
     .header-logo h1 {
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Shrikhand', cursive;
       font-size: 2.8rem;
-      color: var(--autumn-terracotta);
       margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 3px 3px 0px var(--autumn-amber), 6px 6px 0px rgba(0,0,0,0.15);
+      letter-spacing: 1px;
       display: inline-block;
-      transform: skewX(-8deg) rotate(-1deg);
+      background: linear-gradient(45deg, var(--autumn-terracotta), var(--autumn-amber), var(--autumn-leaf));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(2px 2px 0px rgba(74, 51, 42, 0.2));
+      animation: autumnShimmer 4s ease infinite alternate;
+    }
+
+    @keyframes autumnShimmer {
+      0% { background-position: 0% 50%; transform: rotate(-1deg); }
+      100% { background-position: 100% 50%; transform: rotate(1deg); }
     }
 
     .header-logo span {
       font-family: 'Anton', sans-serif;
-      color: var(--autumn-leaf);
-      font-size: 3rem;
-      letter-spacing: 1px;
+      color: var(--autumn-brown);
+      -webkit-text-fill-color: var(--autumn-brown);
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-left: 8px;
     }
 
+    /* =========================================================
+       3. MAIN SCRAPBOOK LAYOUT
+       ========================================================= */
     .main-wrapper {
       display: flex;
       gap: 20px;
@@ -191,7 +196,7 @@
       text-transform: uppercase;
       cursor: pointer;
       transform: skewX(-10deg);
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 4px 4px 0px var(--autumn-amber);
       border-radius: 6px;
       text-align: left;
@@ -213,6 +218,11 @@
       flex: 1;
       overflow-y: auto;
       transform: skewX(-2deg);
+      transition: transform 0.3s ease;
+    }
+
+    .about-site-card:hover {
+      transform: skewX(0deg);
     }
 
     .about-site-title {
@@ -320,13 +330,13 @@
       align-items: stretch;
       box-shadow: 0 6px 16px rgba(0,0,0,0.04);
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       position: relative;
     }
 
     .memory-entry:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 12px 24px rgba(200, 90, 50, 0.16);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 26px rgba(200, 90, 50, 0.18);
       border-color: var(--autumn-amber);
       border-left-color: var(--autumn-leaf);
     }
@@ -341,6 +351,11 @@
       letter-spacing: 1px;
       color: var(--autumn-amber);
       opacity: 0.9;
+      transition: color 0.2s;
+    }
+
+    .memory-entry:hover::after {
+      color: var(--autumn-leaf);
     }
 
     .memory-photo-side {
@@ -361,6 +376,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .memory-entry:hover .memory-polaroid {
+      transform: scale(1.02);
     }
 
     .memory-polaroid img {
@@ -388,6 +408,11 @@
       margin: 0;
       line-height: 1.1;
       transform: skewX(-4deg);
+      transition: color 0.2s;
+    }
+
+    .memory-entry:hover .memory-post-title {
+      color: var(--autumn-leaf);
     }
 
     .memory-caption {
@@ -550,6 +575,11 @@
       padding: 16px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.04);
       transform: skewX(-2deg);
+      transition: transform 0.3s ease;
+    }
+
+    .right-card:hover {
+      transform: skewX(0deg);
     }
 
     .right-card-title {
@@ -631,7 +661,7 @@
       <div class="modal-body">
         <img src="" id="modalImg" class="modal-img" alt="Memory Photo">
         <div class="modal-info">
-          <h2 class="modal-title persona-shake" id="modalTitle">Title</h2>
+          <h2 class="modal-title" id="modalTitle">Title</h2>
           <p class="modal-caption" id="modalCaption">Caption</p>
           <p class="modal-desc" id="modalDesc">Description</p>
         </div>
@@ -641,7 +671,7 @@
 
   <!-- HEADER TITLE -->
   <div class="header-logo">
-    <h1>Zozo & Raychickn <span>Scrapbook</span></h1>
+    <h1>Zozo & Raychickn </span></h1>
   </div>
 
   <!-- 3-COLUMN MAIN LAYOUT -->
@@ -685,7 +715,7 @@
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title persona-shake">First Time Coming Over</h3>
+              <h3 class="memory-post-title">First Time Coming Over</h3>
               <p class="memory-caption">Making memories at home 🏠</p>
               <p class="memory-desc">
                 The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.
@@ -803,7 +833,7 @@
     }
 
     /* =========================================================
-       SCRAPBOOK CHAPTER DATA (PERSONA FONTS APPLIED)
+       SCRAPBOOK CHAPTER DATA
        ========================================================= */
     const yearData = {
       'y1': `
@@ -823,7 +853,7 @@
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title persona-shake">First Time Coming Over</h3>
+              <h3 class="memory-post-title">First Time Coming Over</h3>
               <p class="memory-caption">Making memories at home 🏠</p>
               <p class="memory-desc">
                 The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.
@@ -849,7 +879,7 @@
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title persona-shake">Goth x Dreadhead</h3>
+              <h3 class="memory-post-title">Goth x Dreadhead</h3>
               <p class="memory-caption">Our iconic look together 🖤</p>
               <p class="memory-desc">
                 One of my absolute favorite photos of us! The energy was unmatched and everyone knew we were the best duo.
@@ -875,7 +905,7 @@
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title persona-shake">Our First Holiday</h3>
+              <h3 class="memory-post-title">Our First Holiday</h3>
               <p class="memory-caption">Traveling the world with you ✈️</p>
               <p class="memory-desc">
                 Taking our first big trip away! Exploring new sights, trying new foods, and making unforgettable memories away from home.
@@ -901,7 +931,7 @@
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title persona-shake">Prom King & Queen</h3>
+              <h3 class="memory-post-title">Prom King & Queen</h3>
               <p class="memory-caption">Dressed up to the nines 👑</p>
               <p class="memory-desc">
                 Looking back at how far we have come together. We really clean up well!
@@ -927,7 +957,7 @@
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title persona-shake">Halloween</h3>
+              <h3 class="memory-post-title">Halloween</h3>
               <p class="memory-caption">5 Years Strong & Still Having Fun 🎃</p>
               <p class="memory-desc">
                 Half a decade of love, laughter, and support. Thank you for being the best partner I could ever ask for!
