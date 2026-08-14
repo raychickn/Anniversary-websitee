@@ -9,16 +9,16 @@
   
   <style>
     /* =========================================================
-       GREEN COLOR PALETTE & VARIABLES
+       PINK COLOR PALETTE & VARIABLES
        ========================================================= */
     :root {
-      --autumn-bg: #f8f1e5;
-      --autumn-terracotta: #2d6a4f;  /* Deep Forest Green */
-      --autumn-amber: #52b788;       /* Sage / Mint Green */
-      --autumn-brown: #1b4332;       /* Dark Emerald Green */
-      --autumn-leaf: #40916c;        /* Jade Green */
-      --tape-color: rgba(82, 183, 136, 0.45); /* Soft Green Washi Tape */
-      --paper-white: #fffdf9;
+      --autumn-bg: #fff0f3;
+      --autumn-terracotta: #ff4d6d;  /* Deep Rose Pink */
+      --autumn-amber: #ff758f;       /* Soft Blush Pink */
+      --autumn-brown: #590d22;       /* Deep Berry Pink / Text */
+      --autumn-leaf: #c9184a;        /* Crimson Rose Accent */
+      --tape-color: rgba(255, 182, 193, 0.55); /* Soft Pink Washi Tape */
+      --paper-white: #fffdfd;
     }
 
     * { box-sizing: border-box; }
@@ -70,7 +70,7 @@
     .val-title {
       font-size: 2.4rem;
       font-weight: 800;
-      color: #d63384;
+      color: #ff4d6d;
       margin: 10px 0 20px 0;
       font-family: 'Anton', sans-serif;
       letter-spacing: 1.5px;
@@ -89,7 +89,7 @@
     .btn-yes-val {
       font-size: 1.3rem;
       padding: 10px 28px;
-      background-color: #28a745;
+      background-color: #ff4d6d;
       color: white;
       border: none;
       border-radius: 8px;
@@ -98,7 +98,7 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       transform: skewX(-8deg);
-      box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
       transition: all 0.2s ease;
     }
 
@@ -109,8 +109,8 @@
     .btn-no-val {
       font-size: 1.1rem;
       padding: 10px 24px;
-      background-color: #dc3545;
-      color: white;
+      background-color: #ffb3c1;
+      color: #590d22;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -118,11 +118,11 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       transform: skewX(-8deg);
-      box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
     }
 
     /* =========================================================
-       2. TOP LOGO (STILL, NO SWAYING)
+       2. TOP LOGO
        ========================================================= */
     .header-logo {
       padding: 15px 35px 5px 35px;
@@ -135,7 +135,7 @@
       margin: 0;
       letter-spacing: 1.5px;
       display: inline-block;
-      text-shadow: 2px 2px 0px rgba(27, 67, 50, 0.15);
+      text-shadow: 2px 2px 0px rgba(89, 13, 34, 0.15);
     }
 
     /* =========================================================
@@ -187,41 +187,36 @@
       box-shadow: 6px 6px 0px var(--autumn-leaf);
     }
 
-    .about-site-card {
+    /* SIDEBAR GIF CARD */
+    .side-gif-card {
       background: var(--paper-white);
-      border: 2px dashed var(--autumn-amber);
+      border: 2px solid var(--autumn-amber);
       border-radius: 12px;
-      padding: 14px;
+      padding: 10px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.04);
       flex: 1;
-      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
       transform: skewX(-2deg);
-      transition: transform 0.3s ease;
+      overflow: hidden;
     }
 
-    .about-site-card:hover {
-      transform: skewX(0deg);
+    .side-gif-card::before {
+      content: '';
+      position: absolute;
+      top: -8px; left: 30%;
+      width: 40%; height: 16px;
+      background: var(--tape-color);
+      z-index: 2;
     }
 
-    .about-site-title {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.3rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--autumn-terracotta);
-      margin-top: 0;
-      margin-bottom: 6px;
-      border-bottom: 2px solid var(--autumn-amber);
-      padding-bottom: 4px;
-    }
-
-    .about-site-text {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--autumn-brown);
-      margin: 0;
-      line-height: 1.4;
+    .side-gif-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     /* CENTER CARD */
@@ -236,7 +231,7 @@
       padding: 25px;
       height: 100%;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(27, 67, 50, 0.12);
+      box-shadow: 0 10px 30px rgba(89, 13, 34, 0.12);
       overflow-y: auto;
       position: relative;
     }
@@ -288,9 +283,7 @@
       color: var(--autumn-leaf);
     }
 
-    /* =========================================================
-       POST LAYOUT: CLICKABLE ENTRY CARD
-       ========================================================= */
+    /* POST LAYOUT */
     .memory-list {
       display: flex;
       flex-direction: column;
@@ -299,7 +292,7 @@
 
     .memory-entry {
       background: #ffffff;
-      border: 2px solid #d8f3dc;
+      border: 2px solid #ffe3e8;
       border-left: 6px solid var(--autumn-terracotta);
       border-radius: 12px;
       padding: 16px;
@@ -314,7 +307,7 @@
 
     .memory-entry:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 26px rgba(45, 106, 79, 0.18);
+      box-shadow: 0 12px 26px rgba(255, 77, 109, 0.2);
       border-color: var(--autumn-amber);
       border-left-color: var(--autumn-leaf);
     }
@@ -346,7 +339,7 @@
     .memory-polaroid {
       background: #fff;
       padding: 8px 8px 12px 8px;
-      border: 1px solid #d8f3dc;
+      border: 1px solid #ffe3e8;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.06);
       width: 100%;
@@ -423,7 +416,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(10, 25, 18, 0.85);
+      background: rgba(30, 5, 12, 0.85);
       backdrop-filter: blur(8px);
       z-index: 10000;
       display: none;
@@ -497,7 +490,7 @@
       max-height: 380px;
       object-fit: cover;
       border-radius: 8px;
-      border: 2px solid #d8f3dc;
+      border: 2px solid #ffe3e8;
       box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
 
@@ -596,7 +589,7 @@
       cursor: pointer;
       border-radius: 8px;
       transform: skewX(-6deg);
-      box-shadow: 0 3px 8px rgba(82, 183, 136, 0.3);
+      box-shadow: 0 3px 8px rgba(255, 117, 143, 0.3);
       transition: transform 0.2s;
     }
 
@@ -647,7 +640,7 @@
     </div>
   </div>
 
-  <!-- HEADER TITLE (CLEAN, STILL & SHARP) -->
+  <!-- HEADER TITLE -->
   <div class="header-logo">
     <h1>Zozo & Raychickn</h1>
   </div>
@@ -655,7 +648,7 @@
   <!-- 3-COLUMN MAIN LAYOUT -->
   <div class="main-wrapper">
 
-    <!-- LEFT CONTAINER (BUTTONS + WHY I MADE THIS BOX) -->
+    <!-- LEFT CONTAINER (BUTTONS + SIDEBAR GIF CARD) -->
     <div class="left-container">
       <nav class="p3-menu">
         <button class="menu-item active" onclick="switchTab('y1', this)">1. Instagram DMs</button>
@@ -665,11 +658,9 @@
         <button class="menu-item" onclick="switchTab('y5', this)">5. Half a Decade</button>
       </nav>
 
-      <div class="about-site-card">
-        <div class="about-site-title">Why I Made This 🌿</div>
-        <p class="about-site-text">
-          I wanted to create a special place dedicated to our 5 years together. Every chapter represents a milestone of us growing, laughing, and building our story together!
-        </p>
+      <!-- SIDEBAR GIF CONTAINER -->
+      <div class="side-gif-card">
+        <img src="https://media.tenor.com/P40e8wNq7JIAAAAj/cat-dance.gif" alt="Cute Sidebar Animation">
       </div>
     </div>
 
@@ -708,7 +699,7 @@
     <!-- RIGHT PANEL -->
     <aside class="right-panel">
       <div class="right-card">
-        <div class="right-card-title">Atmosphere 🌿</div>
+        <div class="right-card-title">Atmosphere 🌸</div>
         <button class="audio-btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Music</button>
       </div>
 
@@ -722,7 +713,7 @@
 
       <div class="right-card" style="flex: 1;">
         <div class="right-card-title">Note to Zozo 💌</div>
-        <p class="about-site-text">
+        <p style="font-family: 'Rajdhani', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--autumn-brown); margin: 0; line-height: 1.4;">
           Thank you for 5 amazing years. Tap through each chapter on the left to walk through our memories!
         </p>
       </div>
@@ -769,7 +760,7 @@
         audio.play().then(() => {
           if (btn) {
             btn.innerText = "⏸ Pause Music";
-            btn.style.background = "#2d6a4f";
+            btn.style.background = "#ff4d6d";
           }
         }).catch(err => console.warn("Audio playback issue:", err));
       }
@@ -961,11 +952,11 @@
       if (audio.paused) {
         audio.play().catch(e => console.log("Audio waiting for user click"));
         btn.innerText = "⏸ Pause Music";
-        btn.style.background = "#2d6a4f";
+        btn.style.background = "#ff4d6d";
       } else {
         audio.pause();
         btn.innerText = "🎵 Play Music";
-        btn.style.background = "#52b788";
+        btn.style.background = "#ff758f";
       }
     }
   </script>
