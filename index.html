@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Scrapbook | Zozo & Raychickn</title>
+  <title>Autumn Scrapbook | Zozo & Raychickn</title>
   <!-- Google Fonts: Shrikhand (Retro Aesthetic Title), Anton (Persona Headers), Rajdhani (Sleek UI text) -->
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@600;700;800&family=Shrikhand&display=swap" rel="stylesheet">
   
- :root {
+  <style>
+    /* =========================================================
+       GREEN COLOR PALETTE & VARIABLES
+       ========================================================= */
+    :root {
       --autumn-bg: #f8f1e5;
-      --autumn-terracotta: #2d6a4f;  /* Deep Forest Green (Main Headers & Accents) */
-      --autumn-amber: #52b788;       /* Sage / Mint Green (Borders & Highlights) */
-      --autumn-brown: #1b4332;       /* Dark Emerald Green (Main Body Text) */
-      --autumn-leaf: #40916c;        /* Jade Green (Captions & Accents) */
+      --autumn-terracotta: #2d6a4f;  /* Deep Forest Green */
+      --autumn-amber: #52b788;       /* Sage / Mint Green */
+      --autumn-brown: #1b4332;       /* Dark Emerald Green */
+      --autumn-leaf: #40916c;        /* Jade Green */
       --tape-color: rgba(82, 183, 136, 0.45); /* Soft Green Washi Tape */
       --paper-white: #fffdf9;
     }
@@ -124,7 +128,7 @@
     }
 
     /* =========================================================
-       2. TOP LOGO (NEW RETRO-MODERN FONT & SHIMMER)
+       2. TOP LOGO (GREEN SHIMMER)
        ========================================================= */
     .header-logo {
       padding: 15px 35px 5px 35px;
@@ -140,7 +144,7 @@
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(2px 2px 0px rgba(74, 51, 42, 0.2));
+      filter: drop-shadow(2px 2px 0px rgba(27, 67, 50, 0.2));
       animation: autumnShimmer 4s ease infinite alternate;
     }
 
@@ -257,7 +261,7 @@
       padding: 25px;
       height: 100%;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(74, 51, 42, 0.12);
+      box-shadow: 0 10px 30px rgba(27, 67, 50, 0.12);
       overflow-y: auto;
       position: relative;
     }
@@ -306,7 +310,7 @@
       font-weight: 700;
       line-height: 1.4;
       margin-bottom: 20px;
-      color: #63473c;
+      color: var(--autumn-leaf);
     }
 
     /* =========================================================
@@ -320,7 +324,7 @@
 
     .memory-entry {
       background: #ffffff;
-      border: 2px solid #f1e4d3;
+      border: 2px solid #d8f3dc;
       border-left: 6px solid var(--autumn-terracotta);
       border-radius: 12px;
       padding: 16px;
@@ -335,7 +339,7 @@
 
     .memory-entry:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 26px rgba(200, 90, 50, 0.18);
+      box-shadow: 0 12px 26px rgba(45, 106, 79, 0.18);
       border-color: var(--autumn-amber);
       border-left-color: var(--autumn-leaf);
     }
@@ -367,7 +371,7 @@
     .memory-polaroid {
       background: #fff;
       padding: 8px 8px 12px 8px;
-      border: 1px solid #e8dec8;
+      border: 1px solid #d8f3dc;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.06);
       width: 100%;
@@ -444,7 +448,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(15, 10, 5, 0.85);
+      background: rgba(10, 25, 18, 0.85);
       backdrop-filter: blur(8px);
       z-index: 10000;
       display: none;
@@ -518,7 +522,7 @@
       max-height: 380px;
       object-fit: cover;
       border-radius: 8px;
-      border: 2px solid #ecd8c4;
+      border: 2px solid #d8f3dc;
       box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
 
@@ -617,7 +621,7 @@
       cursor: pointer;
       border-radius: 8px;
       transform: skewX(-6deg);
-      box-shadow: 0 3px 8px rgba(224, 159, 62, 0.3);
+      box-shadow: 0 3px 8px rgba(82, 183, 136, 0.3);
       transition: transform 0.2s;
     }
 
@@ -670,7 +674,7 @@
 
   <!-- HEADER TITLE -->
   <div class="header-logo">
-    <h1>Zozo & Raychickn </span></h1>
+    <h1>Zozo & Raychickn <span>Scrapbook</span></h1>
   </div>
 
   <!-- 3-COLUMN MAIN LAYOUT -->
@@ -687,7 +691,7 @@
       </nav>
 
       <div class="about-site-card">
-        <div class="about-site-title">Why I Made This 🍂</div>
+        <div class="about-site-title">Why I Made This 🌿</div>
         <p class="about-site-text">
           I wanted to create a special place dedicated to our 5 years together. Every chapter represents a milestone of us growing, laughing, and building our story together!
         </p>
@@ -729,7 +733,7 @@
     <!-- RIGHT PANEL -->
     <aside class="right-panel">
       <div class="right-card">
-        <div class="right-card-title">Atmosphere 🍁</div>
+        <div class="right-card-title">Atmosphere 🌿</div>
         <button class="audio-btn" onclick="toggleMusic()" id="musicBtn">🎵 Play Music</button>
       </div>
 
@@ -790,7 +794,7 @@
         audio.play().then(() => {
           if (btn) {
             btn.innerText = "⏸ Pause Music";
-            btn.style.background = "#c85a32";
+            btn.style.background = "#2d6a4f";
           }
         }).catch(err => console.warn("Audio playback issue:", err));
       }
@@ -982,11 +986,11 @@
       if (audio.paused) {
         audio.play().catch(e => console.log("Audio waiting for user click"));
         btn.innerText = "⏸ Pause Music";
-        btn.style.background = "#c85a32";
+        btn.style.background = "#2d6a4f";
       } else {
         audio.pause();
         btn.innerText = "🎵 Play Music";
-        btn.style.background = "#e09f3e";
+        btn.style.background = "#52b788";
       }
     }
   </script>
