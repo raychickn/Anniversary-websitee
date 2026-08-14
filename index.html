@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autumn Scrapbook | Zozo & Raychickn</title>
-  <!-- Animated / Playful Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@500;600;700&family=Patrick+Hand&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Persona 3/4/5 UI Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -25,7 +25,8 @@
       padding: 0;
       height: 100vh;
       width: 100vw;
-      font-family: 'Fredoka', cursive, sans-serif;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
       overflow-x: hidden;
       color: var(--autumn-brown);
       user-select: none;
@@ -64,17 +65,15 @@
     }
 
     .val-title {
-      font-size: 2.2rem;
-      font-weight: 700;
+      font-size: 2.4rem;
+      font-weight: 800;
       color: #d63384;
       margin: 10px 0 20px 0;
-      font-family: 'Fredoka', cursive;
-      animation: gentleBounce 2s infinite ease-in-out;
-    }
-
-    @keyframes gentleBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transform: skewX(-6deg);
+      animation: personaShake 2s infinite ease-in-out;
     }
 
     .val-buttons {
@@ -86,58 +85,77 @@
     }
 
     .btn-yes-val {
-      font-size: 18px;
-      padding: 10px 24px;
+      font-size: 1.3rem;
+      padding: 10px 28px;
       background-color: #28a745;
       color: white;
       border: none;
-      border-radius: 25px;
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
-      font-family: 'Fredoka', sans-serif;
-      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transform: skewX(-8deg);
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
       transition: all 0.2s ease;
     }
 
     .btn-no-val {
-      font-size: 16px;
-      padding: 10px 22px;
+      font-size: 1.1rem;
+      padding: 10px 24px;
       background-color: #dc3545;
       color: white;
       border: none;
-      border-radius: 25px;
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
-      font-family: 'Fredoka', sans-serif;
-      box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transform: skewX(-8deg);
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
     }
 
     /* =========================================================
-       2. AUTUMN SCRAPBOOK MAIN WEBSITE
+       2. PERSONA SHAKE & FLASH KEYFRAMES
+       ========================================================= */
+    @keyframes personaShake {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      20% { transform: translate(-2px, 1px) rotate(-1deg); }
+      40% { transform: translate(2px, -1px) rotate(1.5deg); }
+      60% { transform: translate(-1px, -2px) rotate(-0.5deg); }
+      80% { transform: translate(2px, 1px) rotate(1deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    .persona-shake:hover {
+      animation: personaShake 0.2s infinite linear;
+      color: var(--autumn-leaf);
+    }
+
+    /* =========================================================
+       3. MAIN SCRAPBOOK LAYOUT (PERSONA STYLED)
        ========================================================= */
     .header-logo {
       padding: 15px 35px 5px 35px;
     }
 
     .header-logo h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.8rem;
       color: var(--autumn-terracotta);
       margin: 0;
-      text-shadow: 2px 2px 0px #edd8c4;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 3px 3px 0px var(--autumn-amber), 6px 6px 0px rgba(0,0,0,0.15);
       display: inline-block;
-      animation: tiltWiggle 6s ease-in-out infinite alternate;
-    }
-
-    @keyframes tiltWiggle {
-      from { transform: rotate(-1deg); }
-      to { transform: rotate(1.5deg); }
+      transform: skewX(-8deg) rotate(-1deg);
     }
 
     .header-logo span {
-      font-family: 'Caveat', cursive;
+      font-family: 'Anton', sans-serif;
       color: var(--autumn-leaf);
       font-size: 3rem;
+      letter-spacing: 1px;
     }
 
     .main-wrapper {
@@ -147,7 +165,7 @@
       height: calc(100vh - 90px);
     }
 
-    /* LEFT CONTAINER (BUTTONS + WHY I MADE THIS BOX) */
+    /* LEFT CONTAINER */
     .left-container {
       flex: 0 0 240px;
       display: flex;
@@ -167,51 +185,55 @@
       color: var(--autumn-brown);
       border: 3px solid var(--autumn-terracotta);
       padding: 10px 18px;
-      font-family: 'Patrick Hand', cursive;
-      font-size: 1.55rem;
-      font-weight: 700;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       cursor: pointer;
-      transform: skewX(-8deg);
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: skewX(-10deg);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 4px 4px 0px var(--autumn-amber);
-      border-radius: 10px;
+      border-radius: 6px;
       text-align: left;
     }
 
     .menu-item:hover, .menu-item.active {
       color: var(--paper-white);
       background: var(--autumn-terracotta);
-      transform: skewX(-8deg) scale(1.05) translateX(10px);
+      transform: skewX(-10deg) scale(1.05) translateX(10px);
       box-shadow: 6px 6px 0px var(--autumn-leaf);
     }
 
-    /* WHY I MADE THIS BOX (BELOW BUTTONS) */
     .about-site-card {
       background: var(--paper-white);
       border: 2px dashed var(--autumn-amber);
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 14px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.04);
       flex: 1;
       overflow-y: auto;
+      transform: skewX(-2deg);
     }
 
     .about-site-title {
-      font-family: 'Patrick Hand', cursive;
-      font-size: 1.45rem;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       color: var(--autumn-terracotta);
       margin-top: 0;
       margin-bottom: 6px;
-      border-bottom: 1px dashed var(--autumn-amber);
+      border-bottom: 2px solid var(--autumn-amber);
       padding-bottom: 4px;
     }
 
     .about-site-text {
-      font-family: 'Caveat', cursive;
-      font-size: 1.2rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
       color: var(--autumn-brown);
       margin: 0;
-      line-height: 1.35;
+      line-height: 1.4;
     }
 
     /* CENTER CARD */
@@ -225,7 +247,7 @@
       border: 3px dashed var(--autumn-terracotta);
       padding: 25px;
       height: 100%;
-      border-radius: 20px;
+      border-radius: 16px;
       box-shadow: 0 10px 30px rgba(74, 51, 42, 0.12);
       overflow-y: auto;
       position: relative;
@@ -242,38 +264,44 @@
     }
 
     .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-family: 'Anton', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: var(--autumn-terracotta);
       margin-top: 0;
       margin-bottom: 6px;
-      border-bottom: 2px wavy var(--autumn-amber);
-      padding-bottom: 8px;
+      border-bottom: 3px solid var(--autumn-amber);
+      padding-bottom: 6px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transform: skewX(-4deg);
     }
 
     .chapter-badge {
-      font-family: 'Fredoka', cursive;
+      font-family: 'Anton', sans-serif;
       background: var(--autumn-amber);
       color: var(--paper-white);
       font-size: 1.1rem;
+      letter-spacing: 1px;
       padding: 4px 14px;
-      border-radius: 20px;
+      border-radius: 4px;
+      transform: skewX(4deg);
       box-shadow: 2px 2px 0 var(--autumn-brown);
     }
 
     .chapter-intro {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.05rem;
-      line-height: 1.5;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.4;
       margin-bottom: 20px;
       color: #63473c;
     }
 
     /* =========================================================
-       POST LAYOUT: FULL-WIDTH PHOTO ON LEFT + CAPTION ON RIGHT
+       POST LAYOUT: CLICKABLE ENTRY CARD
        ========================================================= */
     .memory-list {
       display: flex;
@@ -284,22 +312,37 @@
     .memory-entry {
       background: #ffffff;
       border: 2px solid #f1e4d3;
-      border-radius: 16px;
+      border-left: 6px solid var(--autumn-terracotta);
+      border-radius: 12px;
       padding: 16px;
       display: flex;
       gap: 22px;
       align-items: stretch;
       box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       position: relative;
     }
 
     .memory-entry:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 22px rgba(200, 90, 50, 0.12);
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 24px rgba(200, 90, 50, 0.16);
+      border-color: var(--autumn-amber);
+      border-left-color: var(--autumn-leaf);
     }
 
-    /* Left Photo Container (Takes up entire left 50% block) */
+    .memory-entry::after {
+      content: '▶ CLICK TO EXPAND';
+      position: absolute;
+      bottom: 8px;
+      right: 14px;
+      font-size: 0.85rem;
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 1px;
+      color: var(--autumn-amber);
+      opacity: 0.9;
+    }
+
     .memory-photo-side {
       flex: 0 0 50%;
       display: flex;
@@ -327,39 +370,168 @@
       border-radius: 6px;
     }
 
-    /* Right Text/Caption Container (Takes up remaining 50%) */
     .memory-text-side {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       padding: 5px 10px;
     }
 
     .memory-post-title {
-      font-family: 'Patrick Hand', cursive;
-      font-size: 1.85rem;
-      font-weight: 700;
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: var(--autumn-terracotta);
       margin: 0;
       line-height: 1.1;
+      transform: skewX(-4deg);
     }
 
     .memory-caption {
-      font-family: 'Caveat', cursive;
-      font-size: 1.45rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
       color: var(--autumn-leaf);
       margin: 0;
-      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .memory-desc {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 0.98rem;
-      line-height: 1.55;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.45;
       color: var(--autumn-brown);
       margin: 4px 0 0 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* =========================================================
+       4. PERSONA MODAL POPUP
+       ========================================================= */
+    #memory-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(15, 10, 5, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      animation: modalFadeIn 0.25s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-content {
+      background: var(--paper-white);
+      border: 4px solid var(--autumn-terracotta);
+      border-radius: 16px;
+      max-width: 780px;
+      width: 95%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 160px; height: 26px;
+      background: var(--tape-color);
+      border-radius: 4px;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 15px; right: 20px;
+      background: var(--autumn-leaf);
+      color: #fff;
+      border: none;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transform: skewX(-8deg);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--autumn-terracotta);
+      transform: skewX(-8deg) scale(1.1);
+    }
+
+    .modal-body {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .modal-img {
+      width: 48%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #ecd8c4;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .modal-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .modal-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      color: var(--autumn-terracotta);
+      margin: 0;
+      letter-spacing: 1.5px;
+      transform: skewX(-4deg);
+    }
+
+    .modal-caption {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--autumn-leaf);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .modal-desc {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--autumn-brown);
+      margin: 0;
     }
 
     /* RIGHT PANEL */
@@ -374,18 +546,21 @@
     .right-card {
       background: var(--paper-white);
       border: 2px solid var(--autumn-amber);
-      border-radius: 16px;
+      border-radius: 12px;
       padding: 16px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+      transform: skewX(-2deg);
     }
 
     .right-card-title {
-      font-family: 'Patrick Hand', cursive;
-      font-size: 1.7rem;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       color: var(--autumn-terracotta);
       margin-top: 0;
       margin-bottom: 8px;
-      border-bottom: 1px dashed var(--autumn-amber);
+      border-bottom: 2px solid var(--autumn-amber);
       padding-bottom: 4px;
     }
 
@@ -393,11 +568,12 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
-    .stat-val { color: var(--autumn-terracotta); font-weight: 700; }
+    .stat-val { color: var(--autumn-terracotta); font-weight: 800; }
 
     .audio-btn {
       width: 100%;
@@ -405,16 +581,18 @@
       color: var(--paper-white);
       border: none;
       padding: 10px;
-      font-family: 'Fredoka', cursive;
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       cursor: pointer;
-      border-radius: 15px;
+      border-radius: 8px;
+      transform: skewX(-6deg);
       box-shadow: 0 3px 8px rgba(224, 159, 62, 0.3);
       transition: transform 0.2s;
     }
 
-    .audio-btn:hover { transform: scale(1.02); }
+    .audio-btn:hover { transform: skewX(-6deg) scale(1.02); }
 
     @media (max-width: 900px) {
       body { overflow-y: auto; height: auto; }
@@ -423,6 +601,8 @@
       .p3-menu { flex-direction: row; flex-wrap: wrap; }
       .memory-entry { flex-direction: column; }
       .memory-photo-side { flex: none; width: 100%; }
+      .modal-body { flex-direction: column; }
+      .modal-img { width: 100%; }
       .right-panel { flex: none; width: 100%; }
     }
   </style>
@@ -444,6 +624,21 @@
   <!-- BGM AUDIO -->
   <audio id="bgm" loop preload="auto" playsinline src="The Cure - Pictures Of You.mp3"></audio>
 
+  <!-- EXPANDED MODAL POPUP -->
+  <div id="memory-modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeModalDirect()">✕ CLOSE</button>
+      <div class="modal-body">
+        <img src="" id="modalImg" class="modal-img" alt="Memory Photo">
+        <div class="modal-info">
+          <h2 class="modal-title persona-shake" id="modalTitle">Title</h2>
+          <p class="modal-caption" id="modalCaption">Caption</p>
+          <p class="modal-desc" id="modalDesc">Description</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- HEADER TITLE -->
   <div class="header-logo">
     <h1>Zozo & Raychickn <span>Scrapbook</span></h1>
@@ -462,7 +657,6 @@
         <button class="menu-item" onclick="switchTab('y5', this)">5. Half a Decade</button>
       </nav>
 
-      <!-- WHY I MADE THIS SECTION -->
       <div class="about-site-card">
         <div class="about-site-title">Why I Made This 🍂</div>
         <p class="about-site-text">
@@ -474,7 +668,7 @@
     <!-- CENTER CONTENT -->
     <main class="content-area">
       <div class="scrapbook-card" id="displayCard">
-        <!-- YEAR 1 DEFAULT CONTENT -->
+        <!-- DEFAULT CONTENT (YEAR 1) -->
         <h2 class="card-title">
           Chapter 1: Instagram DMs
           <span class="chapter-badge">2021 – 2022</span>
@@ -484,17 +678,17 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry">
+          <div class="memory-entry" onclick="openMemoryModal('IMG_2467.jpeg', 'First Time Coming Over', 'Making memories at home 🏠', 'The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_2467.jpeg" alt="First Time Coming Over">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">First Time Coming Over 🏠</h3>
-              <p class="memory-caption">"Making memories at home"</p>
+              <h3 class="memory-post-title persona-shake">First Time Coming Over</h3>
+              <p class="memory-caption">Making memories at home 🏠</p>
               <p class="memory-desc">
-                The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you.
+                The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.
               </p>
             </div>
           </div>
@@ -520,7 +714,7 @@
 
       <div class="right-card" style="flex: 1;">
         <div class="right-card-title">Note to Zozo 💌</div>
-        <p style="font-family: 'Caveat', cursive; font-size: 1.3rem; margin: 0; line-height: 1.3;">
+        <p class="about-site-text">
           Thank you for 5 amazing years. Tap through each chapter on the left to walk through our memories!
         </p>
       </div>
@@ -543,7 +737,6 @@
     ];
 
     const secondImg = "https://media.tenor.com/f1xnRxTRxLAAAAAj/bears-with-kisses-bg.gif";
-
     let noClicks = 0;
 
     function handleNo() {
@@ -551,7 +744,7 @@
       const yesBtn = document.getElementById('yesBtn');
       const noBtn = document.getElementById('noBtn');
 
-      const yesButtonSize = (noClicks * 20) + 18;
+      const yesButtonSize = (noClicks * 16) + 20;
       yesBtn.style.fontSize = yesButtonSize + 'px';
 
       const phraseIndex = Math.min(noClicks - 1, NO_PHRASES.length - 1);
@@ -570,15 +763,13 @@
             btn.innerText = "⏸ Pause Music";
             btn.style.background = "#c85a32";
           }
-        }).catch(err => {
-          console.warn("Audio playback issue:", err);
-        });
+        }).catch(err => console.warn("Audio playback issue:", err));
       }
 
       valGif.src = secondImg;
       introScreen.innerHTML = `
         <img src="${secondImg}" class="val-gif" />
-        <div style="font-size: 44px; color: #ff4d6d; font-family: 'Fredoka', cursive; font-weight: bold; margin-bottom: 20px;">
+        <div style="font-size: 44px; color: #ff4d6d; font-family: 'Anton', sans-serif; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; margin-bottom: 20px;">
           Yay!!! 💖🎉
         </div>
       `;
@@ -591,7 +782,28 @@
     }
 
     /* =========================================================
-       SCRAPBOOK CHAPTER DATA (TITLES WITHOUT EMOJIS, BODY WITH EMOJIS)
+       MODAL EXPAND POP-UP LOGIC
+       ========================================================= */
+    function openMemoryModal(imgSrc, title, caption, desc) {
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalCaption').innerText = caption;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('memory-modal').style.display = 'flex';
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'memory-modal') {
+        document.getElementById('memory-modal').style.display = 'none';
+      }
+    }
+
+    function closeModalDirect() {
+      document.getElementById('memory-modal').style.display = 'none';
+    }
+
+    /* =========================================================
+       SCRAPBOOK CHAPTER DATA (PERSONA FONTS APPLIED)
        ========================================================= */
     const yearData = {
       'y1': `
@@ -604,17 +816,17 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry">
+          <div class="memory-entry" onclick="openMemoryModal('IMG_2467.jpeg', 'First Time Coming Over', 'Making memories at home 🏠', 'The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_2467.jpeg" alt="First Time Coming Over">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">First Time Coming Over 🏠</h3>
-              <p class="memory-caption">"Making memories at home"</p>
+              <h3 class="memory-post-title persona-shake">First Time Coming Over</h3>
+              <p class="memory-caption">Making memories at home 🏠</p>
               <p class="memory-desc">
-                The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you.
+                The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.
               </p>
             </div>
           </div>
@@ -630,17 +842,17 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry">
+          <div class="memory-entry" onclick="openMemoryModal('IMG_5759.jpeg', 'Goth x Dreadhead', 'Our iconic look together 🖤', 'One of my absolute favorite photos of us! The energy was unmatched and everyone knew we were the best duo.')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">Goth x Dreadhead 🖤</h3>
-              <p class="memory-caption">"Our iconic look together"</p>
+              <h3 class="memory-post-title persona-shake">Goth x Dreadhead</h3>
+              <p class="memory-caption">Our iconic look together 🖤</p>
               <p class="memory-desc">
-                One of my favorite photos of us. The vibes were unmatched and everyone knew we were the coolest duo around.
+                One of my absolute favorite photos of us! The energy was unmatched and everyone knew we were the best duo.
               </p>
             </div>
           </div>
@@ -656,15 +868,15 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry">
+          <div class="memory-entry" onclick="openMemoryModal('IMG_5218.jpeg', 'Our First Holiday', 'Traveling the world with you ✈️', 'Taking our first big trip away! Exploring new sights, trying new foods, and making unforgettable memories away from home.')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_5218.jpeg" alt="Our First Holiday">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">Our First Holiday ✈️</h3>
-              <p class="memory-caption">"Traveling the world with you"</p>
+              <h3 class="memory-post-title persona-shake">Our First Holiday</h3>
+              <p class="memory-caption">Traveling the world with you ✈️</p>
               <p class="memory-desc">
                 Taking our first big trip away! Exploring new sights, trying new foods, and making unforgettable memories away from home.
               </p>
@@ -682,17 +894,17 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry">
+          <div class="memory-entry" onclick="openMemoryModal('DSC_0071 2.jpeg', 'Prom King & Queen', 'Dressed up to the nines 👑', 'Looking back at how far we have come together. We really clean up well!')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="DSC_0071 2.jpeg" alt="Prom King & Queen">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">Prom King & Queen 👑</h3>
-              <p class="memory-caption">"Dressed up to the nines"</p>
+              <h3 class="memory-post-title persona-shake">Prom King & Queen</h3>
+              <p class="memory-caption">Dressed up to the nines 👑</p>
               <p class="memory-desc">
-                Looking back at how far we've come. We really clean up well together!
+                Looking back at how far we have come together. We really clean up well!
               </p>
             </div>
           </div>
@@ -708,15 +920,15 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry">
+          <div class="memory-entry" onclick="openMemoryModal('IMG_1850 2.jpeg', 'Halloween', '5 Years Strong & Still Having Fun 🎃', 'Half a decade of love, laughter, and support. Thank you for being the best partner I could ever ask for!')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_1850 2.jpeg" alt="Halloween">
               </div>
             </div>
             <div class="memory-text-side">
-              <h3 class="memory-post-title">Halloween 🎃</h3>
-              <p class="memory-caption">"5 Years Strong & Still Having Fun"</p>
+              <h3 class="memory-post-title persona-shake">Halloween</h3>
+              <p class="memory-caption">5 Years Strong & Still Having Fun 🎃</p>
               <p class="memory-desc">
                 Half a decade of love, laughter, and support. Thank you for being the best partner I could ever ask for!
               </p>
