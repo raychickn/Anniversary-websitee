@@ -667,32 +667,7 @@
     <!-- CENTER CONTENT -->
     <main class="content-area">
       <div class="scrapbook-card" id="displayCard">
-        <!-- DEFAULT CONTENT (YEAR 1) -->
-        <h2 class="card-title">
-          Chapter 1: Instagram DMs
-          <span class="chapter-badge">2021 – 2022</span>
-        </h2>
-        <p class="chapter-intro">
-          Where our story first began. When I finally started to enjoy my life :)
-        </p>
-
-        <div class="memory-list">
-          <div class="memory-entry" onclick="openMemoryModal('IMG_2467.jpeg', 'First Time Coming Over', 'Making memories at home 🏠', 'The first time hanging out properly at home. Watching shows, laughing and just feeling comfortable with you, my girlfriend :p')">
-            <div class="memory-photo-side">
-              <div class="memory-polaroid">
-                <img src="IMG_2467.jpeg" alt="First Time Coming Over">
-              </div>
-            </div>
-            <div class="memory-text-side">
-              <h3 class="memory-post-title">First Time Coming Over</h3>
-              <p class="memory-caption">Making memories at home 🏠</p>
-              <p class="memory-desc">
-                The first time hanging out properly at home. Watching shows, laughing and just feeling comfortable with you, my girlfriend :p
-              </p>
-            </div>
-          </div>
-        </div>
-
+        <!-- Content gets rendered automatically by switchTab -->
       </div>
     </main>
 
@@ -707,14 +682,14 @@
         <div class="right-card-title">Our Stats 📊</div>
         <div class="stat-row"><span>Days Together:</span> <span class="stat-val">1,826 Days</span></div>
         <div class="stat-row"><span>Anniversary:</span> <span class="stat-val">5th Year</span></div>
-        <div class="stat-row"><span>Favorite Food:</span> <span class="stat-val">Chicken Burger</span></div>
+        <div class="stat-row"><span>Favorite Duo:</span> <span class="stat-val">Zozo & Ray</span></div>
         <div class="stat-row"><span>Status:</span> <span class="stat-val">Going Strong 💕</span></div>
       </div>
 
       <div class="right-card" style="flex: 1;">
         <div class="right-card-title">Note to Zozo 💌</div>
         <p style="font-family: 'Rajdhani', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--autumn-brown); margin: 0; line-height: 1.4;">
-          Thank you for 5 amazing years. I thought I'd use my excellent first class engineering skills to make a littke something this year, for our big five years! And as you notice the pictures have basically no correlation to whatever I am talkking about! Because... it was intentional. Yea... definitelty not HTML up my ass. 
+          Thank you for 5 amazing years. Tap through each chapter on the left to walk through our memories!
         </p>
       </div>
     </aside>
@@ -781,13 +756,48 @@
     }
 
     /* =========================================================
-       MODAL EXPAND POP-UP LOGIC
+       MODAL EXPAND POP-UP LOGIC (SAFE DATA-DRIVEN)
        ========================================================= */
-    function openMemoryModal(imgSrc, title, caption, desc) {
-      document.getElementById('modalImg').src = imgSrc;
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalCaption').innerText = caption;
-      document.getElementById('modalDesc').innerText = desc;
+    const memoriesData = {
+      'y1': {
+        img: 'IMG_2467.jpeg',
+        title: 'First Time Coming Over',
+        caption: 'Making memories at home 🏠',
+        desc: 'The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.'
+      },
+      'y2': {
+        img: 'IMG_5759.jpeg',
+        title: 'Goth x Dreadhead',
+        caption: 'Our iconic look together 🖤',
+        desc: 'One of my absolute favorite photos of us! The energy was unmatched and everyone knew we were the best duo.'
+      },
+      'y3': {
+        img: 'IMG_5218.jpeg',
+        title: 'Our First Holiday',
+        caption: 'Traveling the world with you ✈️',
+        desc: 'Taking our first big trip away! Exploring new sights, trying new foods, and making unforgettable memories away from home.'
+      },
+      'y4': {
+        img: 'DSC_0071 2.jpeg',
+        title: 'Prom King & Queen',
+        caption: 'Dressed up to the nines 👑',
+        desc: 'Looking back at how far we have come together. We really clean up well!'
+      },
+      'y5': {
+        img: 'IMG_1850 2.jpeg',
+        title: 'Halloween',
+        caption: '5 Years Strong & Still Having Fun 🎃',
+        desc: 'Half a decade of love, laughter, and support. Thank you for being the best partner I could ever ask for!'
+      }
+    };
+
+    function openMemoryModalByKey(key) {
+      const data = memoriesData[key];
+      if (!data) return;
+      document.getElementById('modalImg').src = data.img;
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalCaption').innerText = data.caption;
+      document.getElementById('modalDesc').innerText = data.desc;
       document.getElementById('memory-modal').style.display = 'flex';
     }
 
@@ -815,7 +825,7 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry" onclick="openMemoryModal('IMG_2467.jpeg', 'First Time Coming Over', 'Making memories at home 🏠', 'The first time hanging out properly at home. Watching shows, laughing and just feeling comfortable with you, my girlfriend :p')">
+          <div class="memory-entry" onclick="openMemoryModalByKey('y1')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_2467.jpeg" alt="First Time Coming Over">
@@ -825,7 +835,8 @@
               <h3 class="memory-post-title">First Time Coming Over</h3>
               <p class="memory-caption">Making memories at home 🏠</p>
               <p class="memory-desc">
-                The first time hanging out properly at home. Watching shows, laughing and just feeling comfortable with you, my girlfriend :p
+                The first time hanging out properly at home. Watching shows, laughing, and realizing how much I loved spending time around you. It felt so comfortable from day one.
+              </p>
             </div>
           </div>
         </div>
@@ -840,7 +851,7 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry" onclick="openMemoryModal('IMG_5759.jpeg', 'Goth x Dreadhead', 'Our idevelopment 🖤', 'We were finally able to talk in person... and things weren't awkward! We both opened our mouths and realised whatever bs we said was good enough because we had each other.')">
+          <div class="memory-entry" onclick="openMemoryModalByKey('y2')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_5759.jpeg" alt="Goth x Dreadhead">
@@ -850,7 +861,7 @@
               <h3 class="memory-post-title">Goth x Dreadhead</h3>
               <p class="memory-caption">Our iconic look together 🖤</p>
               <p class="memory-desc">
-                We were finally able to talk in person... and things weren't awkward! We both opened our mouths and realised whatever bs we said was good enough because we had each other.
+                One of my absolute favorite photos of us! The energy was unmatched and everyone knew we were the best duo.
               </p>
             </div>
           </div>
@@ -866,7 +877,7 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry" onclick="openMemoryModal('IMG_5218.jpeg', 'Our First Holiday', 'Traveling the world with you ✈️', 'Ah yes, fear. Once year 12 reached the climax and I hit autistic burnout without realising it... I was so scared of losing you because of how much effort I had put into us, but realised shortly after, you're not going anywhere ^_^')">
+          <div class="memory-entry" onclick="openMemoryModalByKey('y3')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_5218.jpeg" alt="Our First Holiday">
@@ -876,7 +887,7 @@
               <h3 class="memory-post-title">Our First Holiday</h3>
               <p class="memory-caption">Traveling the world with you ✈️</p>
               <p class="memory-desc">
-                Ah yes, fear. Once year 12 reached the climax and I hit autistic burnout without realising it... I was so scared of losing you because of how much effort I had put into us, but realised shortly after, you're not going anywhere ^_^
+                Taking our first big trip away! Exploring new sights, trying new foods, and making unforgettable memories away from home.
               </p>
             </div>
           </div>
@@ -888,11 +899,11 @@
           <span class="chapter-badge">2024 – 2025</span>
         </h2>
         <p class="chapter-intro">
-          Special occassions, side quests and laughter 
+          Road trips, dressing up, endless laughs, and special occasions.
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry" onclick="openMemoryModal('DSC_0071 2.jpeg', 'Prom King & Queen', 'Rigged I DONT CARE 👑', 'Looking back at how far we have come together. Four years in and we only got closer and stronger together, something so radiant its better than any art')">
+          <div class="memory-entry" onclick="openMemoryModalByKey('y4')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="DSC_0071 2.jpeg" alt="Prom King & Queen">
@@ -900,9 +911,9 @@
             </div>
             <div class="memory-text-side">
               <h3 class="memory-post-title">Prom King & Queen</h3>
-              <p class="memory-caption">Rigged I DONT CARE 👑</p>
+              <p class="memory-caption">Dressed up to the nines 👑</p>
               <p class="memory-desc">
-                Looking back at how far we have come together. Four years in and we only got closer and stronger together, something so radiant its better than any art
+                Looking back at how far we have come together. We really clean up well!
               </p>
             </div>
           </div>
@@ -918,7 +929,7 @@
         </p>
 
         <div class="memory-list">
-          <div class="memory-entry" onclick="openMemoryModal('IMG_1850 2.jpeg', 'Halloween', '5 Years Strong & Still Having Fun 🎃', 'Half a decade of love, laughter, and support. Thank you for being the best partner I could ever ask for!')">
+          <div class="memory-entry" onclick="openMemoryModalByKey('y5')">
             <div class="memory-photo-side">
               <div class="memory-polaroid">
                 <img src="IMG_1850 2.jpeg" alt="Halloween">
@@ -928,7 +939,7 @@
               <h3 class="memory-post-title">Halloween</h3>
               <p class="memory-caption">5 Years Strong & Still Having Fun 🎃</p>
               <p class="memory-desc">
-                Half a decade of love, laughter, and support. Thank you for being the best partner I could ever ask for my love.
+                Half a decade of love, laughter, and support. Thank you for being the best partner I could ever ask for!
               </p>
             </div>
           </div>
@@ -937,12 +948,19 @@
     };
 
     function switchTab(tabKey, btn) {
-      document.querySelectorAll('.menu-item').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if (btn) {
+        document.querySelectorAll('.menu-item').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
 
       const card = document.getElementById('displayCard');
-      card.innerHTML = yearData[tabKey];
+      if (card && yearData[tabKey]) {
+        card.innerHTML = yearData[tabKey];
+      }
     }
+
+    // Initialize default tab on load
+    switchTab('y1', document.querySelector('.menu-item.active'));
 
     function toggleMusic() {
       const audio = document.getElementById('bgm');
